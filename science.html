@@ -60,24 +60,6 @@
             border-radius: var(--radius-sm);
         }
         
-        .skip-link {
-            position: absolute;
-            top: -60px;
-            left: var(--spacing-md);
-            background: var(--color-primary);
-            color: white;
-            padding: var(--spacing-sm) var(--spacing-md);
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-            z-index: 1000;
-            font-weight: 600;
-        }
-        
-        .skip-link:focus {
-            top: var(--spacing-md);
-            outline: 3px solid var(--color-focus);
-        }
-        
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -120,34 +102,54 @@
             color: var(--color-text-secondary);
         }
         
-        /* ===== МЕНЮ ===== */
-        .main-menu {
-            background: var(--color-primary);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-sm) var(--spacing-lg);
+        /* ===== НАВБАР ===== */
+        .navbar {
+            background: #174c73;
+            border-radius: 14px;
+            padding: 18px 28px;
             margin-bottom: var(--spacing-lg);
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 14px;
+        }
+        
+        /* верхняя строка */
+        .navbar-top {
+            display: flex;
+            align-items: center;
             justify-content: center;
-            gap: var(--spacing-xs);
+            gap: 42px;
+            flex-wrap: wrap;
         }
         
-        .main-menu a, .main-menu button {
-            background: transparent;
-            border: none;
-            color: white;
-            padding: 12px 24px;
-            font-size: var(--font-base);
-            font-weight: 600;
+        /* нижняя строка */
+        .navbar-bottom {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+        }
+        
+        /* ссылки */
+        .navbar a {
+            color: #e6edf3;
             text-decoration: none;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: background 0.2s;
-            font-family: inherit;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
         
-        .main-menu a:hover, .main-menu button:hover {
-            background: rgba(255,255,255,0.2);
+        /* hover */
+        .navbar a:hover {
+            background: rgba(255,255,255,0.08);
+            color: #ffffff;
+        }
+        
+        /* активный пункт */
+        .navbar a.active {
+            background: rgba(255,255,255,0.12);
+            font-weight: 600;
         }
         
         /* ===== ГЛОБАЛЬНЫЙ ПОИСК ===== */
@@ -458,18 +460,31 @@
             border: 0;
         }
         
+        /* АДАПТИВ */
         @media (max-width: 768px) {
             .container { padding: var(--spacing-sm); }
             .charts-grid { grid-template-columns: 1fr; }
             .services-grid { grid-template-columns: 1fr; }
-            .main-menu { justify-content: flex-start; overflow-x: auto; }
             .header h1 { font-size: 32px; }
+            
+            .navbar {
+                gap: 10px;
+                padding: 14px;
+            }
+            
+            .navbar-top,
+            .navbar-bottom {
+                gap: 16px;
+            }
+            
+            .navbar a {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
         }
     </style>
 </head>
 <body>
-
-<a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
 
 <div class="container">
     
@@ -478,14 +493,19 @@
         <p class="subtitle">на базе информационного ресурса Единой государственной информационной системы учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения</p>
     </header>
     
-    <nav class="main-menu" role="navigation" aria-label="Основное меню">
-        <a href="./science.html" aria-current="page">Главная</a>
-        <a href="#">Популяризация науки</a>
-        <a href="#">Комиссия НТР</a>
-        <button type="button" aria-haspopup="true">Отраслевые и специальные сегменты</button>
-        <a href="#">База знаний</a>
-        <a href="#">Аналитика</a>
-        <a href="./aggregator-service.html">Поиск мер поддержки</a>
+    <!-- ===== НАВБАР ===== -->
+    <nav class="navbar" role="navigation" aria-label="Основное меню">
+        <div class="navbar-top">
+            <a href="./science.html" class="active" aria-current="page">Главная</a>
+            <a href="#">Популяризация науки</a>
+            <a href="#">Комиссия НТР</a>
+            <a href="#">База знаний</a>
+            <a href="#">Аналитика</a>
+        </div>
+        <div class="navbar-bottom">
+            <a href="#">Отраслевые и специальные сегменты</a>
+            <a href="./aggregator-service.html">Поиск мер поддержки</a>
+        </div>
     </nav>
     
     <div class="global-search" role="search">
