@@ -8,53 +8,73 @@
     
     <style>
         :root {
-            --font-base: 18px;
-            --color-primary: #0067ad;
-            --color-primary-dark: #004b7c;
+            --color-primary: #0a4b7a;
+            --color-primary-hover: #0c5a91;
+            --color-primary-light: #e8f0f7;
+            --color-text: #1a2a3a;
+            --color-text-secondary: #4a5a6a;
+            --color-border: #d4dce4;
+            --color-background: #f5f7fa;
+            --color-white: #ffffff;
             --color-focus: #ff8c00;
-            --color-error: #dc2626;
-            --color-success: #2e7d32;
-            --color-gray-light: #f8fafc;
-            --color-gray-border: #e0e4e8;
+            --color-urgent: #c47a00;
+            --color-neutral: #4a5568;
+            --color-neutral-hover: #2d3748;
+            
+            --font-base: 20px;
+            --font-small: 16px;
+            --font-large: 28px;
+            --font-xl: 36px;
+            --font-xxl: 42px;
+            
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
         }
         
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
         
         body {
-            font-family: 'Nunito', 'Segoe UI', 'Roboto', sans-serif;
+            font-family: 'Nunito', 'Segoe UI', 'Roboto', system-ui, sans-serif;
             font-size: var(--font-base);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background: #f5f7fa;
-            color: #1a1a1a;
+            line-height: 1.5;
+            background: var(--color-background);
+            color: var(--color-text);
         }
         
-        [tabindex="0"]:focus-visible {
-            outline: 4px solid var(--color-focus);
-            outline-offset: 4px;
-            border-radius: 8px;
-            background: rgba(0,103,173,0.05);
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--color-focus);
+            outline-offset: 3px;
+            border-radius: var(--radius-sm);
         }
         
         .skip-link {
             position: absolute;
             top: -60px;
-            left: 20px;
+            left: var(--spacing-md);
             background: var(--color-primary);
             color: white;
-            padding: 12px 24px;
+            padding: var(--spacing-sm) var(--spacing-md);
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             z-index: 1000;
-            font-weight: bold;
+            font-weight: 600;
         }
         
         .skip-link:focus {
-            top: 20px;
-            outline: 4px solid var(--color-focus);
+            top: var(--spacing-md);
+            outline: 3px solid var(--color-focus);
         }
         
         .visually-hidden {
@@ -71,138 +91,153 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: var(--spacing-md);
         }
         
         .breadcrumbs {
-            margin-bottom: 24px;
-            font-size: 16px;
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-small);
         }
         
         .breadcrumbs a {
             color: var(--color-primary);
             text-decoration: none;
+            font-weight: 500;
         }
         
         .grant-detail {
-            background: white;
-            border-radius: 24px;
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--color-border);
         }
         
         .detail-header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            background: var(--color-primary);
             color: white;
-            padding: 32px 40px;
+            padding: var(--spacing-xl) var(--spacing-xl);
         }
         
         .detail-header h1 {
-            margin: 0 0 16px 0;
-            font-size: 28px;
+            margin: 0 0 var(--spacing-md) 0;
+            font-size: var(--font-xxl);
+            font-weight: 800;
             line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+        
+        .detail-header p {
+            font-size: var(--font-base);
+            opacity: 0.9;
         }
         
         .detail-actions {
             display: flex;
-            gap: 16px;
+            gap: var(--spacing-md);
             flex-wrap: wrap;
-            margin-top: 24px;
-        }
-        
-        .btn-back, .btn-apply {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        
-        .btn-back {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: none;
+            margin-top: var(--spacing-lg);
         }
         
         .btn-apply {
-            background: #ff8c00;
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: 14px 32px;
+            border-radius: var(--radius-md);
+            font-size: var(--font-base);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
             border: none;
+            background: var(--color-neutral);
+            color: white;
+        }
+        
+        .btn-apply:hover {
+            background: var(--color-neutral-hover);
         }
         
         .btn-copy {
             background: rgba(255,255,255,0.15);
             color: white;
             border: 1px solid rgba(255,255,255,0.3);
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 15px;
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-size: var(--font-base);
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--spacing-xs);
+            transition: background 0.2s;
+        }
+        
+        .btn-copy:hover {
+            background: rgba(255,255,255,0.25);
         }
         
         .administrator {
-            background: var(--color-gray-light);
-            padding: 20px 40px;
-            border-bottom: 1px solid var(--color-gray-border);
+            background: var(--color-primary-light);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            border-bottom: 1px solid var(--color-border);
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
+            flex-direction: column;
+            gap: var(--spacing-sm);
         }
         
-        .admin-info {
+        .admin-item {
             display: flex;
             flex-wrap: wrap;
-            gap: 24px;
+            gap: var(--spacing-xs);
         }
         
-        .admin-info span {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        .admin-label {
+            font-weight: 700;
+            color: var(--color-text);
+            min-width: 200px;
+        }
+        
+        .admin-value {
+            color: var(--color-text-secondary);
         }
         
         .detail-content {
-            padding: 32px 40px;
+            padding: var(--spacing-xl);
         }
         
+        /* ===== НАВИГАЦИОННЫЕ ВКЛАДКИ — УЛУЧШЕННЫЙ ДИЗАЙН ===== */
         .section-nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 32px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--color-gray-border);
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--color-border);
         }
         
         .section-nav button {
-            background: none;
+            background: transparent;
             border: none;
-            padding: 12px 20px;
-            font-size: 16px;
+            padding: 12px 28px;
+            font-size: var(--font-base);
             font-weight: 600;
-            color: #4a5568;
+            color: var(--color-text-secondary);
             cursor: pointer;
-            border-radius: 30px;
-            transition: all 0.2s;
+            border-radius: 40px;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            position: relative;
         }
         
         .section-nav button:hover {
-            background: var(--color-gray-light);
+            background: var(--color-primary-light);
             color: var(--color-primary);
         }
         
         .section-nav button.active {
             background: var(--color-primary);
             color: white;
+            box-shadow: 0 2px 8px rgba(10,75,122,0.2);
         }
         
         .section {
@@ -220,128 +255,116 @@
         }
         
         .section h2 {
-            font-size: 22px;
-            margin: 0 0 24px 0;
+            font-size: var(--font-xl);
+            font-weight: 700;
+            margin: 0 0 var(--spacing-lg) 0;
             color: var(--color-primary);
             border-left: 4px solid var(--color-primary);
-            padding-left: 16px;
+            padding-left: var(--spacing-md);
         }
         
         .info-card {
-            background: var(--color-gray-light);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 24px;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            border: 1px solid var(--color-border);
         }
         
         .info-card h3 {
-            margin: 0 0 16px 0;
-            font-size: 18px;
+            margin: 0 0 var(--spacing-md) 0;
+            font-size: var(--font-large);
+            font-weight: 700;
             color: var(--color-primary);
         }
         
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
         }
         
         .calendar-item {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-            border: 1px solid var(--color-gray-border);
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            border: 1px solid var(--color-border);
         }
         
         .calendar-stage {
             font-weight: 700;
             color: var(--color-primary);
-            margin-bottom: 12px;
-            font-size: 18px;
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-large);
         }
         
         .calendar-dates {
             display: flex;
-            gap: 24px;
+            gap: var(--spacing-lg);
             flex-wrap: wrap;
         }
         
         .date-badge {
-            background: #e6f4ff;
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 14px;
+            background: var(--color-primary-light);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 40px;
+            font-size: var(--font-small);
+            font-weight: 600;
         }
         
         .contact-card {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid var(--color-gray-border);
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            border: 1px solid var(--color-border);
         }
         
         .contact-name {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: var(--font-large);
+            font-weight: 800;
             color: var(--color-primary);
-            margin-bottom: 8px;
+            margin-bottom: var(--spacing-md);
         }
         
         .contact-detail {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-top: 12px;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
             flex-wrap: wrap;
         }
         
         .contact-link {
             color: var(--color-primary);
             text-decoration: none;
+            font-weight: 500;
         }
         
         .empty-state {
-            color: #4a5568;
+            color: var(--color-text-secondary);
             font-style: italic;
-            padding: 20px;
+            padding: var(--spacing-lg);
             text-align: center;
-            background: var(--color-gray-light);
-            border-radius: 16px;
-        }
-        
-        .funding-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-        
-        .funding-table th, .funding-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--color-gray-border);
-        }
-        
-        .funding-table th {
-            background: var(--color-gray-light);
-            font-weight: 700;
+            background: var(--color-primary-light);
+            border-radius: var(--radius-md);
         }
         
         .total-amount {
-            font-size: 28px;
+            font-size: var(--font-xxl);
             font-weight: 800;
-            color: var(--color-success);
-            margin: 16px 0;
+            color: var(--color-text);
+            margin: var(--spacing-md) 0;
         }
         
         .copy-success {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--color-success);
+            bottom: var(--spacing-md);
+            right: var(--spacing-md);
+            background: var(--color-primary);
             color: white;
-            padding: 12px 24px;
-            border-radius: 12px;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-md);
             z-index: 1000;
             animation: fadeOut 2s ease;
         }
@@ -350,11 +373,6 @@
             0% { opacity: 1; }
             70% { opacity: 1; }
             100% { opacity: 0; visibility: hidden; }
-        }
-        
-        .section:focus, .section-content:focus {
-            outline: 4px solid var(--color-focus);
-            outline-offset: 4px;
         }
         
         .live-region {
@@ -369,12 +387,14 @@
         }
         
         @media (max-width: 768px) {
-            .container { padding: 12px; }
-            .detail-header { padding: 24px 20px; }
-            .detail-content { padding: 24px 20px; }
-            .administrator { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
-            .section-nav button { padding: 8px 16px; font-size: 14px; }
+            .container { padding: var(--spacing-sm); }
+            .detail-header { padding: var(--spacing-lg); }
+            .detail-content { padding: var(--spacing-lg); }
+            .administrator { padding: var(--spacing-md); }
+            .section-nav button { padding: 8px 16px; font-size: var(--font-small); }
             .info-grid { grid-template-columns: 1fr; }
+            .detail-header h1 { font-size: 32px; }
+            .admin-label { min-width: 150px; }
         }
     </style>
 </head>
@@ -393,24 +413,31 @@
     <main id="main-content" class="grant-detail" role="main" tabindex="-1">
         
         <div class="detail-header">
-            <h1 tabindex="0">Грант Президента РФ для молодых учёных</h1>
-            <p tabindex="0">Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
+            <h1>Грант Президента РФ для молодых учёных</h1>
+            <p>Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
             
             <div class="detail-actions">
-                <a href="./aggregator-service.html" class="btn-back">Вернуться к навигатору</a>
-                <button class="btn-apply">Подать заявку</button>
+                <button class="btn-apply" id="apply-btn">Подать заявку</button>
                 <button class="btn-copy" id="copy-link-btn">Скопировать ссылку</button>
             </div>
         </div>
         
         <div class="administrator">
-            <div class="admin-info">
-                <span tabindex="0"><strong>Администратор меры:</strong> Министерство промышленности и торговли Республики Татарстан</span>
-                <span tabindex="0"><strong>ИНН:</strong> 1655141766</span>
+            <div class="admin-item">
+                <span class="admin-label">Администратор меры:</span>
+                <span class="admin-value">Министерство промышленности и торговли Республики Татарстан</span>
             </div>
-            <div class="admin-info">
-                <span tabindex="0"><strong>Категория получателей:</strong> Юридическое лицо</span>
-                <span tabindex="0"><strong>Виды юридических лиц:</strong> Коммерческие</span>
+            <div class="admin-item">
+                <span class="admin-label">ИНН:</span>
+                <span class="admin-value">1655141766</span>
+            </div>
+            <div class="admin-item">
+                <span class="admin-label">Категория получателей:</span>
+                <span class="admin-value">Юридическое лицо</span>
+            </div>
+            <div class="admin-item">
+                <span class="admin-label">Виды юридических лиц:</span>
+                <span class="admin-value">Коммерческие</span>
             </div>
         </div>
         
@@ -427,92 +454,92 @@
         <div class="detail-content">
             
             <div id="section-main" class="section active" role="tabpanel" tabindex="-1">
-                <h2 tabindex="0">Основная информация</h2>
+                <h2>Основная информация</h2>
                 <div class="info-grid">
                     <div class="info-card">
-                        <h3 tabindex="0">Назначение меры</h3>
-                        <p tabindex="0">Внедрение научных разработок и инновационных технологий в области энергосбережения и повышения энергетической эффективности</p>
+                        <h3>Назначение меры</h3>
+                        <p>Внедрение научных разработок и инновационных технологий в области энергосбережения и повышения энергетической эффективности</p>
                     </div>
                     <div class="info-card">
-                        <h3 tabindex="0">Территориальный уровень</h3>
-                        <p tabindex="0">Региональный</p>
-                        <p tabindex="0"><strong>Субъект РФ:</strong> Республика Татарстан</p>
+                        <h3>Территориальный уровень</h3>
+                        <p>Региональный</p>
+                        <p><strong>Субъект РФ:</strong> Республика Татарстан</p>
                     </div>
                     <div class="info-card">
-                        <h3 tabindex="0">Форма поддержки</h3>
-                        <p tabindex="0">Консультационная</p>
-                        <p tabindex="0"><strong>Тип меры:</strong> Другое</p>
+                        <h3>Форма поддержки</h3>
+                        <p>Консультационная</p>
+                        <p><strong>Тип меры:</strong> Другое</p>
                     </div>
                     <div class="info-card">
-                        <h3 tabindex="0">Направление меры</h3>
-                        <p tabindex="0" aria-label="Научно-исследовательские и опытно-конструкторские работы">НИОКР</p>
+                        <h3>Направление меры</h3>
+                        <p aria-label="Научно-исследовательские и опытно-конструкторские работы">НИОКР</p>
                     </div>
                 </div>
             </div>
             
             <div id="section-requirements" class="section" role="tabpanel" tabindex="-1">
-                <h2 tabindex="0">Требования</h2>
+                <h2>Требования</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Основание</h3>
-                    <p tabindex="0">Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан", утвержденная постановлением Кабинета Министров Республики Татарстан от 04.12.2013 № 954</p>
+                    <h3>Основание</h3>
+                    <p>Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан", утвержденная постановлением Кабинета Министров Республики Татарстан от 04.12.2013 № 954</p>
                 </div>
                 <div class="info-card">
-                    <h3 tabindex="0">Дополнительные требования</h3>
-                    <p tabindex="0" class="empty-state">Не разработаны к настоящему моменту</p>
+                    <h3>Дополнительные требования</h3>
+                    <p class="empty-state">Не разработаны к настоящему моменту</p>
                 </div>
             </div>
             
             <div id="section-documents" class="section" role="tabpanel" tabindex="-1">
-                <h2 tabindex="0">Необходимые документы</h2>
+                <h2>Необходимые документы</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Перечень документов</h3>
-                    <p tabindex="0" class="empty-state">Не разработаны к настоящему моменту</p>
+                    <h3>Перечень документов</h3>
+                    <p class="empty-state">Не разработаны к настоящему моменту</p>
                 </div>
             </div>
             
             <div id="section-npa" class="section" role="tabpanel" tabindex="-1">
-                <h2 tabindex="0" aria-label="Нормативно-правовые акты и другие документы">НПА и другие документы</h2>
+                <h2>НПА и другие документы</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Нормативно-правовые акты</h3>
-                    <ul>
-                        <li tabindex="0">Постановление Кабинета Министров Республики Татарстан от 04.12.2013 № 954</li>
-                        <li tabindex="0">Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан"</li>
+                    <h3>Нормативно-правовые акты</h3>
+                    <ul style="margin-left: var(--spacing-lg);">
+                        <li>Постановление Кабинета Министров Республики Татарстан от 04.12.2013 № 954</li>
+                        <li>Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан"</li>
                     </ul>
                 </div>
             </div>
             
             <div id="section-calendar" class="section" role="tabpanel" tabindex="-1">
-                <h2 tabindex="0">Календарь</h2>
+                <h2>Календарь</h2>
                 <div class="calendar-item">
-                    <div class="calendar-stage" tabindex="0">Прием заявок</div>
+                    <div class="calendar-stage">Прием заявок</div>
                     <div class="calendar-dates">
-                        <span class="date-badge" tabindex="0">Начало: <strong>01.01.2028</strong></span>
-                        <span class="date-badge" tabindex="0">Окончание: <strong>29.12.2028</strong></span>
+                        <span class="date-badge">Начало: <strong>01.01.2028</strong></span>
+                        <span class="date-badge">Окончание: <strong>29.12.2028</strong></span>
                     </div>
                 </div>
                 <div class="info-card">
-                    <h3 tabindex="0">Общая сумма финансирования</h3>
-                    <div class="total-amount" tabindex="0">0,00 ₽</div>
+                    <h3>Общая сумма финансирования</h3>
+                    <div class="total-amount">0,00 ₽</div>
                 </div>
             </div>
             
             <div id="section-faq" class="section" role="tabpanel" tabindex="-1">
-                <h2 tabindex="0">Частые вопросы</h2>
+                <h2>Частые вопросы</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Вопросы и ответы</h3>
-                    <p tabindex="0" class="empty-state">Часто задаваемые вопросы не указаны</p>
+                    <h3>Вопросы и ответы</h3>
+                    <p class="empty-state">Часто задаваемые вопросы не указаны</p>
                 </div>
             </div>
             
             <div id="section-contacts" class="section" role="tabpanel" tabindex="-1">
-                <h2 tabindex="0">Контакты для консультации</h2>
+                <h2>Контакты для консультации</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Контактное лицо</h3>
+                    <h3>Контактное лицо</h3>
                     <div class="contact-card">
-                        <div class="contact-name" tabindex="0">Каткова Евгения Игоревна</div>
-                        <div class="contact-detail" tabindex="0">Должность: Начальник отдела развития энергетики и энергоэффективности</div>
-                        <div class="contact-detail" tabindex="0">Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
-                        <div class="contact-detail" tabindex="0">Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
+                        <div class="contact-name">Каткова Евгения Игоревна</div>
+                        <div class="contact-detail">Должность: Начальник отдела развития энергетики и энергоэффективности</div>
+                        <div class="contact-detail">Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
+                        <div class="contact-detail">Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
                     </div>
                 </div>
             </div>
@@ -532,36 +559,7 @@
         }
     }
     
-    const focusableElements = document.querySelectorAll('[tabindex="0"]');
-    focusableElements.forEach(el => {
-        el.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                let textToRead = '';
-                if (el.classList.contains('empty-state')) {
-                    textToRead = el.textContent.trim();
-                } else if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3') {
-                    textToRead = el.textContent.trim();
-                } else if (el.tagName === 'P') {
-                    textToRead = el.textContent.trim();
-                } else if (el.tagName === 'LI') {
-                    textToRead = el.textContent.trim();
-                } else if (el.classList.contains('date-badge')) {
-                    textToRead = el.textContent.trim();
-                } else if (el.classList.contains('total-amount')) {
-                    textToRead = `Общая сумма финансирования: ${el.textContent.trim()}`;
-                } else {
-                    textToRead = el.textContent.trim();
-                }
-                if (textToRead) {
-                    announceToScreenReader(textToRead);
-                    el.style.backgroundColor = 'rgba(0,103,173,0.1)';
-                    setTimeout(() => { el.style.backgroundColor = ''; }, 300);
-                }
-            }
-        });
-    });
-    
+    // Переключение вкладок
     const navButtons = document.querySelectorAll('.section-nav button');
     const sections = {
         main: document.getElementById('section-main'),
@@ -573,16 +571,15 @@
         contacts: document.getElementById('section-contacts')
     };
     
-    function showSectionAndFocus(sectionId, buttonElement) {
+    function showSection(sectionId, buttonElement) {
         Object.values(sections).forEach(section => {
             if (section) section.classList.remove('active');
         });
         const targetSection = sections[sectionId];
         if (targetSection) {
             targetSection.classList.add('active');
-            targetSection.focus();
             const sectionName = buttonElement ? buttonElement.textContent.trim() : sectionId;
-            announceToScreenReader(`Раздел "${sectionName}" открыт. Фокус в разделе.`);
+            announceToScreenReader(`Раздел "${sectionName}" открыт`);
         }
         navButtons.forEach(btn => {
             const btnSection = btn.getAttribute('data-section');
@@ -599,17 +596,18 @@
     navButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const sectionId = btn.getAttribute('data-section');
-            showSectionAndFocus(sectionId, btn);
+            showSection(sectionId, btn);
         });
         btn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 const sectionId = btn.getAttribute('data-section');
-                showSectionAndFocus(sectionId, btn);
+                showSection(sectionId, btn);
             }
         });
     });
     
+    // Копирование ссылки
     const copyBtn = document.getElementById('copy-link-btn');
     if (copyBtn) {
         copyBtn.addEventListener('click', async () => {
@@ -627,7 +625,8 @@
         });
     }
     
-    const applyBtn = document.querySelector('.btn-apply');
+    // Кнопка подачи заявки
+    const applyBtn = document.getElementById('apply-btn');
     if (applyBtn) {
         applyBtn.addEventListener('click', () => {
             announceToScreenReader('Переход к форме подачи заявки');
@@ -636,7 +635,7 @@
     }
     
     document.getElementById('main-content')?.focus();
-    announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации. Нажмите Enter на любом элементе, чтобы прочитать его содержимое.');
+    announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации.');
 </script>
 
 </body>
