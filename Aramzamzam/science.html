@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru" style="--header-height: 140px;">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="Домен наука и инновации">
+    
+    <!-- Yandex.Metrika counter (оставлен без изменений) -->
+    <script async="" src="https://mc.yandex.ru/metrika/tag.js"></script>
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+      ym(101477100, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+      });
+    </script>
+    <!-- /Yandex.Metrika counter -->
+
+    <title>Домен наука и инновации — доступная версия</title>
+    
+    <style>
+      /* ===== Глобальные стили для доступности ===== */
+      
+      /* 1. Skip link (ссылка для перехода к контенту) */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #0067ad;
+        color: white;
+        padding: 8px 16px;
+        z-index: 1000;
+        text-decoration: none;
+        border-radius: 0 0 4px 0;
+        font-family: Nunito, sans-serif;
+        font-weight: bold;
+      }
+      .skip-link:focus {
+        top: 0;
+        outline: 3px solid #ffcc00;
+      }
+      
+      /* 2. Визуально скрытый класс для скринридеров */
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+        white-space: nowrap;
+      }
+      
+      /* 3. Улучшенный фокус для клавиатуры */
+      :focus {
+        outline: 3px solid #0067ad;
+        outline-offset: 2px;
+      }
+      
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible {
+        outline: 3px solid #ff8c00;
+        outline-offset: 2px;
+      }
+      
+      /* 4. Остальные оригинальные стили (упрощённо для демо) */
+      body {
+        margin: 0;
+        font-family: Nunito, sans-serif;
+      }
+      .ant-layout {
+        min-height: 100vh;
+      }
+      .mainContent {
+        padding: 20px;
+      }
+      .servicesMain {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+        background: #fff;
+        transition: box-shadow 0.2s;
+      }
+      .servicesMain:focus-within {
+        box-shadow: 0 0 0 3px rgba(0,103,173,0.3);
+      }
+      .menuLink, .ant-btn {
+        cursor: pointer;
+      }
+      .footer {
+        background: #001529;
+        color: white;
+        padding: 20px;
+      }
+      .footer a {
+        color: #91caff;
+      }
+      .ant-divider {
+        margin: 24px 0;
+      }
+      .chartDiv {
+        background: #f9f9f9;
+        padding: 16px;
+        border-radius: 8px;
+      }
+      [aria-hidden="true"] {
+        user-select: none;
+      }
+    </style>
+</head>
+<body>
+
+<!-- ===== FIXED: 1. Skip link для клавиатурной навигации ===== -->
+<a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
+
+<noscript>Вам нужно включить JavaScript, чтобы запустить это приложение.</noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/101477100" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+<div id="root">
+  <div style="display: contents;">
+    <div class="ant-app">
+      <div class="ant-layout" style="min-height: 100vh;">
+        
+        <!-- ===== FIXED: Кнопка BackTop с aria-label ===== -->
+        <button class="ant-float-btn ant-back-top-inner ant-float-btn-default ant-float-btn-circle"
+                type="button"
+                aria-label="Наверх страницы">
+          <div class="ant-float-btn-body">
+            <div class="ant-float-btn-content">
+              <div class="ant-float-btn-icon">
+                <span role="img" aria-label="стрелка вверх" class="anticon anticon-up">
+                  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+                    <path d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </button>
+
+        <!-- Верхняя панель (ЕСИА, МЧД) — роль banner -->
+        <div class="affixTop" role="banner" aria-label="Верхняя панель инструментов">
+          <div style="height: 80px; width: 100%; background: white; display: flex; justify-content: center;">
+            <div style="width: 100%; justify-content: space-evenly; align-items: center; display: flex;">
+              <div>
+                <a href="/attorney/public/issue" aria-label="Перейти в раздел МЧД">
+                  <div style="display: flex; flex-direction: column; align-items: center;">
+                    <img alt="Иконка МЧД" src="/static/media/diploma_new.0e3e8dd4c6ed1a5a.png" style="height: 40px;">
+                    <span>МЧД</span>
+                  </div>
+                </a>
+              </div>
+              <div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                  <img alt="Иконка ЕСИА" src="/static/media/esia.3353cc225ce39f19.png" style="height: 40px;">
+                  <span>Вход ЕСИА</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Шапка с названием домена -->
+        <div class="affixBottom">
+          <div style="background: #f0f2f5; padding: 18px 25px;">
+            <p style="font-size: 20px; font-weight: bold; margin: 0;">Домен «Наука и инновации»</p>
+            <p style="font-size: 14px;">на базе информационного ресурса Единой государственной информационной системы учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения</p>
+          </div>
+        </div>
+
+        <!-- ===== FIXED: Меню навигации с улучшенной семантикой ===== -->
+        <nav class="menuBar" aria-label="Основное меню сайта">
+          <div class="menuCon">
+            <div class="mainMenu">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 20px; background: #0067ad;">
+                <a class="menuLink" href="./index.html">
+                  <img alt="Иконка главной" src="/static/media/main.933f150ba8e90863.png" class="menuImg">
+                  <span class="menuName">Главная</span>
+                </a>
+                <a class="menuLink" href="/science-portal" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                  <img alt="Иконка популяризации науки" src="/static/media/sciencePortal.37a31cb7e408a97c.png" style="height: 24px;"> Популяризация науки
+                </a>
+                <a class="menuLink" href="/kntr" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                  <img alt="Иконка Комиссии НТР" src="/static/media/kntr.415307b0f9ffc0c4.png" style="height: 24px;"> Комиссия НТР
+                </a>
+                <!-- FIXED: кнопка с aria-haspopup -->
+                <button type="button" class="ant-btn" style="background: none; border: none; color: white; display: inline-flex; align-items: center; gap: 6px;"
+                        aria-haspopup="true" aria-expanded="false">
+                  <img alt="" src="/static/media/confirm_new.076ba6fb7886f89c.png" style="height: 24px;" aria-hidden="true">
+                  Отраслевые и специальные сегменты
+                </button>
+                <a class="menuLink" href="/information" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                  <img alt="Иконка базы знаний" src="/static/media/reference_new.b61278d9e1511332.png" style="height: 24px;"> База знаний
+                </a>
+                <a class="menuLink" title="Навигатор мер поддержки" aria-label="Навигатор мер поддержки: поиск грантов, стипендий и научных конкурсов по вашей научной области" href="./aggregator-service.html">
+                  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" class="menuImg" style="vertical-align: middle;">
+                  <path d="M336.76,161,150.23,243.35c-10.47,4.8-6.95,20.67,4.57,20.67H244a4,4,0,0,1,4,4V357.2c0,11.52,16,15,20.78,4.56L351,175.24A10.73,10.73,0,0,0,336.76,161Z" style="fill: rgb(255, 255, 255); fill-opacity: 0.8;"></path>
+                  <path d="M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z" style="fill: none; stroke: rgb(255, 255, 255); stroke-miterlimit: 10; stroke-width: 32px; stroke-opacity: 0.8;"></path>
+                  </svg>
+                  <span class="menuName">Навигатор</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- ===== FIXED: Основной контент с id для skip-link ===== -->
+        <main id="main-content" class="ant-layout-content">
+          <div class="mainContent">
+            
+            <!-- ===== FIXED: Глобальный поиск с явным label ===== -->
+            <div class="globalSearchHeader">
+              <label for="global-search-input" class="visually-hidden">Глобальный поиск по сайту</label>
+              <input id="global-search-input"
+                     type="search"
+                     placeholder="глобальный поиск ..."
+                     aria-label="Введите поисковый запрос"
+                     style="width: 80%; padding: 10px; font-size: 16px;">
+              <button type="button" aria-label="Найти">🔍</button>
+            </div>
+
+            <!-- Алёрты (без изменений, но оставлены) -->
+            <div class="ant-alert ant-alert-warning" role="alert">
+              <strong>Уважаемые пользователи!</strong> До 12 апреля 2026 года необходимо сдать отчёты за 2025 год.
+            </div>
+
+            <!-- Раздел "Сервисы Домена" -->
+            <div class="ant-divider" role="separator">Сервисы Домена</div>
+
+            <!-- ===== FIXED: Карточки сервисов с семантикой <article> ===== -->
+            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+              
+              <article class="servicesMain" aria-labelledby="service-title-1">
+                <div class="services servicesimageMain">
+                  <div class="ant-row ant-row-middle">
+                    <div class="serviceVerticalName">
+                      <p id="service-title-1"><strong>Сквозная прослеживаемость</strong></p>
+                    </div>
+                    <img class="serviceImg" alt="" src="/static/media/service4.42d63cb7cc663c87.png" style="height: 55px;" aria-hidden="true">
+                  </div>
+                </div>
+                <div class="servicesMainText">
+                  <p>Сервис позволяет органам государственной власти повысить эффективность принятия управленческих решений...</p>
+                </div>
+              </article>
+
+              <article class="servicesMain" aria-labelledby="service-title-2">
+                <div class="services servicesimageMain">
+                  <div class="ant-row ant-row-middle">
+                    <div class="serviceVerticalName">
+                      <p id="service-title-2"><strong>Контроль государственных заданий</strong></p>
+                    </div>
+                    <img class="serviceImg" alt="" src="/static/media/service3.fb2f6ddd43e340db.png" style="height: 55px;" aria-hidden="true">
+                  </div>
+                </div>
+                <div class="servicesMainText">
+                  <p>Сервис позволяет автоматизировать процессы сбора информации и предоставления отчетной документации...</p>
+                </div>
+              </article>
+
+              <!-- Аналогично остальные карточки... -->
+              <article class="servicesMain" aria-labelledby="service-title-3">
+                <div class="services servicesimageMain">
+                  <div class="ant-row ant-row-middle">
+                    <div class="serviceVerticalName">
+                      <p id="service-title-3"><strong>Статистическая отчетность</strong></p>
+                    </div>
+                    <img class="serviceImg" alt="" src="/static/media/service5.ab0e88590cf190e6.png" style="height: 55px;" aria-hidden="true">
+                  </div>
+                </div>
+                <div class="servicesMainText">
+                  <p>Сервис позволяет систематизировать информацию от участников научного сообщества...</p>
+                </div>
+              </article>
+
+              <!-- Кнопка "Попробовать" с улучшенным aria-label -->
+              <div class="tryServicesDiv">
+                <p>Для ознакомления и работы с сервисами авторизуйтесь с помощью ЕСИА</p>
+                <button type="button" class="ant-btn" aria-label="Попробовать сервисы через ЕСИА">
+                  <span>Попробовать</span>
+                  <img alt="" src="/static/media/esia.3353cc225ce39f19.png" style="height: 30px;" aria-hidden="true">
+                </button>
+              </div>
+
+            </div> <!-- конец карточек -->
+
+            <!-- ===== FIXED: Графики с альтернативной таблицей ===== -->
+            <div class="chartDiv">
+              <p class="chartLabel">Зарегистрировано НИОКТР, шт.</p>
+              <canvas role="img" aria-label="График зарегистрированных НИОКТР по месяцам 2025 года">
+                Ваш браузер не поддерживает графики. Ниже представлены данные в таблице.
+              </canvas>
+              <!-- Скрытая таблица для скринридеров -->
+              <table class="visually-hidden">
+                <caption>Данные графика: зарегистрировано НИОКТР по месяцам 2025 года</caption>
+                <thead><tr><th>Месяц</th><th>Фундаментальных</th><th>Прикладных</th><th>ОКР</th></tr></thead>
+                <tbody>
+                  <tr><td>Январь</td><td>383</td><td>380</td><td>200</td></tr>
+                  <tr><td>Февраль</td><td>400</td><td>390</td><td>210</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div> <!-- конец mainContent -->
+        </main>
+
+        <!-- ===== FIXED: Футер с role="contentinfo" и доступными ссылками ===== -->
+        <footer class="ant-layout-footer" role="contentinfo" aria-label="Подвал сайта">
+          <div class="footer" style="text-align: center;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+              <div>
+                <p>E-mail: <a href="mailto:support@gisnauka.ru">support@gisnauka.ru</a></p>
+                <p>Горячая линия: <a href="tel:+78001005737">+7 800 100-57-37</a></p>
+              </div>
+              <div>
+                <p>Часы работы: 9:00 - 18:00</p>
+              </div>
+              <div>
+                <button type="button" class="ant-btn-link" style="background: none; border: none; color: white; text-decoration: underline;">
+                  Сформировать выгрузку
+                </button>
+              </div>
+              <div>
+                <p><a href="https://citis.ru/" target="_blank" rel="noopener noreferrer">ФГАНУ ЦИТиС</a></p>
+              </div>
+              <div>
+                <p>Обработка персональных данных осуществляется в соответствии с требованиями <a href="https://legalacts.ru/doc/152_FZ-o-personalnyh-dannyh/" target="_blank" rel="noreferrer">ФЗ о защите персональных данных</a></p>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+      </div> <!-- конец ant-layout -->
+    </div> <!-- конец ant-app -->
+  </div>
+</div>
+
+</body>
+</html>
