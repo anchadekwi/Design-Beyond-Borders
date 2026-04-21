@@ -7,7 +7,6 @@
     <meta name="description" content="Поиск грантов, стипендий и мер государственной поддержки для учёных">
     
     <style>
-        /* ===== БАЗОВЫЕ СТИЛИ ===== */
         :root {
             --font-base: 18px;
             --color-primary: #0067ad;
@@ -107,7 +106,6 @@
             text-decoration: none;
         }
         
-        /* Поисковая строка */
         .search-section {
             background: white;
             border-radius: 20px;
@@ -162,14 +160,12 @@
             flex-direction: row;
         }
         
-        /* РЕЗУЛЬТАТЫ — СЛЕВА */
         .results-section {
             flex: 1;
             min-width: 300px;
             order: 1;
         }
         
-        /* ФИЛЬТРЫ — СПРАВА */
         .filters-section {
             flex: 0 0 360px;
             background: white;
@@ -498,18 +494,17 @@
 
 <div class="container">
     
-    <div class="header" role="banner">
+    <header class="header" role="banner">
         <h1>Навигатор мер поддержки</h1>
         <p>Поиск грантов, стипендий и мер государственной поддержки для научной деятельности</p>
-    </div>
+    </header>
     
     <div class="breadcrumbs" aria-label="Навигационная цепочка">
         <a href="./science.html">Главная</a> / 
         <span aria-current="page">Навигатор мер поддержки</span>
     </div>
     
-    <!-- НОВАЯ ПОИСКОВАЯ СТРОКА -->
-    <div class="search-section" aria-labelledby="search-heading">
+    <div class="search-section" role="search" aria-labelledby="search-heading">
         <h2 id="search-heading">Поиск гранта по названию</h2>
         <div class="search-wrapper">
             <div class="search-input-group">
@@ -517,16 +512,15 @@
                 <input type="text" id="grant-search-input" placeholder="Например: Грант Президента, РНФ, Старт...">
             </div>
             <div class="search-buttons">
-                <button type="button" class="btn-search" id="search-button" aria-label="Найти грант по названию">🔍 Поиск</button>
-                <button type="button" class="btn-primary btn-filters" id="goto-filters-button" aria-label="Перейти к фильтрам">⚙️ Перейти к фильтрам</button>
+                <button type="button" class="btn-search" id="search-button" aria-label="Найти грант по названию">Поиск</button>
+                <button type="button" class="btn-primary btn-filters" id="goto-filters-button" aria-label="Перейти к фильтрам">Перейти к фильтрам</button>
             </div>
         </div>
     </div>
     
     <div class="main-layout">
         
-        <!-- РЕЗУЛЬТАТЫ — СЛЕВА -->
-        <div class="results-section" id="main-content" tabindex="-1">
+        <main class="results-section" id="main-content" role="main" tabindex="-1">
             <div class="results-header">
                 <div class="results-count" aria-live="polite">
                     Найдено <strong id="results-count">12</strong> мер поддержки
@@ -544,92 +538,83 @@
             <div id="results-container">
                 <article class="grant-card" aria-labelledby="grant-title-1">
                     <h3 id="grant-title-1">
-                        <a href="#">Грант Президента РФ для молодых учёных</a>
+                        <a href="./grant-detail.html">Грант Президента РФ для молодых учёных</a>
                     </h3>
                     <div class="grant-meta">
-                        <span>📍 Федеральный</span>
-                        <span>🏛️ Минобрнауки России</span>
-                        <span>🎓 Для молодых учёных до 35 лет</span>
+                        <span>Федеральный</span>
+                        <span>Минобрнауки России</span>
+                        <span>Для молодых учёных до 35 лет</span>
                     </div>
                     <div class="grant-description">
                         Государственная поддержка молодых российских учёных — кандидатов и докторов наук.
                     </div>
                     <div class="grant-footer">
-                        <div><span class="grant-deadline urgent">⏰ Срок подачи: до 1 июня 2025</span></div>
-                        <div class="grant-amount">💰 до 500 000 ₽</div>
-                        <a href="./grant-detail.html" class="btn-details" aria-label="Открыть подробную информацию о гранте">
-                            Подробнее
-                        </a>
+                        <div><span class="grant-deadline urgent">Срок подачи: до 1 июня 2025</span></div>
+                        <div class="grant-amount">до 500 000 ₽</div>
+                        <a href="./grant-detail.html" class="btn-details" aria-label="Открыть подробную информацию о гранте">Подробнее</a>
                     </div>
                 </article>
                 
                 <article class="grant-card" aria-labelledby="grant-title-2">
                     <h3 id="grant-title-2">
-                        <a href="#">РНФ — Конкурс научных групп</a>
+                        <a href="./grant-detail.html">РНФ — Конкурс научных групп</a>
                     </h3>
                     <div class="grant-meta">
-                        <span>📍 Федеральный</span>
-                        <span>🏛️ Российский научный фонд</span>
-                        <span>🔬 Для научных коллективов</span>
+                        <span>Федеральный</span>
+                        <span>Российский научный фонд</span>
+                        <span>Для научных коллективов</span>
                     </div>
                     <div class="grant-description">
                         Поддержка научных групп по приоритетным направлениям фундаментальных исследований.
                     </div>
                     <div class="grant-footer">
-                        <div><span class="grant-deadline">⏰ Срок подачи: до 15 августа 2025</span></div>
-                        <div class="grant-amount">💰 до 2 000 000 ₽</div>
-                        <a href="./grant-detail.html" class="btn-details" aria-label="Открыть подробную информацию о гранте">
-                            Подробнее
-                        </a>
+                        <div><span class="grant-deadline">Срок подачи: до 15 августа 2025</span></div>
+                        <div class="grant-amount">до 2 000 000 ₽</div>
+                        <a href="./grant-detail.html" class="btn-details" aria-label="Открыть подробную информацию о гранте">Подробнее</a>
                     </div>
                 </article>
                 
                 <article class="grant-card" aria-labelledby="grant-title-3">
                     <h3 id="grant-title-3">
-                        <a href="#">Стипендия Правительства РФ</a>
+                        <a href="./grant-detail.html">Стипендия Правительства РФ</a>
                     </h3>
                     <div class="grant-meta">
-                        <span>📍 Федеральный</span>
-                        <span>🏛️ Правительство РФ</span>
-                        <span>📚 Для аспирантов и студентов</span>
+                        <span>Федеральный</span>
+                        <span>Правительство РФ</span>
+                        <span>Для аспирантов и студентов</span>
                     </div>
                     <div class="grant-description">
                         Государственная стипендия для аспирантов и студентов, проявивших выдающиеся способности.
                     </div>
                     <div class="grant-footer">
-                        <div><span class="grant-deadline urgent">⏰ Срок подачи: до 31 мая 2025</span></div>
-                        <div class="grant-amount">💰 до 20 000 ₽/мес</div>
-                        <a href="./grant-detail.html" class="btn-details" aria-label="Открыть подробную информацию о гранте">
-                            Подробнее
-                        </a>
+                        <div><span class="grant-deadline urgent">Срок подачи: до 31 мая 2025</span></div>
+                        <div class="grant-amount">до 20 000 ₽/мес</div>
+                        <a href="./grant-detail.html" class="btn-details" aria-label="Открыть подробную информацию о гранте">Подробнее</a>
                     </div>
                 </article>
                 
                 <article class="grant-card" aria-labelledby="grant-title-4">
                     <h3 id="grant-title-4">
-                        <a href="#">Грант Фонда содействия инновациям «Старт»</a>
+                        <a href="./grant-detail.html">Грант Фонда содействия инновациям «Старт»</a>
                     </h3>
                     <div class="grant-meta">
-                        <span>📍 Федеральный</span>
-                        <span>🏛️ Фонд содействия инновациям</span>
-                        <span>🚀 Для стартапов</span>
+                        <span>Федеральный</span>
+                        <span>Фонд содействия инновациям</span>
+                        <span>Для стартапов</span>
                     </div>
                     <div class="grant-description">
                         Поддержка инновационных проектов малых предприятий на ранних стадиях развития.
                     </div>
                     <div class="grant-footer">
-                        <div><span class="grant-deadline">⏰ Срок подачи: до 30 сентября 2025</span></div>
-                        <div class="grant-amount">💰 до 2 000 000 ₽</div>
-                        <a href="./grant-detail.html" class="btn-details" aria-label="Открыть подробную информацию о гранте">
-                            Подробнее
-                        </a>
+                        <div><span class="grant-deadline">Срок подачи: до 30 сентября 2025</span></div>
+                        <div class="grant-amount">до 2 000 000 ₽</div>
+                        <a href="./grant-detail.html" class="btn-details" aria-label="Открыть подробную информацию о гранте">Подробнее</a>
                     </div>
                 </article>
             </div>
-        </div>
+        </main>
         
-        <!-- ФИЛЬТРЫ — СПРАВА -->
-        <div class="filters-section" aria-labelledby="filters-heading" id="filters-section">
+        <aside class="filters-section" role="complementary" aria-labelledby="filters-heading" id="filters-section">
             <h2 id="filters-heading">Фильтры поиска</h2>
             
             <form id="grant-filters-form" aria-label="Форма фильтрации грантов">
@@ -777,7 +762,7 @@
                     <button type="reset" class="btn-secondary">Сбросить</button>
                 </div>
             </form>
-        </div>
+        </aside>
     </div>
 </div>
 
@@ -805,7 +790,6 @@
         announceToScreenReader(`Найдено ${cards.length} мер поддержки`);
     }
     
-    // Функция поиска по названию
     function searchGrants() {
         const searchTerm = searchInput.value.trim().toLowerCase();
         const cards = document.querySelectorAll('.grant-card');
@@ -831,15 +815,11 @@
         resultsCountSpan.textContent = visibleCount;
     }
     
-    // Переход к фильтрам и установка фокуса на первый интерактивный элемент
     function goToFilters() {
         if (!filtersSection) return;
-        
-        // Первый интерактивный элемент в фильтрах
         const firstFocusable = filtersSection.querySelector(
             'button, a, input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])'
         );
-        
         if (firstFocusable) {
             firstFocusable.focus();
             announceToScreenReader('Фильтры поиска. Первый элемент формы.');

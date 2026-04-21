@@ -32,7 +32,6 @@
             color: #1a1a1a;
         }
         
-        /* Стиль для фокусируемых элементов */
         [tabindex="0"]:focus-visible {
             outline: 4px solid var(--color-focus);
             outline-offset: 4px;
@@ -358,15 +357,6 @@
             outline-offset: 4px;
         }
         
-        @media (max-width: 768px) {
-            .container { padding: 12px; }
-            .detail-header { padding: 24px 20px; }
-            .detail-content { padding: 24px 20px; }
-            .administrator { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
-            .section-nav button { padding: 8px 16px; font-size: 14px; }
-            .info-grid { grid-template-columns: 1fr; }
-        }
-        
         .live-region {
             position: absolute;
             width: 1px;
@@ -376,6 +366,15 @@
             overflow: hidden;
             clip: rect(0, 0, 0, 0);
             border: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            .detail-header { padding: 24px 20px; }
+            .detail-content { padding: 24px 20px; }
+            .administrator { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
+            .section-nav button { padding: 8px 16px; font-size: 14px; }
+            .info-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -391,33 +390,30 @@
         <span aria-current="page">Паспорт меры поддержки</span>
     </div>
     
-    <div class="grant-detail" id="main-content" tabindex="-1">
+    <main id="main-content" class="grant-detail" role="main" tabindex="-1">
         
-        <!-- ===== ШАПКА С ГРАНТОМ ===== -->
         <div class="detail-header">
             <h1 tabindex="0">Грант Президента РФ для молодых учёных</h1>
             <p tabindex="0">Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
             
             <div class="detail-actions">
-                <a href="./aggregator-service.html" class="btn-back">← Вернуться к навигатору</a>
-                <button class="btn-apply">📄 Подать заявку</button>
-                <button class="btn-copy" id="copy-link-btn">🔗 Скопировать ссылку</button>
+                <a href="./aggregator-service.html" class="btn-back">Вернуться к навигатору</a>
+                <button class="btn-apply">Подать заявку</button>
+                <button class="btn-copy" id="copy-link-btn">Скопировать ссылку</button>
             </div>
         </div>
         
-        <!-- ===== АДМИНИСТРАТОР И КАТЕГОРИИ ===== -->
         <div class="administrator">
             <div class="admin-info">
-                <span tabindex="0">🏛️ <strong>Администратор меры:</strong> Министерство промышленности и торговли Республики Татарстан</span>
-                <span tabindex="0">🆔 <strong>ИНН:</strong> 1655141766</span>
+                <span tabindex="0"><strong>Администратор меры:</strong> Министерство промышленности и торговли Республики Татарстан</span>
+                <span tabindex="0"><strong>ИНН:</strong> 1655141766</span>
             </div>
             <div class="admin-info">
-                <span tabindex="0">👥 <strong>Категория получателей:</strong> Юридическое лицо</span>
-                <span tabindex="0">🏢 <strong>Виды юридических лиц:</strong> Коммерческие</span>
+                <span tabindex="0"><strong>Категория получателей:</strong> Юридическое лицо</span>
+                <span tabindex="0"><strong>Виды юридических лиц:</strong> Коммерческие</span>
             </div>
         </div>
         
-        <!-- МЕНЮ НАВИГАЦИИ -->
         <div class="section-nav" role="tablist" aria-label="Разделы информации о гранте">
             <button type="button" data-section="main" class="active" role="tab" aria-selected="true">Основная информация</button>
             <button type="button" data-section="requirements" role="tab" aria-selected="false">Требования</button>
@@ -430,7 +426,6 @@
         
         <div class="detail-content">
             
-            <!-- Секция 1: Основная информация -->
             <div id="section-main" class="section active" role="tabpanel" tabindex="-1">
                 <h2 tabindex="0">Основная информация</h2>
                 <div class="info-grid">
@@ -455,7 +450,6 @@
                 </div>
             </div>
             
-            <!-- Секция 2: Требования -->
             <div id="section-requirements" class="section" role="tabpanel" tabindex="-1">
                 <h2 tabindex="0">Требования</h2>
                 <div class="info-card">
@@ -468,7 +462,6 @@
                 </div>
             </div>
             
-            <!-- Секция 3: Необходимые документы -->
             <div id="section-documents" class="section" role="tabpanel" tabindex="-1">
                 <h2 tabindex="0">Необходимые документы</h2>
                 <div class="info-card">
@@ -477,7 +470,6 @@
                 </div>
             </div>
             
-            <!-- Секция 4: НПА и другие документы -->
             <div id="section-npa" class="section" role="tabpanel" tabindex="-1">
                 <h2 tabindex="0" aria-label="Нормативно-правовые акты и другие документы">НПА и другие документы</h2>
                 <div class="info-card">
@@ -489,14 +481,13 @@
                 </div>
             </div>
             
-            <!-- Секция 5: Календарь -->
             <div id="section-calendar" class="section" role="tabpanel" tabindex="-1">
                 <h2 tabindex="0">Календарь</h2>
                 <div class="calendar-item">
-                    <div class="calendar-stage" tabindex="0">📋 Прием заявок</div>
+                    <div class="calendar-stage" tabindex="0">Прием заявок</div>
                     <div class="calendar-dates">
-                        <span class="date-badge" tabindex="0">📅 Начало: <strong>01.01.2028</strong></span>
-                        <span class="date-badge" tabindex="0">⏰ Окончание: <strong>29.12.2028</strong></span>
+                        <span class="date-badge" tabindex="0">Начало: <strong>01.01.2028</strong></span>
+                        <span class="date-badge" tabindex="0">Окончание: <strong>29.12.2028</strong></span>
                     </div>
                 </div>
                 <div class="info-card">
@@ -505,7 +496,6 @@
                 </div>
             </div>
             
-            <!-- Секция 6: Частые вопросы -->
             <div id="section-faq" class="section" role="tabpanel" tabindex="-1">
                 <h2 tabindex="0">Частые вопросы</h2>
                 <div class="info-card">
@@ -514,22 +504,21 @@
                 </div>
             </div>
             
-            <!-- Секция 7: Контакты -->
             <div id="section-contacts" class="section" role="tabpanel" tabindex="-1">
                 <h2 tabindex="0">Контакты для консультации</h2>
                 <div class="info-card">
                     <h3 tabindex="0">Контактное лицо</h3>
                     <div class="contact-card">
                         <div class="contact-name" tabindex="0">Каткова Евгения Игоревна</div>
-                        <div class="contact-detail" tabindex="0">💼 Должность: Начальник отдела развития энергетики и энергоэффективности</div>
-                        <div class="contact-detail" tabindex="0">📞 Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
-                        <div class="contact-detail" tabindex="0">✉️ Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
+                        <div class="contact-detail" tabindex="0">Должность: Начальник отдела развития энергетики и энергоэффективности</div>
+                        <div class="contact-detail" tabindex="0">Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
+                        <div class="contact-detail" tabindex="0">Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
                     </div>
                 </div>
             </div>
             
         </div>
-    </div>
+    </main>
 </div>
 
 <div id="aria-live-region" class="live-region" aria-live="polite" aria-atomic="true"></div>
@@ -543,23 +532,12 @@
         }
     }
     
-    // Делаем все элементы с tabindex="0" читаемыми по Enter
     const focusableElements = document.querySelectorAll('[tabindex="0"]');
-    
     focusableElements.forEach(el => {
-        // Добавляем подсказку для скринридера
-        const hintSpan = document.createElement('span');
-        hintSpan.className = 'visually-hidden';
-        hintSpan.textContent = 'Нажмите Enter, чтобы прочитать.';
-        el.appendChild(hintSpan);
-        
-        // Обработка нажатия Enter
         el.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 e.preventDefault();
                 let textToRead = '';
-                
-                // Получаем чистый текст элемента
                 if (el.classList.contains('empty-state')) {
                     textToRead = el.textContent.trim();
                 } else if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3') {
@@ -575,11 +553,8 @@
                 } else {
                     textToRead = el.textContent.trim();
                 }
-                
                 if (textToRead) {
                     announceToScreenReader(textToRead);
-                    
-                    // Визуальная индикация
                     el.style.backgroundColor = 'rgba(0,103,173,0.1)';
                     setTimeout(() => { el.style.backgroundColor = ''; }, 300);
                 }
@@ -587,7 +562,6 @@
         });
     });
     
-    // Переключение секций и перемещение фокуса
     const navButtons = document.querySelectorAll('.section-nav button');
     const sections = {
         main: document.getElementById('section-main'),
@@ -603,16 +577,13 @@
         Object.values(sections).forEach(section => {
             if (section) section.classList.remove('active');
         });
-        
         const targetSection = sections[sectionId];
         if (targetSection) {
             targetSection.classList.add('active');
             targetSection.focus();
-            
             const sectionName = buttonElement ? buttonElement.textContent.trim() : sectionId;
-            announceToScreenReader(`Раздел "${sectionName}" открыт. Фокус в разделе. Используйте Tab для навигации, Enter для чтения элементов.`);
+            announceToScreenReader(`Раздел "${sectionName}" открыт. Фокус в разделе.`);
         }
-        
         navButtons.forEach(btn => {
             const btnSection = btn.getAttribute('data-section');
             if (btnSection === sectionId) {
@@ -630,7 +601,6 @@
             const sectionId = btn.getAttribute('data-section');
             showSectionAndFocus(sectionId, btn);
         });
-        
         btn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -640,7 +610,6 @@
         });
     });
     
-    // Копирование ссылки
     const copyBtn = document.getElementById('copy-link-btn');
     if (copyBtn) {
         copyBtn.addEventListener('click', async () => {
@@ -649,7 +618,7 @@
                 announceToScreenReader('Ссылка скопирована в буфер обмена');
                 const notification = document.createElement('div');
                 notification.className = 'copy-success';
-                notification.textContent = '✓ Ссылка скопирована';
+                notification.textContent = 'Ссылка скопирована';
                 document.body.appendChild(notification);
                 setTimeout(() => notification.remove(), 2000);
             } catch (err) {

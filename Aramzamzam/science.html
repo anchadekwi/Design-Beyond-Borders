@@ -33,14 +33,12 @@
             color: #1a1a1a;
         }
         
-        /* Видимый фокус для клавиатуры */
         :focus-visible {
             outline: 4px solid var(--color-focus);
             outline-offset: 4px;
             border-radius: 4px;
         }
         
-        /* Skip link */
         .skip-link {
             position: absolute;
             top: -60px;
@@ -59,7 +57,6 @@
             outline: 4px solid var(--color-focus);
         }
         
-        /* Визуально скрытый класс */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -77,7 +74,6 @@
             padding: 20px;
         }
         
-        /* ===== ШАПКА ===== */
         .header {
             background: white;
             border-radius: 20px;
@@ -99,7 +95,6 @@
             font-size: 16px;
         }
         
-        /* ===== МЕНЮ ===== */
         .main-menu {
             background: var(--color-primary);
             border-radius: 16px;
@@ -134,7 +129,6 @@
             background: rgba(255,255,255,0.2);
         }
         
-        /* ===== ГЛОБАЛЬНЫЙ ПОИСК ===== */
         .global-search {
             background: white;
             border-radius: 60px;
@@ -176,7 +170,6 @@
             background: var(--color-primary-dark);
         }
         
-        /* ===== АЛЕРТЫ ===== */
         .alert {
             background: #fff3e0;
             border-left: 5px solid #ff9800;
@@ -189,11 +182,6 @@
             color: #e67e22;
         }
         
-        .alert a {
-            color: var(--color-primary);
-        }
-        
-        /* ===== СЕРВИСЫ ДОМЕНА ===== */
         .section-title {
             font-size: 24px;
             margin: 32px 0 20px 0;
@@ -247,7 +235,6 @@
             line-height: 1.4;
         }
         
-        /* Блок авторизации */
         .auth-block {
             background: linear-gradient(135deg, #e6f4ff 0%, #d0e8ff 100%);
             border-radius: 16px;
@@ -275,7 +262,6 @@
             gap: 12px;
         }
         
-        /* ===== АНАЛИТИКА ===== */
         .analytics-header {
             background: white;
             border-radius: 16px;
@@ -313,7 +299,6 @@
             color: white;
         }
         
-        /* Карточки графиков */
         .charts-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -375,7 +360,6 @@
             color: var(--color-error);
         }
         
-        /* Динамика */
         .dynamics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -403,7 +387,6 @@
             color: var(--color-error);
         }
         
-        /* Информационные платформы */
         .platforms-grid {
             display: flex;
             flex-wrap: wrap;
@@ -415,7 +398,6 @@
             border-radius: 20px;
         }
         
-        /* Футер */
         .footer {
             background: #1a2a3a;
             color: white;
@@ -439,7 +421,6 @@
             text-decoration: underline;
         }
         
-        /* Адаптивность */
         @media (max-width: 768px) {
             .container { padding: 12px; }
             .charts-grid { grid-template-columns: 1fr; }
@@ -447,7 +428,6 @@
             .main-menu { justify-content: flex-start; overflow-x: auto; }
         }
         
-        /* Живая область */
         .live-region {
             position: absolute;
             width: 1px;
@@ -462,19 +442,16 @@
 </head>
 <body>
 
-<!-- Skip link -->
 <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
 
 <div class="container">
     
-    <!-- Шапка -->
-    <div class="header" role="banner">
+    <header class="header" role="banner">
         <h1>Домен «Наука и инновации»</h1>
         <p class="subtitle">на базе информационного ресурса Единой государственной информационной системы учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения</p>
-    </div>
+    </header>
     
-    <!-- Главное меню -->
-    <nav class="main-menu" aria-label="Основное меню">
+    <nav class="main-menu" role="navigation" aria-label="Основное меню">
         <a href="./science.html" aria-current="page">Главная</a>
         <a href="#">Популяризация науки</a>
         <a href="#">Комиссия НТР</a>
@@ -484,256 +461,245 @@
         <a href="./aggregator-service.html">Поиск мер поддержки</a>
     </nav>
     
-    <!-- Глобальный поиск -->
-    <div class="global-search">
+    <div class="global-search" role="search">
         <label for="global-search-input" class="visually-hidden">Глобальный поиск</label>
         <input type="search" id="global-search-input" placeholder="глобальный поиск ..." aria-label="Введите поисковый запрос">
-        <button type="button" aria-label="Найти">🔍 Найти</button>
+        <button type="button" aria-label="Найти">Найти</button>
     </div>
     
-    <!-- Алёрты -->
     <div class="alert" role="alert">
-        <strong>📢 Уважаемые пользователи Домена «Наука и инновации»!</strong><br>
+        <strong>Уважаемые пользователи Домена «Наука и инновации»!</strong><br>
         В целях проведения ежегодного мониторинга доступности и результативности деятельности центров коллективного пользования научным оборудованием и уникальных научных установок (ЦКП и УНУ) необходимо <strong>до 12 апреля 2026 года</strong> в Сервисе «Составление отчетности по ЦКП / УНУ» заполнить и сдать отчеты <strong>за 2025 год</strong>.
     </div>
     
     <div class="alert" role="alert">
-        <strong>📢 Уважаемые пользователи Домена «Наука и инновации»!</strong><br>
+        <strong>Уважаемые пользователи Домена «Наука и инновации»!</strong><br>
         Открыт сбор сведений о публикациях и монографиях книжного формата. <strong>До 30 апреля 2026 года</strong> необходимо заполнить и направить на проверку отчёты комплексного балла публикационной результативности (КБПР), содержащие соответствующие данные. Отчётность обязательна только для подведомственных организаций Минобрнауки России.
     </div>
     
-    <!-- Сервисы Домена -->
-    <h2 class="section-title">Сервисы Домена</h2>
-    
-    <!-- Блок авторизации -->
-    <div class="auth-block">
-        <p>Для ознакомления и работы с сервисами Домен «Наука и инновации» авторизуйтесь с помощью ЕСИА</p>
-        <button class="auth-button" aria-label="Авторизоваться через ЕСИА">
-            🔐 Попробовать
-        </button>
-    </div>
-    
-    <!-- Сетка сервисов (первые 12) -->
-    <div class="services-grid">
-        <a href="#" class="service-card">
-            <div class="service-icon">🏪</div>
-            <h3>Маркетплейс ЦКП/УНУ/Расходных материалов</h3>
-            <p>Размещение и поиск услуг, материалов и оборудования</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📊</div>
-            <h3>Агрегатор инструментов развития</h3>
-            <p>Меры поддержки научной деятельности</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📋</div>
-            <h3>Контроль государственных заданий</h3>
-            <p>Автоматизация сбора отчетности</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📈</div>
-            <h3>Статистическая отчетность</h3>
-            <p>Систематизация информации от участников</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">🧮</div>
-            <h3>Калькулятор экономики проекта</h3>
-            <p>Оценка необходимого финансирования</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">💻</div>
-            <h3>Биржа виртуальных вычислений</h3>
-            <p>Поиск и заказ вычислительных ресурсов</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📚</div>
-            <h3>Доступ к данным научного цитирования</h3>
-            <p>Агрегация публикационной активности</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📊</div>
-            <h3>Дашборд статусов выполнения работ</h3>
-            <p>Мониторинг хода выполнения проектов</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">🔧</div>
-            <h3>Технологические запросы</h3>
-            <p>Публикация и поиск решений</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📐</div>
-            <h3>Конструктор плана проекта</h3>
-            <p>Совместная работа над календарным планом</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📝</div>
-            <h3>Составление отчетности по исследованию</h3>
-            <p>Формирование научно-технической документации</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">🔒</div>
-            <h3>Безопасное хранение</h3>
-            <p>Защищенный просмотр и редактирование</p>
-        </a>
-    </div>
-    
-    <!-- Вторая строка сервисов -->
-    <div class="services-grid">
-        <a href="#" class="service-card">
-            <div class="service-icon">🏛️</div>
-            <h3>Составление отчётности по деятельности ФОИВ</h3>
-            <p>Планирование научных исследований</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">💰</div>
-            <h3>Мониторинг финансирования УГТ</h3>
-            <p>Прослеживаемость расходования средств</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📑</div>
-            <h3>Налоговые преференции</h3>
-            <p>Льготы для научных организаций</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📖</div>
-            <h3>Навигатор научных журналов</h3>
-            <p>Подбор журналов для публикаций</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">🎤</div>
-            <h3>Навигатор научных конференций</h3>
-            <p>Подбор конференций для презентаций</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">📊</div>
-            <h3>Составление отчетности по ЦКП/УНУ</h3>
-            <p>Формирование отчетов по деятельности</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">🏠</div>
-            <h3>Предоставление ГЖС</h3>
-            <p>Государственный жилищный сертификат</p>
-        </a>
-        <a href="#" class="service-card">
-            <div class="service-icon">🔬</div>
-            <h3>Портал популяризации науки</h3>
-            <p>Новости и мероприятия</p>
-        </a>
-    </div>
-    
-    <!-- Аналитические и статистические данные -->
-    <div class="analytics-header">
-        <h2>Аналитические и статистические открытые данные</h2>
-        <div class="period-toggle" role="group" aria-label="Выбор периода">
-            <button class="period-btn">Год</button>
-            <button class="period-btn active">Месяц</button>
+    <main id="main-content" role="main">
+        
+        <h2 class="section-title">Сервисы Домена</h2>
+        
+        <div class="auth-block">
+            <p>Для ознакомления и работы с сервисами Домен «Наука и инновации» авторизуйтесь с помощью ЕСИА</p>
+            <button class="auth-button" aria-label="Авторизоваться через ЕСИА">
+                Попробовать
+            </button>
         </div>
-    </div>
-    
-    <div class="charts-grid">
-        <!-- График 1 -->
-        <div class="chart-card">
-            <h3>Зарегистрировано НИОКТР, шт.</h3>
-            <div class="chart-placeholder" aria-label="График зарегистрированных НИОКТР">
-                📊 [График: динамика НИОКТР за 2016–2025]
-            </div>
-            <div class="stats-row">
-                <div class="stat-item"><span class="stat-value">96 000</span><br>Фундаментальных</div>
-                <div class="stat-item"><span class="stat-value">45 000</span><br>Прикладных</div>
-                <div class="stat-item"><span class="stat-value">28 000</span><br>ОКР</div>
+        
+        <div class="services-grid">
+            <a href="#" class="service-card">
+                <div class="service-icon">🏪</div>
+                <h3>Маркетплейс ЦКП/УНУ/Расходных материалов</h3>
+                <p>Размещение и поиск услуг, материалов и оборудования</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Агрегатор инструментов развития</h3>
+                <p>Меры поддержки научной деятельности</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📋</div>
+                <h3>Контроль государственных заданий</h3>
+                <p>Автоматизация сбора отчетности</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Статистическая отчетность</h3>
+                <p>Систематизация информации от участников</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">🧮</div>
+                <h3>Калькулятор экономики проекта</h3>
+                <p>Оценка необходимого финансирования</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Биржа виртуальных вычислений</h3>
+                <p>Поиск и заказ вычислительных ресурсов</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📚</div>
+                <h3>Доступ к данным научного цитирования</h3>
+                <p>Агрегация публикационной активности</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Дашборд статусов выполнения работ</h3>
+                <p>Мониторинг хода выполнения проектов</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>Технологические запросы</h3>
+                <p>Публикация и поиск решений</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📐</div>
+                <h3>Конструктор плана проекта</h3>
+                <p>Совместная работа над календарным планом</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📝</div>
+                <h3>Составление отчетности по исследованию</h3>
+                <p>Формирование научно-технической документации</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">🔒</div>
+                <h3>Безопасное хранение</h3>
+                <p>Защищенный просмотр и редактирование</p>
+            </a>
+        </div>
+        
+        <div class="services-grid">
+            <a href="#" class="service-card">
+                <div class="service-icon">🏛️</div>
+                <h3>Составление отчётности по деятельности ФОИВ</h3>
+                <p>Планирование научных исследований</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">💰</div>
+                <h3>Мониторинг финансирования УГТ</h3>
+                <p>Прослеживаемость расходования средств</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📑</div>
+                <h3>Налоговые преференции</h3>
+                <p>Льготы для научных организаций</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📖</div>
+                <h3>Навигатор научных журналов</h3>
+                <p>Подбор журналов для публикаций</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">🎤</div>
+                <h3>Навигатор научных конференций</h3>
+                <p>Подбор конференций для презентаций</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Составление отчетности по ЦКП/УНУ</h3>
+                <p>Формирование отчетов по деятельности</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Предоставление ГЖС</h3>
+                <p>Государственный жилищный сертификат</p>
+            </a>
+            <a href="#" class="service-card">
+                <div class="service-icon">🔬</div>
+                <h3>Портал популяризации науки</h3>
+                <p>Новости и мероприятия</p>
+            </a>
+        </div>
+        
+        <div class="analytics-header">
+            <h2>Аналитические и статистические открытые данные</h2>
+            <div class="period-toggle" role="group" aria-label="Выбор периода">
+                <button class="period-btn">Год</button>
+                <button class="period-btn active">Месяц</button>
             </div>
         </div>
         
-        <!-- График 2 -->
-        <div class="chart-card">
-            <h3>Выявлено РИД, шт.</h3>
-            <div class="chart-placeholder" aria-label="График выявленных РИД">
-                📊 [График: выявленные РИД за 2016–2025]
-            </div>
-            <div class="stats-row">
-                <div class="stat-item"><span class="stat-value">18 000</span><br>Изобретений</div>
-                <div class="stat-item"><span class="stat-value">32 000</span><br>Программ и БД</div>
-                <div class="stat-item"><span class="stat-value">4 500</span><br>Ноу-хау</div>
-            </div>
-        </div>
-        
-        <!-- График 3 -->
-        <div class="chart-card">
-            <h3>Полнотекстовые материалы, шт.</h3>
-            <div class="chart-placeholder" aria-label="График полнотекстовых материалов">
-                📊 [График: публикационная активность]
-            </div>
-            <div class="stats-row">
-                <div class="stat-item"><span class="stat-value">125 000</span><br>Научных отчетов</div>
-                <div class="stat-item"><span class="stat-value">12 000</span><br>Диссертаций</div>
-            </div>
-        </div>
-        
-        <!-- График 4 -->
-        <div class="chart-card">
-            <h3>Финансирование НИОКТР, тыс. руб.</h3>
-            <div class="chart-placeholder" aria-label="График финансирования">
-                📊 [График: объемы финансирования]
-            </div>
-            <div class="stats-row">
-                <div class="stat-item"><span class="stat-value">850 млрд</span><br>Федеральный бюджет</div>
-                <div class="stat-item"><span class="stat-value">120 млрд</span><br>Внебюджетные</div>
-            </div>
-        </div>
-        
-        <!-- График 5 -->
-        <div class="chart-card">
-            <h3>Состояние правовой охраны РИД, шт.</h3>
-            <div class="chart-placeholder" aria-label="График правовой охраны">
-                📊 [График: патенты и свидетельства]
-            </div>
-            <div class="stats-row">
-                <div class="stat-item"><span class="stat-value">28 000</span><br>Охраняется</div>
-                <div class="stat-item"><span class="stat-value">6 500</span><br>Подано заявок</div>
-            </div>
-        </div>
-        
-        <!-- График 6 — динамика -->
-        <div class="chart-card">
-            <h3>Динамика изменений 2025/2024, %</h3>
-            <div class="dynamics-grid" style="grid-template-columns: 1fr; gap: 16px;">
-                <div class="dynamic-card">
-                    <div>Средняя стоимость НИОКТР</div>
-                    <div class="dynamic-value up">↑ +18,22%</div>
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>Зарегистрировано НИОКТР, шт.</h3>
+                <div class="chart-placeholder" aria-label="График зарегистрированных НИОКТР">
+                    [График: динамика НИОКТР за 2016–2025]
                 </div>
-                <div class="dynamic-card">
-                    <div>Прирост выявленных РИД</div>
-                    <div class="dynamic-value down">↓ -4,38%</div>
+                <div class="stats-row">
+                    <div class="stat-item"><span class="stat-value">96 000</span><br>Фундаментальных</div>
+                    <div class="stat-item"><span class="stat-value">45 000</span><br>Прикладных</div>
+                    <div class="stat-item"><span class="stat-value">28 000</span><br>ОКР</div>
                 </div>
             </div>
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-border);">
-                <strong>Способы использования:</strong><br>
-                Лицензирование: <span class="down">↓ -80,72%</span><br>
-                Отчуждение и залог: <span class="down">↓ -66,67%</span>
+            
+            <div class="chart-card">
+                <h3>Выявлено РИД, шт.</h3>
+                <div class="chart-placeholder" aria-label="График выявленных РИД">
+                    [График: выявленные РИД за 2016–2025]
+                </div>
+                <div class="stats-row">
+                    <div class="stat-item"><span class="stat-value">18 000</span><br>Изобретений</div>
+                    <div class="stat-item"><span class="stat-value">32 000</span><br>Программ и БД</div>
+                    <div class="stat-item"><span class="stat-value">4 500</span><br>Ноу-хау</div>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <h3>Полнотекстовые материалы, шт.</h3>
+                <div class="chart-placeholder" aria-label="График полнотекстовых материалов">
+                    [График: публикационная активность]
+                </div>
+                <div class="stats-row">
+                    <div class="stat-item"><span class="stat-value">125 000</span><br>Научных отчетов</div>
+                    <div class="stat-item"><span class="stat-value">12 000</span><br>Диссертаций</div>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <h3>Финансирование НИОКТР, тыс. руб.</h3>
+                <div class="chart-placeholder" aria-label="График финансирования">
+                    [График: объемы финансирования]
+                </div>
+                <div class="stats-row">
+                    <div class="stat-item"><span class="stat-value">850 млрд</span><br>Федеральный бюджет</div>
+                    <div class="stat-item"><span class="stat-value">120 млрд</span><br>Внебюджетные</div>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <h3>Состояние правовой охраны РИД, шт.</h3>
+                <div class="chart-placeholder" aria-label="График правовой охраны">
+                    [График: патенты и свидетельства]
+                </div>
+                <div class="stats-row">
+                    <div class="stat-item"><span class="stat-value">28 000</span><br>Охраняется</div>
+                    <div class="stat-item"><span class="stat-value">6 500</span><br>Подано заявок</div>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <h3>Динамика изменений 2025/2024, %</h3>
+                <div class="dynamics-grid" style="grid-template-columns: 1fr; gap: 16px;">
+                    <div class="dynamic-card">
+                        <div>Средняя стоимость НИОКТР</div>
+                        <div class="dynamic-value up">↑ +18,22%</div>
+                    </div>
+                    <div class="dynamic-card">
+                        <div>Прирост выявленных РИД</div>
+                        <div class="dynamic-value down">↓ -4,38%</div>
+                    </div>
+                </div>
+                <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-border);">
+                    <strong>Способы использования:</strong><br>
+                    Лицензирование: <span class="down">↓ -80,72%</span><br>
+                    Отчуждение и залог: <span class="down">↓ -66,67%</span>
+                </div>
             </div>
         </div>
-    </div>
+        
+        <h2 class="section-title">Информационные платформы</h2>
+        <div class="platforms-grid">
+            <img src="/static/media/colab_logo.png" alt="Colab" style="height: 40px;" onerror="this.style.display='none'">
+            <span style="font-weight: bold; color: var(--color-primary);">ScienceID</span>
+            <span style="font-weight: bold;">Лаборатория ScienceID</span>
+        </div>
+        
+    </main>
     
-    <!-- Информационные платформы -->
-    <h2 class="section-title">Информационные платформы</h2>
-    <div class="platforms-grid">
-        <img src="/static/media/colab_logo.png" alt="Colab" style="height: 40px;" onerror="this.style.display='none'">
-        <span style="font-weight: bold; color: var(--color-primary);">ScienceID</span>
-        <span style="font-weight: bold;">Лаборатория ScienceID</span>
-    </div>
-    
-    <!-- Футер -->
     <footer class="footer" role="contentinfo">
         <div class="footer-grid">
             <div>
-                <p>📧 E-mail: <a href="mailto:support@gisnauka.ru">support@gisnauka.ru</a></p>
-                <p>📞 Горячая линия: <a href="tel:+78001005737">+7 800 100-57-37</a></p>
+                <p>E-mail: <a href="mailto:support@gisnauka.ru">support@gisnauka.ru</a></p>
+                <p>Горячая линия: <a href="tel:+78001005737">+7 800 100-57-37</a></p>
             </div>
             <div>
-                <p>🕐 Часы работы: 9:00 - 18:00</p>
+                <p>Часы работы: 9:00 - 18:00</p>
             </div>
             <div>
-                <p>🏛️ <a href="https://citis.ru/" target="_blank" rel="noopener noreferrer">ФГАНУ ЦИТиС</a></p>
+                <p><a href="https://citis.ru/" target="_blank" rel="noopener noreferrer">ФГАНУ ЦИТиС</a></p>
             </div>
             <div>
                 <p>Обработка персональных данных осуществляется в соответствии с требованиями <a href="https://legalacts.ru/doc/152_FZ-o-personalnyh-dannyh/" target="_blank" rel="noreferrer">ФЗ о защите персональных данных</a></p>
@@ -743,7 +709,6 @@
     
 </div>
 
-<!-- Живая область для скринридера -->
 <div id="aria-live-region" class="live-region" aria-live="polite" aria-atomic="true"></div>
 
 <script>
@@ -755,7 +720,6 @@
         }
     }
     
-    // Глобальный поиск
     const searchInput = document.getElementById('global-search-input');
     const searchBtn = document.querySelector('.global-search button');
     
@@ -775,7 +739,6 @@
         }
     });
     
-    // Кнопки периода
     const periodBtns = document.querySelectorAll('.period-btn');
     periodBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -785,7 +748,6 @@
         });
     });
     
-    // Авторизация
     const authBtn = document.querySelector('.auth-button');
     if (authBtn) {
         authBtn.addEventListener('click', () => {
@@ -793,9 +755,8 @@
         });
     }
     
-    // Объявление при загрузке
     window.addEventListener('load', () => {
-        announceToScreenReader('Домен Наука и инновации загружен. Доступны сервисы и аналитические данные.');
+        announceToScreenReader('Домен Наука и инновации загружен. Доступны сервисы и аналитические данные. Для навигации используйте клавишу Tab.');
     });
 </script>
 
