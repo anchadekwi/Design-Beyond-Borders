@@ -38,20 +38,6 @@
             border-radius: 4px;
         }
         
-        /* Делаем все параграфы фокусируемыми для скринридера */
-        p, li, .readable-text {
-            cursor: pointer;
-            border-radius: 8px;
-            padding: 4px;
-            transition: background 0.1s;
-        }
-        
-        p:focus-visible, li:focus-visible, .readable-text:focus-visible {
-            outline: 4px solid var(--color-focus);
-            outline-offset: 2px;
-            background: rgba(0,103,173,0.05);
-        }
-        
         .skip-link {
             position: absolute;
             top: -60px;
@@ -365,6 +351,12 @@
             100% { opacity: 0; visibility: hidden; }
         }
         
+        /* Фокус на секции при переходе */
+        .section:focus, .section-content:focus {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+        
         @media (max-width: 768px) {
             .container { padding: 12px; }
             .detail-header { padding: 24px 20px; }
@@ -384,28 +376,11 @@
             clip: rect(0, 0, 0, 0);
             border: 0;
         }
-        
-        /* Инструкция для скринридера */
-        .sr-instruction {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            border: 0;
-        }
     </style>
 </head>
 <body>
 
 <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
-
-<!-- Инструкция для пользователей скринридера -->
-<div class="sr-instruction" aria-live="polite">
-    Для чтения текста нажмите Enter на любом абзаце. Также вы можете использовать стандартные команды NVDA: Insert + Стрелка вниз для чтения с текущей позиции.
-</div>
 
 <div class="container">
     
@@ -418,8 +393,8 @@
     <div class="grant-detail" id="main-content" tabindex="-1">
         
         <div class="detail-header">
-            <h1 tabindex="0">Грант Президента РФ для молодых учёных</h1>
-            <p tabindex="0">Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
+            <h1>Грант Президента РФ для молодых учёных</h1>
+            <p>Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
             
             <div class="detail-actions">
                 <a href="./aggregator-service.html" class="btn-back">← Вернуться к навигатору</a>
@@ -430,140 +405,123 @@
         
         <div class="administrator">
             <div class="admin-info">
-                <span tabindex="0">🏛️ <strong>Администратор меры:</strong> Министерство промышленности и торговли Республики Татарстан</span>
-                <span tabindex="0">🆔 <strong>ИНН:</strong> 1655141766</span>
+                <span>🏛️ <strong>Администратор меры:</strong> Министерство промышленности и торговли Республики Татарстан</span>
+                <span>🆔 <strong>ИНН:</strong> 1655141766</span>
             </div>
             <div class="admin-info">
-                <span tabindex="0">👥 <strong>Категория получателей:</strong> Юридическое лицо</span>
-                <span tabindex="0">🏢 <strong>Виды юридических лиц:</strong> Коммерческие</span>
+                <span>👥 <strong>Категория получателей:</strong> Юридическое лицо</span>
+                <span>🏢 <strong>Виды юридических лиц:</strong> Коммерческие</span>
             </div>
         </div>
         
+        <!-- МЕНЮ НАВИГАЦИИ -->
         <div class="section-nav" role="tablist" aria-label="Разделы информации о гранте">
-            <button type="button" data-section="main" class="active" role="tab">Основная информация</button>
-            <button type="button" data-section="requirements" role="tab">Требования</button>
-            <button type="button" data-section="documents" role="tab">Необходимые документы</button>
-            <button type="button" data-section="npa" role="tab">НПА и другие документы</button>
-            <button type="button" data-section="calendar" role="tab">Календарь</button>
-            <button type="button" data-section="faq" role="tab">Частые вопросы</button>
-            <button type="button" data-section="contacts" role="tab">Контакты для консультации</button>
+            <button type="button" data-section="main" class="active" role="tab" aria-selected="true">Основная информация</button>
+            <button type="button" data-section="requirements" role="tab" aria-selected="false">Требования</button>
+            <button type="button" data-section="documents" role="tab" aria-selected="false">Необходимые документы</button>
+            <button type="button" data-section="npa" role="tab" aria-selected="false">НПА и другие документы</button>
+            <button type="button" data-section="calendar" role="tab" aria-selected="false">Календарь</button>
+            <button type="button" data-section="faq" role="tab" aria-selected="false">Частые вопросы</button>
+            <button type="button" data-section="contacts" role="tab" aria-selected="false">Контакты для консультации</button>
         </div>
         
         <div class="detail-content">
             
             <!-- Секция 1: Основная информация -->
-            <div id="section-main" class="section active" role="tabpanel">
-                <h2 tabindex="0">Основная информация</h2>
+            <div id="section-main" class="section active" role="tabpanel" tabindex="-1">
+                <h2>Основная информация</h2>
                 <div class="info-grid">
                     <div class="info-card">
-                        <h3 tabindex="0">Назначение меры</h3>
-                        <p tabindex="0">Внедрение научных разработок и инновационных технологий в области энергосбережения и повышения энергетической эффективности</p>
-                        <p tabindex="0"><strong>Дополнительно:</strong> Мера поддержки направлена на стимулирование научных коллективов к внедрению разработок в реальный сектор экономики. Приоритетные направления: энергосберегающие технологии, возобновляемые источники энергии, цифровизация энергетики.</p>
+                        <h3>Назначение меры</h3>
+                        <p>Внедрение научных разработок и инновационных технологий в области энергосбережения и повышения энергетической эффективности</p>
                     </div>
-                    
                     <div class="info-card">
-                        <h3 tabindex="0">Территориальный уровень</h3>
-                        <p tabindex="0">Региональный</p>
-                        <p tabindex="0"><strong>Субъект РФ:</strong> Республика Татарстан</p>
-                        <p tabindex="0"><strong>Дополнительно:</strong> Грант действует на территории Республики Татарстан. Участники должны иметь регистрацию или осуществлять деятельность на территории региона.</p>
+                        <h3>Территориальный уровень</h3>
+                        <p>Региональный</p>
+                        <p><strong>Субъект РФ:</strong> Республика Татарстан</p>
                     </div>
-                    
                     <div class="info-card">
-                        <h3 tabindex="0">Форма поддержки</h3>
-                        <p tabindex="0">Консультационная</p>
-                        <p tabindex="0"><strong>Тип меры:</strong> Другое</p>
-                        <p tabindex="0"><strong>Дополнительно:</strong> Помимо консультационной поддержки, участники получают доступ к экспертной сети и возможность презентации своих разработок на профильных мероприятиях.</p>
+                        <h3>Форма поддержки</h3>
+                        <p>Консультационная</p>
+                        <p><strong>Тип меры:</strong> Другое</p>
                     </div>
-                    
                     <div class="info-card">
-                        <h3 tabindex="0">Направление меры</h3>
-                        <p tabindex="0">НИОКР</p>
-                        <p tabindex="0"><strong>Дополнительно:</strong> Поддержка предоставляется на проведение научно-исследовательских и опытно-конструкторских работ по приоритетным направлениям науки и техники.</p>
+                        <h3>Направление меры</h3>
+                        <p>НИОКР</p>
                     </div>
                 </div>
             </div>
             
             <!-- Секция 2: Требования -->
-            <div id="section-requirements" class="section" role="tabpanel">
-                <h2 tabindex="0">Требования</h2>
+            <div id="section-requirements" class="section" role="tabpanel" tabindex="-1">
+                <h2>Требования</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Основание</h3>
-                    <p tabindex="0">Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан", утвержденная постановлением Кабинета Министров Республики Татарстан от 04.12.2013 № 954</p>
-                    <p tabindex="0"><strong>Дополнительно:</strong> Программа действует до 2030 года. В рамках программы предусмотрено ежегодное продление приёма заявок.</p>
+                    <h3>Основание</h3>
+                    <p>Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан", утвержденная постановлением Кабинета Министров Республики Татарстан от 04.12.2013 № 954</p>
                 </div>
                 <div class="info-card">
-                    <h3 tabindex="0">Дополнительные требования</h3>
-                    <p tabindex="0" class="empty-state">Не разработаны к настоящему моменту</p>
-                    <p tabindex="0"><strong>Дополнительно:</strong> Дополнительные требования находятся в стадии разработки. Ожидается публикация до конца текущего квартала.</p>
+                    <h3>Дополнительные требования</h3>
+                    <p class="empty-state">Не разработаны к настоящему моменту</p>
                 </div>
             </div>
             
             <!-- Секция 3: Необходимые документы -->
-            <div id="section-documents" class="section" role="tabpanel">
-                <h2 tabindex="0">Необходимые документы</h2>
+            <div id="section-documents" class="section" role="tabpanel" tabindex="-1">
+                <h2>Необходимые документы</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Перечень документов</h3>
-                    <p tabindex="0" class="empty-state">Не разработаны к настоящему моменту</p>
-                    <p tabindex="0"><strong>Рекомендуемый перечень:</strong> Заявка по установленной форме, копия паспорта, выписка из ЕГРЮЛ/ЕГРИП, описание научного проекта, смета расходов.</p>
+                    <h3>Перечень документов</h3>
+                    <p class="empty-state">Не разработаны к настоящему моменту</p>
                 </div>
             </div>
             
             <!-- Секция 4: НПА и другие документы -->
-            <div id="section-npa" class="section" role="tabpanel">
-                <h2 tabindex="0">НПА и другие документы</h2>
+            <div id="section-npa" class="section" role="tabpanel" tabindex="-1">
+                <h2>НПА и другие документы</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Нормативно-правовые акты</h3>
+                    <h3>Нормативно-правовые акты</h3>
                     <ul>
-                        <li tabindex="0">Постановление Кабинета Министров Республики Татарстан от 04.12.2013 № 954</li>
-                        <li tabindex="0">Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан"</li>
+                        <li>Постановление Кабинета Министров Республики Татарстан от 04.12.2013 № 954</li>
+                        <li>Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан"</li>
                     </ul>
-                    <p tabindex="0"><strong>Дополнительно:</strong> Актуальные версии документов с изменениями доступны на официальном сайте Министерства.</p>
                 </div>
             </div>
             
             <!-- Секция 5: Календарь -->
-            <div id="section-calendar" class="section" role="tabpanel">
-                <h2 tabindex="0">Календарь</h2>
+            <div id="section-calendar" class="section" role="tabpanel" tabindex="-1">
+                <h2>Календарь</h2>
                 <div class="calendar-item">
-                    <div class="calendar-stage" tabindex="0">📋 Прием заявок</div>
+                    <div class="calendar-stage">📋 Прием заявок</div>
                     <div class="calendar-dates">
-                        <span class="date-badge" tabindex="0">📅 Начало: <strong>01.01.2028</strong></span>
-                        <span class="date-badge" tabindex="0">⏰ Окончание: <strong>29.12.2028</strong></span>
+                        <span class="date-badge">📅 Начало: <strong>01.01.2028</strong></span>
+                        <span class="date-badge">⏰ Окончание: <strong>29.12.2028</strong></span>
                     </div>
-                    <p tabindex="0"><strong>Дополнительно:</strong> Заявки принимаются круглогодично. Рассмотрение заявок занимает до 45 рабочих дней.</p>
                 </div>
-                
                 <div class="info-card">
-                    <h3 tabindex="0">Общая сумма финансирования</h3>
-                    <div class="total-amount" tabindex="0">0,00 ₽</div>
-                    <p tabindex="0"><strong>Дополнительно:</strong> Финансирование предоставляется по факту выполнения этапов работ. Максимальная сумма гранта — до 500 000 рублей на один проект.</p>
+                    <h3>Общая сумма финансирования</h3>
+                    <div class="total-amount">0,00 ₽</div>
                 </div>
             </div>
             
             <!-- Секция 6: Частые вопросы -->
-            <div id="section-faq" class="section" role="tabpanel">
-                <h2 tabindex="0">Частые вопросы</h2>
+            <div id="section-faq" class="section" role="tabpanel" tabindex="-1">
+                <h2>Частые вопросы</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Вопросы и ответы</h3>
-                    <p tabindex="0" class="empty-state">Часто задаваемые вопросы не указаны</p>
-                    <p tabindex="0"><strong>Вопрос:</strong> Может ли участвовать аспирант? <strong>Ответ:</strong> Да, аспиранты до 35 лет могут участвовать при наличии научного руководителя.</p>
-                    <p tabindex="0"><strong>Вопрос:</strong> Нужно ли софинансирование? <strong>Ответ:</strong> Софинансирование не требуется, но приветствуется.</p>
-                    <p tabindex="0"><strong>Вопрос:</strong> Как узнать результат? <strong>Ответ:</strong> Результаты публикуются в личном кабинете и на сайте организатора.</p>
+                    <h3>Вопросы и ответы</h3>
+                    <p class="empty-state">Часто задаваемые вопросы не указаны</p>
                 </div>
             </div>
             
             <!-- Секция 7: Контакты -->
-            <div id="section-contacts" class="section" role="tabpanel">
-                <h2 tabindex="0">Контакты для консультации</h2>
+            <div id="section-contacts" class="section" role="tabpanel" tabindex="-1">
+                <h2>Контакты для консультации</h2>
                 <div class="info-card">
-                    <h3 tabindex="0">Контактное лицо</h3>
+                    <h3>Контактное лицо</h3>
                     <div class="contact-card">
-                        <div class="contact-name" tabindex="0">Каткова Евгения Игоревна</div>
-                        <div class="contact-detail" tabindex="0">💼 Должность: Начальник отдела развития энергетики и энергоэффективности</div>
-                        <div class="contact-detail" tabindex="0">📞 Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
-                        <div class="contact-detail" tabindex="0">✉️ Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
+                        <div class="contact-name">Каткова Евгения Игоревна</div>
+                        <div class="contact-detail">💼 Должность: Начальник отдела развития энергетики и энергоэффективности</div>
+                        <div class="contact-detail">📞 Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
+                        <div class="contact-detail">✉️ Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
                     </div>
-                    <p tabindex="0"><strong>Дополнительно:</strong> Часы приёма: вторник и четверг с 10:00 до 12:00. Предварительная запись по телефону.</p>
                 </div>
             </div>
             
@@ -582,8 +540,8 @@
         }
     }
     
-    // Переключение секций (табы)
-    const buttons = document.querySelectorAll('.section-nav button');
+    // Получаем все кнопки меню и секции
+    const navButtons = document.querySelectorAll('.section-nav button');
     const sections = {
         main: document.getElementById('section-main'),
         requirements: document.getElementById('section-requirements'),
@@ -594,15 +552,32 @@
         contacts: document.getElementById('section-contacts')
     };
     
-    function showSection(sectionId) {
-        Object.values(sections).forEach(s => { if(s) s.classList.remove('active'); });
-        if(sections[sectionId]) sections[sectionId].classList.add('active');
+    // Функция переключения секции и ПЕРЕМЕЩЕНИЯ ФОКУСА в неё
+    function showSectionAndFocus(sectionId, buttonElement) {
+        // Скрываем все секции
+        Object.values(sections).forEach(section => {
+            if (section) section.classList.remove('active');
+        });
         
-        buttons.forEach(btn => {
-            if(btn.getAttribute('data-section') === sectionId) {
+        // Показываем выбранную секцию
+        const targetSection = sections[sectionId];
+        if (targetSection) {
+            targetSection.classList.add('active');
+            
+            // Устанавливаем фокус на секцию
+            targetSection.focus();
+            
+            // Объявляем скринридеру
+            const sectionName = buttonElement ? buttonElement.textContent.trim() : sectionId;
+            announceToScreenReader(`Раздел "${sectionName}" открыт. Фокус в разделе. Используйте Tab для навигации по содержимому.`);
+        }
+        
+        // Обновляем активное состояние кнопок
+        navButtons.forEach(btn => {
+            const btnSection = btn.getAttribute('data-section');
+            if (btnSection === sectionId) {
                 btn.classList.add('active');
                 btn.setAttribute('aria-selected', 'true');
-                announceToScreenReader(`Раздел ${btn.textContent.trim()} открыт`);
             } else {
                 btn.classList.remove('active');
                 btn.setAttribute('aria-selected', 'false');
@@ -610,80 +585,55 @@
         });
     }
     
-    buttons.forEach(btn => {
-        btn.addEventListener('click', () => showSection(btn.getAttribute('data-section')));
-        btn.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
-    });
-    
-    // ===== ОСНОВНАЯ ФУНКЦИЯ: чтение текста по нажатию Enter на параграфе =====
-    // Находим все читаемые элементы: параграфы, заголовки, элементы с текстом
-    const readableElements = document.querySelectorAll('p, h1, h2, h3, li, .calendar-stage, .date-badge, .total-amount, .contact-name, .contact-detail, .admin-info span');
-    
-    readableElements.forEach(el => {
-        // Делаем элемент фокусируемым, если он ещё не имеет tabindex
-        if (!el.hasAttribute('tabindex')) {
-            el.setAttribute('tabindex', '0');
-        }
-        
-        // При нажатии Enter запускаем чтение через NVDA
-        el.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                
-                // Получаем текст элемента
-                let textToRead = '';
-                
-                // Если это элемент с вложенными тегами, берём чистый текст
-                if (el.querySelector('strong, span')) {
-                    textToRead = el.innerText.trim();
-                } else {
-                    textToRead = el.textContent.trim();
-                }
-                
-                if (textToRead) {
-                    // Отправляем текст в живую область для скринридера
-                    announceToScreenReader(textToRead);
-                    
-                    // Дополнительно: устанавливаем фокус на элемент для визуального выделения
-                    el.style.backgroundColor = 'rgba(0,103,173,0.1)';
-                    setTimeout(() => { el.style.backgroundColor = ''; }, 300);
-                }
-            }
+    // Навешиваем обработчики на кнопки меню
+    navButtons.forEach(btn => {
+        // Обработка клика мышью
+        btn.addEventListener('click', () => {
+            const sectionId = btn.getAttribute('data-section');
+            showSectionAndFocus(sectionId, btn);
         });
         
-        // Добавляем подсказку для скринридера
-        const hintSpan = document.createElement('span');
-        hintSpan.className = 'visually-hidden';
-        hintSpan.textContent = 'Нажмите Enter, чтобы прочитать этот текст.';
-        el.appendChild(hintSpan);
+        // Обработка нажатия Enter и пробела на кнопке меню
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const sectionId = btn.getAttribute('data-section');
+                showSectionAndFocus(sectionId, btn);
+            }
+        });
     });
     
     // Копирование ссылки
     const copyBtn = document.getElementById('copy-link-btn');
-    if(copyBtn) {
+    if (copyBtn) {
         copyBtn.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(window.location.href);
-                announceToScreenReader('Ссылка скопирована');
+                announceToScreenReader('Ссылка скопирована в буфер обмена');
                 const notification = document.createElement('div');
                 notification.className = 'copy-success';
                 notification.textContent = '✓ Ссылка скопирована';
                 document.body.appendChild(notification);
                 setTimeout(() => notification.remove(), 2000);
-            } catch(e) { announceToScreenReader('Не удалось скопировать'); }
+            } catch (err) {
+                announceToScreenReader('Не удалось скопировать ссылку');
+            }
         });
     }
     
+    // Кнопка подачи заявки
     const applyBtn = document.querySelector('.btn-apply');
-    if(applyBtn) {
+    if (applyBtn) {
         applyBtn.addEventListener('click', () => {
             announceToScreenReader('Переход к форме подачи заявки');
             alert('Форма подачи заявки будет доступна в следующей версии');
         });
     }
     
+    // Устанавливаем фокус на основной контент при загрузке
     document.getElementById('main-content')?.focus();
-    announceToScreenReader('Страница загружена. Используйте Tab для навигации. Нажмите Enter на любом абзаце или заголовке, чтобы прочитать текст.');
+    
+    announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации по меню. Нажмите Enter на пункте меню, чтобы открыть раздел и переместить фокус в него.');
 </script>
 
 </body>
