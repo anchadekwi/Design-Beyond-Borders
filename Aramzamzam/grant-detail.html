@@ -823,4 +823,50 @@
         });
         
         // Инициализируем состояние (свёрнуто)
-        additionalContent.hidden =
+        additionalContent.hidden = true;
+        card.setAttribute('aria-expanded', 'false');
+        
+        // Добавляем инструкцию для скринридера
+        const instructionSpan = document.createElement('span');
+        instructionSpan.className = 'visually-hidden';
+        instructionSpan.textContent = 'Нажмите Enter, чтобы открыть дополнительную информацию.';
+        card.appendChild(instructionSpan);
+    });
+    
+    // Копирование ссылки
+    const copyBtn = document.getElementById('copy-link-btn');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+            const url = window.location.href;
+            try {
+                await navigator.clipboard.writeText(url);
+                announceToScreenReader('Ссылка скопирована в буфер обмена');
+                
+                const notification = document.createElement('div');
+                notification.className = 'copy-success';
+                notification.textContent = '✓ Ссылка скопирована';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 2000);
+            } catch (err) {
+                announceToScreenReader('Не удалось скопировать ссылку');
+            }
+        });
+    }
+    
+    const applyBtn = document.querySelector('.btn-apply');
+    if (applyBtn) {
+        applyBtn.addEventListener('click', () => {
+            announceToScreenReader('Переход к форме подачи заявки');
+            alert('Форма подачи заявки будет доступна в следующей версии');
+        });
+    }
+    
+    document.getElementById('main-content')?.focus();
+    
+    window.addEventListener('load', () => {
+        announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации. На карточках с информацией нажмите Enter, чтобы открыть дополнительные сведения.');
+    });
+</script>
+
+</body>
+</html>
