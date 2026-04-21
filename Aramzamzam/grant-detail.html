@@ -32,10 +32,12 @@
             color: #1a1a1a;
         }
         
-        :focus-visible {
+        /* Стиль для фокусируемых элементов */
+        [tabindex="0"]:focus-visible {
             outline: 4px solid var(--color-focus);
             outline-offset: 4px;
-            border-radius: 4px;
+            border-radius: 8px;
+            background: rgba(0,103,173,0.05);
         }
         
         .skip-link {
@@ -351,7 +353,6 @@
             100% { opacity: 0; visibility: hidden; }
         }
         
-        /* Фокус на секции при переходе */
         .section:focus, .section-content:focus {
             outline: 4px solid var(--color-focus);
             outline-offset: 4px;
@@ -392,9 +393,10 @@
     
     <div class="grant-detail" id="main-content" tabindex="-1">
         
+        <!-- ===== ШАПКА С ГРАНТОМ ===== -->
         <div class="detail-header">
-            <h1>Грант Президента РФ для молодых учёных</h1>
-            <p>Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
+            <h1 tabindex="0">Грант Президента РФ для молодых учёных</h1>
+            <p tabindex="0">Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
             
             <div class="detail-actions">
                 <a href="./aggregator-service.html" class="btn-back">← Вернуться к навигатору</a>
@@ -403,14 +405,15 @@
             </div>
         </div>
         
+        <!-- ===== АДМИНИСТРАТОР И КАТЕГОРИИ ===== -->
         <div class="administrator">
             <div class="admin-info">
-                <span>🏛️ <strong>Администратор меры:</strong> Министерство промышленности и торговли Республики Татарстан</span>
-                <span>🆔 <strong>ИНН:</strong> 1655141766</span>
+                <span tabindex="0">🏛️ <strong>Администратор меры:</strong> Министерство промышленности и торговли Республики Татарстан</span>
+                <span tabindex="0">🆔 <strong>ИНН:</strong> 1655141766</span>
             </div>
             <div class="admin-info">
-                <span>👥 <strong>Категория получателей:</strong> Юридическое лицо</span>
-                <span>🏢 <strong>Виды юридических лиц:</strong> Коммерческие</span>
+                <span tabindex="0">👥 <strong>Категория получателей:</strong> Юридическое лицо</span>
+                <span tabindex="0">🏢 <strong>Виды юридических лиц:</strong> Коммерческие</span>
             </div>
         </div>
         
@@ -429,98 +432,98 @@
             
             <!-- Секция 1: Основная информация -->
             <div id="section-main" class="section active" role="tabpanel" tabindex="-1">
-                <h2>Основная информация</h2>
+                <h2 tabindex="0">Основная информация</h2>
                 <div class="info-grid">
                     <div class="info-card">
-                        <h3>Назначение меры</h3>
-                        <p>Внедрение научных разработок и инновационных технологий в области энергосбережения и повышения энергетической эффективности</p>
+                        <h3 tabindex="0">Назначение меры</h3>
+                        <p tabindex="0">Внедрение научных разработок и инновационных технологий в области энергосбережения и повышения энергетической эффективности</p>
                     </div>
                     <div class="info-card">
-                        <h3>Территориальный уровень</h3>
-                        <p>Региональный</p>
-                        <p><strong>Субъект РФ:</strong> Республика Татарстан</p>
+                        <h3 tabindex="0">Территориальный уровень</h3>
+                        <p tabindex="0">Региональный</p>
+                        <p tabindex="0"><strong>Субъект РФ:</strong> Республика Татарстан</p>
                     </div>
                     <div class="info-card">
-                        <h3>Форма поддержки</h3>
-                        <p>Консультационная</p>
-                        <p><strong>Тип меры:</strong> Другое</p>
+                        <h3 tabindex="0">Форма поддержки</h3>
+                        <p tabindex="0">Консультационная</p>
+                        <p tabindex="0"><strong>Тип меры:</strong> Другое</p>
                     </div>
                     <div class="info-card">
-                        <h3>Направление меры</h3>
-                        <p>НИОКР</p>
+                        <h3 tabindex="0">Направление меры</h3>
+                        <p tabindex="0">НИОКР</p>
                     </div>
                 </div>
             </div>
             
             <!-- Секция 2: Требования -->
             <div id="section-requirements" class="section" role="tabpanel" tabindex="-1">
-                <h2>Требования</h2>
+                <h2 tabindex="0">Требования</h2>
                 <div class="info-card">
-                    <h3>Основание</h3>
-                    <p>Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан", утвержденная постановлением Кабинета Министров Республики Татарстан от 04.12.2013 № 954</p>
+                    <h3 tabindex="0">Основание</h3>
+                    <p tabindex="0">Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан", утвержденная постановлением Кабинета Министров Республики Татарстан от 04.12.2013 № 954</p>
                 </div>
                 <div class="info-card">
-                    <h3>Дополнительные требования</h3>
-                    <p class="empty-state">Не разработаны к настоящему моменту</p>
+                    <h3 tabindex="0">Дополнительные требования</h3>
+                    <p tabindex="0" class="empty-state">Не разработаны к настоящему моменту</p>
                 </div>
             </div>
             
             <!-- Секция 3: Необходимые документы -->
             <div id="section-documents" class="section" role="tabpanel" tabindex="-1">
-                <h2>Необходимые документы</h2>
+                <h2 tabindex="0">Необходимые документы</h2>
                 <div class="info-card">
-                    <h3>Перечень документов</h3>
-                    <p class="empty-state">Не разработаны к настоящему моменту</p>
+                    <h3 tabindex="0">Перечень документов</h3>
+                    <p tabindex="0" class="empty-state">Не разработаны к настоящему моменту</p>
                 </div>
             </div>
             
             <!-- Секция 4: НПА и другие документы -->
             <div id="section-npa" class="section" role="tabpanel" tabindex="-1">
-                <h2>НПА и другие документы</h2>
+                <h2 tabindex="0">НПА и другие документы</h2>
                 <div class="info-card">
-                    <h3>Нормативно-правовые акты</h3>
+                    <h3 tabindex="0">Нормативно-правовые акты</h3>
                     <ul>
-                        <li>Постановление Кабинета Министров Республики Татарстан от 04.12.2013 № 954</li>
-                        <li>Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан"</li>
+                        <li tabindex="0">Постановление Кабинета Министров Республики Татарстан от 04.12.2013 № 954</li>
+                        <li tabindex="0">Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан"</li>
                     </ul>
                 </div>
             </div>
             
             <!-- Секция 5: Календарь -->
             <div id="section-calendar" class="section" role="tabpanel" tabindex="-1">
-                <h2>Календарь</h2>
+                <h2 tabindex="0">Календарь</h2>
                 <div class="calendar-item">
-                    <div class="calendar-stage">📋 Прием заявок</div>
+                    <div class="calendar-stage" tabindex="0">📋 Прием заявок</div>
                     <div class="calendar-dates">
-                        <span class="date-badge">📅 Начало: <strong>01.01.2028</strong></span>
-                        <span class="date-badge">⏰ Окончание: <strong>29.12.2028</strong></span>
+                        <span class="date-badge" tabindex="0">📅 Начало: <strong>01.01.2028</strong></span>
+                        <span class="date-badge" tabindex="0">⏰ Окончание: <strong>29.12.2028</strong></span>
                     </div>
                 </div>
                 <div class="info-card">
-                    <h3>Общая сумма финансирования</h3>
-                    <div class="total-amount">0,00 ₽</div>
+                    <h3 tabindex="0">Общая сумма финансирования</h3>
+                    <div class="total-amount" tabindex="0">0,00 ₽</div>
                 </div>
             </div>
             
             <!-- Секция 6: Частые вопросы -->
             <div id="section-faq" class="section" role="tabpanel" tabindex="-1">
-                <h2>Частые вопросы</h2>
+                <h2 tabindex="0">Частые вопросы</h2>
                 <div class="info-card">
-                    <h3>Вопросы и ответы</h3>
-                    <p class="empty-state">Часто задаваемые вопросы не указаны</p>
+                    <h3 tabindex="0">Вопросы и ответы</h3>
+                    <p tabindex="0" class="empty-state">Часто задаваемые вопросы не указаны</p>
                 </div>
             </div>
             
             <!-- Секция 7: Контакты -->
             <div id="section-contacts" class="section" role="tabpanel" tabindex="-1">
-                <h2>Контакты для консультации</h2>
+                <h2 tabindex="0">Контакты для консультации</h2>
                 <div class="info-card">
-                    <h3>Контактное лицо</h3>
+                    <h3 tabindex="0">Контактное лицо</h3>
                     <div class="contact-card">
-                        <div class="contact-name">Каткова Евгения Игоревна</div>
-                        <div class="contact-detail">💼 Должность: Начальник отдела развития энергетики и энергоэффективности</div>
-                        <div class="contact-detail">📞 Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
-                        <div class="contact-detail">✉️ Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
+                        <div class="contact-name" tabindex="0">Каткова Евгения Игоревна</div>
+                        <div class="contact-detail" tabindex="0">💼 Должность: Начальник отдела развития энергетики и энергоэффективности</div>
+                        <div class="contact-detail" tabindex="0">📞 Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
+                        <div class="contact-detail" tabindex="0">✉️ Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
                     </div>
                 </div>
             </div>
@@ -540,7 +543,51 @@
         }
     }
     
-    // Получаем все кнопки меню и секции
+    // Делаем все элементы с tabindex="0" читаемыми по Enter
+    const focusableElements = document.querySelectorAll('[tabindex="0"]');
+    
+    focusableElements.forEach(el => {
+        // Добавляем подсказку для скринридера
+        const hintSpan = document.createElement('span');
+        hintSpan.className = 'visually-hidden';
+        hintSpan.textContent = 'Нажмите Enter, чтобы прочитать.';
+        el.appendChild(hintSpan);
+        
+        // Обработка нажатия Enter
+        el.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                let textToRead = '';
+                
+                // Получаем чистый текст элемента
+                if (el.classList.contains('empty-state')) {
+                    textToRead = el.textContent.trim();
+                } else if (el.tagName === 'H1' || el.tagName === 'H2' || el.tagName === 'H3') {
+                    textToRead = el.textContent.trim();
+                } else if (el.tagName === 'P') {
+                    textToRead = el.textContent.trim();
+                } else if (el.tagName === 'LI') {
+                    textToRead = el.textContent.trim();
+                } else if (el.classList.contains('date-badge')) {
+                    textToRead = el.textContent.trim();
+                } else if (el.classList.contains('total-amount')) {
+                    textToRead = `Общая сумма финансирования: ${el.textContent.trim()}`;
+                } else {
+                    textToRead = el.textContent.trim();
+                }
+                
+                if (textToRead) {
+                    announceToScreenReader(textToRead);
+                    
+                    // Визуальная индикация
+                    el.style.backgroundColor = 'rgba(0,103,173,0.1)';
+                    setTimeout(() => { el.style.backgroundColor = ''; }, 300);
+                }
+            }
+        });
+    });
+    
+    // Переключение секций и перемещение фокуса
     const navButtons = document.querySelectorAll('.section-nav button');
     const sections = {
         main: document.getElementById('section-main'),
@@ -552,27 +599,20 @@
         contacts: document.getElementById('section-contacts')
     };
     
-    // Функция переключения секции и ПЕРЕМЕЩЕНИЯ ФОКУСА в неё
     function showSectionAndFocus(sectionId, buttonElement) {
-        // Скрываем все секции
         Object.values(sections).forEach(section => {
             if (section) section.classList.remove('active');
         });
         
-        // Показываем выбранную секцию
         const targetSection = sections[sectionId];
         if (targetSection) {
             targetSection.classList.add('active');
-            
-            // Устанавливаем фокус на секцию
             targetSection.focus();
             
-            // Объявляем скринридеру
             const sectionName = buttonElement ? buttonElement.textContent.trim() : sectionId;
-            announceToScreenReader(`Раздел "${sectionName}" открыт. Фокус в разделе. Используйте Tab для навигации по содержимому.`);
+            announceToScreenReader(`Раздел "${sectionName}" открыт. Фокус в разделе. Используйте Tab для навигации, Enter для чтения элементов.`);
         }
         
-        // Обновляем активное состояние кнопок
         navButtons.forEach(btn => {
             const btnSection = btn.getAttribute('data-section');
             if (btnSection === sectionId) {
@@ -585,15 +625,12 @@
         });
     }
     
-    // Навешиваем обработчики на кнопки меню
     navButtons.forEach(btn => {
-        // Обработка клика мышью
         btn.addEventListener('click', () => {
             const sectionId = btn.getAttribute('data-section');
             showSectionAndFocus(sectionId, btn);
         });
         
-        // Обработка нажатия Enter и пробела на кнопке меню
         btn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -621,7 +658,6 @@
         });
     }
     
-    // Кнопка подачи заявки
     const applyBtn = document.querySelector('.btn-apply');
     if (applyBtn) {
         applyBtn.addEventListener('click', () => {
@@ -630,10 +666,8 @@
         });
     }
     
-    // Устанавливаем фокус на основной контент при загрузке
     document.getElementById('main-content')?.focus();
-    
-    announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации по меню. Нажмите Enter на пункте меню, чтобы открыть раздел и переместить фокус в него.');
+    announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации. Нажмите Enter на любом элементе, чтобы прочитать его содержимое.');
 </script>
 
 </body>
