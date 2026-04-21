@@ -31,20 +31,17 @@
             color: #1a1a1a;
         }
         
-        /* Видимый фокус для клавиатуры */
         :focus-visible {
             outline: 4px solid var(--color-focus);
             outline-offset: 4px;
             border-radius: 4px;
         }
         
-        /* Кнопки и интерактивные элементы — увеличенная область клика */
         button, a, input, select, summary {
             min-height: 48px;
             min-width: 48px;
         }
         
-        /* Skip link */
         .skip-link {
             position: absolute;
             top: -60px;
@@ -63,7 +60,6 @@
             outline: 4px solid var(--color-focus);
         }
         
-        /* Визуально скрытый класс для скринридеров */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -111,12 +107,69 @@
             text-decoration: none;
         }
         
+        /* Поисковая строка */
+        .search-section {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .search-section h2 {
+            font-size: 20px;
+            margin: 0 0 16px 0;
+            color: var(--color-primary);
+        }
+        
+        .search-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: flex-end;
+        }
+        
+        .search-input-group {
+            flex: 3;
+            min-width: 200px;
+        }
+        
+        .search-input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .search-input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+        
+        .search-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
         .main-layout {
             display: flex;
             gap: 28px;
             flex-wrap: wrap;
+            flex-direction: row;
         }
         
+        /* РЕЗУЛЬТАТЫ — СЛЕВА */
+        .results-section {
+            flex: 1;
+            min-width: 300px;
+            order: 1;
+        }
+        
+        /* ФИЛЬТРЫ — СПРАВА */
         .filters-section {
             flex: 0 0 360px;
             background: white;
@@ -124,6 +177,7 @@
             padding: 24px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             height: fit-content;
+            order: 2;
         }
         
         .filters-section h2 {
@@ -257,23 +311,22 @@
             flex-wrap: wrap;
         }
         
-        .btn-primary, .btn-secondary {
+        .btn-primary, .btn-secondary, .btn-search {
             padding: 14px 28px;
             border: none;
             border-radius: 12px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            flex: 1;
             min-width: 160px;
         }
         
-        .btn-primary {
+        .btn-primary, .btn-search {
             background: var(--color-primary);
             color: white;
         }
         
-        .btn-primary:hover {
+        .btn-primary:hover, .btn-search:hover {
             background: var(--color-primary-dark);
         }
         
@@ -286,9 +339,13 @@
             background: #cbd5e1;
         }
         
-        .results-section {
-            flex: 1;
-            min-width: 300px;
+        .btn-filters {
+            background: #4a5568;
+            color: white;
+        }
+        
+        .btn-filters:hover {
+            background: #2d3748;
         }
         
         .results-header {
@@ -422,199 +479,53 @@
             border: 0;
         }
         
+        .filters-first-focus {
+            scroll-margin-top: 20px;
+        }
+        
         @media (max-width: 768px) {
             .container { padding: 12px; }
             .main-layout { flex-direction: column; }
-            .filters-section { flex: auto; }
+            .filters-section { flex: auto; order: 1; }
+            .results-section { order: 2; }
             .header h1 { font-size: 26px; }
         }
     </style>
 </head>
 <body>
 
-<!-- Skip link для клавиатуры -->
 <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
 
 <div class="container">
     
-    <!-- Шапка -->
     <div class="header" role="banner">
         <h1>Навигатор мер поддержки</h1>
         <p>Поиск грантов, стипендий и мер государственной поддержки для научной деятельности</p>
     </div>
     
-    <!-- Хлебные крошки -->
     <div class="breadcrumbs" aria-label="Навигационная цепочка">
         <a href="./science.html">Главная</a> / 
         <span aria-current="page">Навигатор мер поддержки</span>
     </div>
     
+    <!-- НОВАЯ ПОИСКОВАЯ СТРОКА -->
+    <div class="search-section" aria-labelledby="search-heading">
+        <h2 id="search-heading">Поиск гранта по названию</h2>
+        <div class="search-wrapper">
+            <div class="search-input-group">
+                <label for="grant-search-input">Название гранта или ключевые слова</label>
+                <input type="text" id="grant-search-input" placeholder="Например: Грант Президента, РНФ, Старт...">
+            </div>
+            <div class="search-buttons">
+                <button type="button" class="btn-search" id="search-button" aria-label="Найти грант по названию">🔍 Поиск</button>
+                <button type="button" class="btn-primary btn-filters" id="goto-filters-button" aria-label="Перейти к фильтрам">⚙️ Перейти к фильтрам</button>
+            </div>
+        </div>
+    </div>
+    
     <div class="main-layout">
         
-        <!-- Блок фильтров -->
-        <div class="filters-section" aria-labelledby="filters-heading">
-            <h2 id="filters-heading">Фильтры поиска</h2>
-            
-            <form id="grant-filters-form" aria-label="Форма фильтрации грантов">
-                
-                <!-- 1. Территориальный уровень -->
-                <fieldset class="filter-group">
-                    <legend>Территориальный уровень</legend>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="territory" value="federal"> Федеральный</label>
-                        <label><input type="checkbox" name="territory" value="regional"> Региональный</label>
-                        <label><input type="checkbox" name="territory" value="local"> Муниципальный</label>
-                        <label><input type="checkbox" name="territory" value="international"> Международный</label>
-                    </div>
-                </fieldset>
-
-                <!-- 2. Регионы -->
-                <div class="filter-group">
-                    <label for="regions-select">Регионы</label>
-                    <select id="regions-select" name="region">
-                        <option value="">Все регионы</option>
-                        <option value="moscow">Москва</option>
-                        <option value="spb">Санкт-Петербург</option>
-                        <option value="novosibirsk">Новосибирская область</option>
-                        <option value="tatarstan">Республика Татарстан</option>
-                    </select>
-                </div>
-
-                <!-- 3. Виды деятельности -->
-                <fieldset class="filter-group">
-                    <legend>Виды деятельности</legend>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="activity" value="research"> Научные исследования</label>
-                        <label><input type="checkbox" name="activity" value="development"> Разработки и инновации</label>
-                        <label><input type="checkbox" name="activity" value="commercialization"> Коммерциализация</label>
-                        <label><input type="checkbox" name="activity" value="education"> Образовательная деятельность</label>
-                    </div>
-                </fieldset>
-
-                <!-- 4. Статус участника -->
-                <fieldset class="filter-group">
-                    <legend>Статус участника</legend>
-                    <div class="radio-group">
-                        <label><input type="radio" name="participant_status" value="all" checked> Все</label>
-                        <label><input type="radio" name="participant_status" value="individual"> Физическое лицо</label>
-                        <label><input type="radio" name="participant_status" value="legal"> Юридическое лицо</label>
-                        <label><input type="radio" name="participant_status" value="startup"> Стартап / ИП</label>
-                        <label><input type="radio" name="participant_status" value="nonprofit"> Некоммерческая организация</label>
-                    </div>
-                </fieldset>
-
-                <!-- 5. Форма поддержки -->
-                <fieldset class="filter-group">
-                    <legend>Форма поддержки</legend>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" name="support_form" value="grant"> Грант</label>
-                        <label><input type="checkbox" name="support_form" value="scholarship"> Стипендия</label>
-                        <label><input type="checkbox" name="support_form" value="subsidy"> Субсидия</label>
-                        <label><input type="checkbox" name="support_form" value="prize"> Премия / Награда</label>
-                        <label><input type="checkbox" name="support_form" value="equipment"> Оборудование / Материалы</label>
-                    </div>
-                </fieldset>
-
-                <!-- 6. Тип меры поддержки -->
-                <div class="filter-group">
-                    <label for="support-type-select">Тип меры поддержки</label>
-                    <select id="support-type-select" name="support_type">
-                        <option value="">Любой</option>
-                        <option value="federal">Федеральная программа</option>
-                        <option value="regional">Региональная программа</option>
-                        <option value="private">Частный фонд</option>
-                        <option value="corporate">Корпоративная программа</option>
-                    </select>
-                </div>
-
-                <!-- 7. Начало приема заявок -->
-                <div class="filter-group">
-                    <span class="range-label">Начало приема заявок</span>
-                    <div class="date-inputs">
-                        <label class="visually-hidden" for="start-date-from">Дата начала от</label>
-                        <input type="date" id="start-date-from" name="start_date_from">
-                        <span aria-hidden="true">—</span>
-                        <label class="visually-hidden" for="start-date-to">Дата начала до</label>
-                        <input type="date" id="start-date-to" name="start_date_to">
-                    </div>
-                </div>
-
-                <!-- 8. Окончание приема заявок -->
-                <div class="filter-group">
-                    <span class="range-label">Окончание приема заявок</span>
-                    <div class="date-inputs">
-                        <label class="visually-hidden" for="end-date-from">Дата окончания от</label>
-                        <input type="date" id="end-date-from" name="end_date_from">
-                        <span aria-hidden="true">—</span>
-                        <label class="visually-hidden" for="end-date-to">Дата окончания до</label>
-                        <input type="date" id="end-date-to" name="end_date_to">
-                    </div>
-                </div>
-
-                <!-- 9. Регулярность -->
-                <div class="filter-group">
-                    <label for="regularity-select">Регулярность</label>
-                    <select id="regularity-select" name="regularity">
-                        <option value="">Любая</option>
-                        <option value="once">Разовая мера поддержки</option>
-                        <option value="annual">Ежегодная</option>
-                        <option value="quarterly">Ежеквартальная</option>
-                        <option value="ongoing">Постоянно действующая</option>
-                    </select>
-                </div>
-
-                <!-- 10. Общая сумма финансирования -->
-                <div class="filter-group">
-                    <span class="range-label">Общая сумма финансирования, руб.</span>
-                    <div class="range-inputs">
-                        <label class="visually-hidden" for="funding-from">Сумма от</label>
-                        <input type="number" id="funding-from" name="funding_from" placeholder="От" step="1000" min="0">
-                        <span aria-hidden="true">—</span>
-                        <label class="visually-hidden" for="funding-to">Сумма до</label>
-                        <input type="number" id="funding-to" name="funding_to" placeholder="До" step="1000" min="0">
-                    </div>
-                </div>
-
-                <!-- 11. Организатор -->
-                <div class="filter-group">
-                    <label for="organizer-input">Организатор</label>
-                    <input type="text" id="organizer-input" name="organizer" placeholder="Введите название организации">
-                </div>
-
-                <!-- 12. Дополнительные фильтры -->
-                <details class="filter-group additional-filters">
-                    <summary>Показать дополнительные фильтры</summary>
-                    <div class="additional-filters-content">
-                        <fieldset>
-                            <legend>Отрасль науки</legend>
-                            <div class="checkbox-group">
-                                <label><input type="checkbox" name="science_field" value="physics"> Физика</label>
-                                <label><input type="checkbox" name="science_field" value="chemistry"> Химия</label>
-                                <label><input type="checkbox" name="science_field" value="biology"> Биология</label>
-                                <label><input type="checkbox" name="science_field" value="math"> Математика</label>
-                                <label><input type="checkbox" name="science_field" value="it"> Информационные технологии</label>
-                            </div>
-                        </fieldset>
-                        <div class="filter-group">
-                            <label for="age-limit">Возрастное ограничение</label>
-                            <select id="age-limit" name="age_limit">
-                                <option value="">Без ограничений</option>
-                                <option value="35">До 35 лет</option>
-                                <option value="40">До 40 лет</option>
-                                <option value="45">До 45 лет</option>
-                            </select>
-                        </div>
-                    </div>
-                </details>
-
-                <div class="filter-actions">
-                    <button type="submit" class="btn-primary">Сформировать</button>
-                    <button type="reset" class="btn-secondary">Сбросить</button>
-                </div>
-            </form>
-        </div>
-        
-        <!-- Результаты поиска -->
+        <!-- РЕЗУЛЬТАТЫ — СЛЕВА -->
         <div class="results-section" id="main-content" tabindex="-1">
             <div class="results-header">
                 <div class="results-count" aria-live="polite">
@@ -708,6 +619,157 @@
                 </article>
             </div>
         </div>
+        
+        <!-- ФИЛЬТРЫ — СПРАВА -->
+        <div class="filters-section" aria-labelledby="filters-heading" id="filters-section">
+            <h2 id="filters-heading">Фильтры поиска</h2>
+            
+            <form id="grant-filters-form" aria-label="Форма фильтрации грантов">
+                
+                <fieldset class="filter-group">
+                    <legend>Территориальный уровень</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="territory" value="federal"> Федеральный</label>
+                        <label><input type="checkbox" name="territory" value="regional"> Региональный</label>
+                        <label><input type="checkbox" name="territory" value="local"> Муниципальный</label>
+                        <label><input type="checkbox" name="territory" value="international"> Международный</label>
+                    </div>
+                </fieldset>
+
+                <div class="filter-group">
+                    <label for="regions-select">Регионы</label>
+                    <select id="regions-select" name="region">
+                        <option value="">Все регионы</option>
+                        <option value="moscow">Москва</option>
+                        <option value="spb">Санкт-Петербург</option>
+                        <option value="novosibirsk">Новосибирская область</option>
+                        <option value="tatarstan">Республика Татарстан</option>
+                    </select>
+                </div>
+
+                <fieldset class="filter-group">
+                    <legend>Виды деятельности</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="activity" value="research"> Научные исследования</label>
+                        <label><input type="checkbox" name="activity" value="development"> Разработки и инновации</label>
+                        <label><input type="checkbox" name="activity" value="commercialization"> Коммерциализация</label>
+                        <label><input type="checkbox" name="activity" value="education"> Образовательная деятельность</label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Статус участника</legend>
+                    <div class="radio-group">
+                        <label><input type="radio" name="participant_status" value="all" checked> Все</label>
+                        <label><input type="radio" name="participant_status" value="individual"> Физическое лицо</label>
+                        <label><input type="radio" name="participant_status" value="legal"> Юридическое лицо</label>
+                        <label><input type="radio" name="participant_status" value="startup"> Стартап / ИП</label>
+                        <label><input type="radio" name="participant_status" value="nonprofit"> Некоммерческая организация</label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Форма поддержки</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="support_form" value="grant"> Грант</label>
+                        <label><input type="checkbox" name="support_form" value="scholarship"> Стипендия</label>
+                        <label><input type="checkbox" name="support_form" value="subsidy"> Субсидия</label>
+                        <label><input type="checkbox" name="support_form" value="prize"> Премия / Награда</label>
+                        <label><input type="checkbox" name="support_form" value="equipment"> Оборудование / Материалы</label>
+                    </div>
+                </fieldset>
+
+                <div class="filter-group">
+                    <label for="support-type-select">Тип меры поддержки</label>
+                    <select id="support-type-select" name="support_type">
+                        <option value="">Любой</option>
+                        <option value="federal">Федеральная программа</option>
+                        <option value="regional">Региональная программа</option>
+                        <option value="private">Частный фонд</option>
+                        <option value="corporate">Корпоративная программа</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <span class="range-label">Начало приема заявок</span>
+                    <div class="date-inputs">
+                        <label class="visually-hidden" for="start-date-from">Дата начала от</label>
+                        <input type="date" id="start-date-from" name="start_date_from">
+                        <span aria-hidden="true">—</span>
+                        <label class="visually-hidden" for="start-date-to">Дата начала до</label>
+                        <input type="date" id="start-date-to" name="start_date_to">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <span class="range-label">Окончание приема заявок</span>
+                    <div class="date-inputs">
+                        <label class="visually-hidden" for="end-date-from">Дата окончания от</label>
+                        <input type="date" id="end-date-from" name="end_date_from">
+                        <span aria-hidden="true">—</span>
+                        <label class="visually-hidden" for="end-date-to">Дата окончания до</label>
+                        <input type="date" id="end-date-to" name="end_date_to">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="regularity-select">Регулярность</label>
+                    <select id="regularity-select" name="regularity">
+                        <option value="">Любая</option>
+                        <option value="once">Разовая мера поддержки</option>
+                        <option value="annual">Ежегодная</option>
+                        <option value="quarterly">Ежеквартальная</option>
+                        <option value="ongoing">Постоянно действующая</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <span class="range-label">Общая сумма финансирования, руб.</span>
+                    <div class="range-inputs">
+                        <label class="visually-hidden" for="funding-from">Сумма от</label>
+                        <input type="number" id="funding-from" name="funding_from" placeholder="От" step="1000" min="0">
+                        <span aria-hidden="true">—</span>
+                        <label class="visually-hidden" for="funding-to">Сумма до</label>
+                        <input type="number" id="funding-to" name="funding_to" placeholder="До" step="1000" min="0">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="organizer-input">Организатор</label>
+                    <input type="text" id="organizer-input" name="organizer" placeholder="Введите название организации">
+                </div>
+
+                <details class="filter-group additional-filters">
+                    <summary>Показать дополнительные фильтры</summary>
+                    <div class="additional-filters-content">
+                        <fieldset>
+                            <legend>Отрасль науки</legend>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="science_field" value="physics"> Физика</label>
+                                <label><input type="checkbox" name="science_field" value="chemistry"> Химия</label>
+                                <label><input type="checkbox" name="science_field" value="biology"> Биология</label>
+                                <label><input type="checkbox" name="science_field" value="math"> Математика</label>
+                                <label><input type="checkbox" name="science_field" value="it"> Информационные технологии</label>
+                            </div>
+                        </fieldset>
+                        <div class="filter-group">
+                            <label for="age-limit">Возрастное ограничение</label>
+                            <select id="age-limit" name="age_limit">
+                                <option value="">Без ограничений</option>
+                                <option value="35">До 35 лет</option>
+                                <option value="40">До 40 лет</option>
+                                <option value="45">До 45 лет</option>
+                            </select>
+                        </div>
+                    </div>
+                </details>
+
+                <div class="filter-actions">
+                    <button type="submit" class="btn-primary">Сформировать</button>
+                    <button type="reset" class="btn-secondary">Сбросить</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -716,6 +778,10 @@
 <script>
     const form = document.getElementById('grant-filters-form');
     const resultsCountSpan = document.getElementById('results-count');
+    const searchInput = document.getElementById('grant-search-input');
+    const searchButton = document.getElementById('search-button');
+    const gotoFiltersButton = document.getElementById('goto-filters-button');
+    const filtersSection = document.getElementById('filters-section');
     
     function announceToScreenReader(message) {
         const liveRegion = document.getElementById('aria-live-region');
@@ -731,6 +797,50 @@
         announceToScreenReader(`Найдено ${cards.length} мер поддержки`);
     }
     
+    // Функция поиска по названию
+    function searchGrants() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const cards = document.querySelectorAll('.grant-card');
+        let visibleCount = 0;
+        
+        if (searchTerm === '') {
+            cards.forEach(card => card.style.display = '');
+            visibleCount = cards.length;
+            announceToScreenReader(`Поиск по названию: показаны все ${cards.length} грантов`);
+        } else {
+            cards.forEach(card => {
+                const title = card.querySelector('h3 a, h3')?.innerText.toLowerCase() || '';
+                if (title.includes(searchTerm)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            announceToScreenReader(`Поиск по названию: найдено ${visibleCount} грантов, содержащих "${searchInput.value}"`);
+        }
+        
+        resultsCountSpan.textContent = visibleCount;
+    }
+    
+    // Переход к фильтрам и установка фокуса на первый интерактивный элемент
+    function goToFilters() {
+        if (!filtersSection) return;
+        
+        // Первый интерактивный элемент в фильтрах
+        const firstFocusable = filtersSection.querySelector(
+            'button, a, input:not([type="hidden"]), select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        
+        if (firstFocusable) {
+            firstFocusable.focus();
+            announceToScreenReader('Фильтры поиска. Первый элемент формы.');
+        } else {
+            filtersSection.focus();
+            announceToScreenReader('Фильтры поиска');
+        }
+    }
+    
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         updateResults();
@@ -742,6 +852,13 @@
             announceToScreenReader('Все фильтры сброшены');
         }, 50);
     });
+    
+    searchButton.addEventListener('click', searchGrants);
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') searchGrants();
+    });
+    
+    gotoFiltersButton.addEventListener('click', goToFilters);
     
     document.getElementById('main-content')?.focus();
 </script>
