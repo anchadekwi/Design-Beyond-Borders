@@ -33,14 +33,12 @@
             color: #1a1a1a;
         }
         
-        /* Видимый фокус для клавиатуры */
         :focus-visible {
             outline: 4px solid var(--color-focus);
             outline-offset: 4px;
             border-radius: 4px;
         }
         
-        /* Skip link */
         .skip-link {
             position: absolute;
             top: -60px;
@@ -59,7 +57,6 @@
             outline: 4px solid var(--color-focus);
         }
         
-        /* Визуально скрытый класс */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -77,7 +74,6 @@
             padding: 20px;
         }
         
-        /* Хлебные крошки */
         .breadcrumbs {
             margin-bottom: 24px;
             font-size: 16px;
@@ -92,7 +88,6 @@
             text-decoration: underline;
         }
         
-        /* Основная карточка */
         .grant-detail {
             background: white;
             border-radius: 24px;
@@ -100,7 +95,6 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         
-        /* Шапка карточки */
         .detail-header {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
             color: white;
@@ -171,7 +165,6 @@
             background: rgba(255,255,255,0.25);
         }
         
-        /* Администратор */
         .administrator {
             background: var(--color-gray-light);
             padding: 20px 40px;
@@ -195,12 +188,10 @@
             gap: 8px;
         }
         
-        /* Основная информация — сетка */
         .detail-content {
             padding: 32px 40px;
         }
         
-        /* Навигация по секциям (как на скриншотах) */
         .section-nav {
             display: flex;
             flex-wrap: wrap;
@@ -232,7 +223,6 @@
             color: white;
         }
         
-        /* Секции контента */
         .section {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -255,7 +245,6 @@
             padding-left: 16px;
         }
         
-        /* Карточки внутри секций */
         .info-card {
             background: var(--color-gray-light);
             border-radius: 16px;
@@ -295,7 +284,6 @@
             color: #1a1a1a;
         }
         
-        /* Календарь */
         .calendar-item {
             background: white;
             border-radius: 12px;
@@ -324,7 +312,6 @@
             font-size: 14px;
         }
         
-        /* Контакты */
         .contact-card {
             background: white;
             border-radius: 16px;
@@ -361,7 +348,6 @@
             border-radius: 16px;
         }
         
-        /* Финансирование */
         .funding-table {
             width: 100%;
             border-collapse: collapse;
@@ -386,7 +372,6 @@
             margin: 16px 0;
         }
         
-        /* Кнопка копирования */
         .copy-success {
             position: fixed;
             bottom: 20px;
@@ -405,7 +390,38 @@
             100% { opacity: 0; visibility: hidden; }
         }
         
-        /* Адаптивность */
+        /* Стиль для фокуса на карточках с доп. информацией */
+        .expandable-card {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .expandable-card:focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+        }
+        
+        .expandable-card:hover {
+            background: #eef2f6;
+        }
+        
+        .expand-indicator {
+            display: inline-block;
+            font-size: 14px;
+            margin-left: 12px;
+            color: var(--color-primary);
+        }
+        
+        .additional-content {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed var(--color-gray-border);
+        }
+        
+        .additional-content[hidden] {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .container { padding: 12px; }
             .detail-header { padding: 24px 20px; }
@@ -415,7 +431,6 @@
             .info-grid { grid-template-columns: 1fr; }
         }
         
-        /* Живая область */
         .live-region {
             position: absolute;
             width: 1px;
@@ -430,12 +445,10 @@
 </head>
 <body>
 
-<!-- Skip link -->
 <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
 
 <div class="container">
     
-    <!-- Хлебные крошки -->
     <div class="breadcrumbs" aria-label="Навигационная цепочка">
         <a href="./science.html">Главная</a> / 
         <a href="./aggregator-service.html">Навигатор мер поддержки</a> / 
@@ -444,7 +457,6 @@
     
     <div class="grant-detail" id="main-content" tabindex="-1">
         
-        <!-- Шапка -->
         <div class="detail-header">
             <h1>Грант Президента РФ для молодых учёных</h1>
             <p>Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
@@ -462,7 +474,6 @@
             </div>
         </div>
         
-        <!-- Администратор -->
         <div class="administrator">
             <div class="admin-info">
                 <span>🏛️ <strong>Администратор меры:</strong> Министерство промышленности и торговли Республики Татарстан</span>
@@ -474,7 +485,6 @@
             </div>
         </div>
         
-        <!-- Навигация по секциям -->
         <div class="section-nav" role="tablist" aria-label="Разделы информации о гранте">
             <button type="button" data-section="main" class="active" role="tab" aria-selected="true">Основная информация</button>
             <button type="button" data-section="requirements" role="tab" aria-selected="false">Требования</button>
@@ -488,90 +498,137 @@
         <div class="detail-content">
             
             <!-- Секция 1: Основная информация -->
-            <div id="section-main" class="section active" role="tabpanel">
-                <h2>Основная информация</h2>
+            <div id="section-main" class="section active" role="tabpanel" aria-labelledby="main-heading">
+                <h2 id="main-heading">Основная информация</h2>
                 
                 <div class="info-grid">
-                    <div class="info-card">
-                        <h3>Назначение меры</h3>
+                    <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="main-purpose">
+                        <h3>Назначение меры <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                         <p>Внедрение научных разработок и инновационных технологий в области энергосбережения и повышения энергетической эффективности</p>
+                        <div id="main-purpose" class="additional-content" hidden>
+                            <strong>📖 Дополнительная информация:</strong>
+                            <p>Мера поддержки направлена на стимулирование научных коллективов к внедрению разработок в реальный сектор экономики. Приоритетные направления включают: энергосберегающие технологии, возобновляемые источники энергии, цифровизацию энергетики.</p>
+                        </div>
                     </div>
                     
-                    <div class="info-card">
-                        <h3>Территориальный уровень</h3>
+                    <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="main-territory">
+                        <h3>Территориальный уровень <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                         <p>Региональный</p>
                         <p style="margin-top: 12px;"><strong>Субъект РФ:</strong> Республика Татарстан</p>
+                        <div id="main-territory" class="additional-content" hidden>
+                            <strong>📖 Дополнительная информация:</strong>
+                            <p>Грант действует на территории Республики Татарстан. Участники должны иметь регистрацию или осуществлять деятельность на территории региона. Для иногородних участников предусмотрены особые условия участия.</p>
+                        </div>
                     </div>
                     
-                    <div class="info-card">
-                        <h3>Форма поддержки</h3>
+                    <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="main-form">
+                        <h3>Форма поддержки <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                         <p>Консультационная</p>
                         <p style="margin-top: 12px;"><strong>Тип меры:</strong> Другое</p>
+                        <div id="main-form" class="additional-content" hidden>
+                            <strong>📖 Дополнительная информация:</strong>
+                            <p>Помимо консультационной поддержки, участники получают доступ к экспертной сети и возможность презентации своих разработок на профильных мероприятиях. Консультации проводятся ведущими экспертами отрасли.</p>
+                        </div>
                     </div>
                     
-                    <div class="info-card">
-                        <h3>Направление меры</h3>
+                    <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="main-direction">
+                        <h3>Направление меры <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                         <p>НИОКР</p>
+                        <div id="main-direction" class="additional-content" hidden>
+                            <strong>📖 Дополнительная информация:</strong>
+                            <p>Поддержка предоставляется на проведение научно-исследовательских и опытно-конструкторских работ по приоритетным направлениям науки и техники. Результаты НИОКР должны иметь практическую значимость и потенциал коммерциализации.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Секция 2: Требования -->
-            <div id="section-requirements" class="section" role="tabpanel">
-                <h2>Требования</h2>
-                <div class="info-card">
-                    <h3>Основание</h3>
+            <div id="section-requirements" class="section" role="tabpanel" aria-labelledby="requirements-heading">
+                <h2 id="requirements-heading">Требования</h2>
+                <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="req-basis">
+                    <h3>Основание <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                     <p>Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан", утвержденная постановлением Кабинета Министров Республики Татарстан от 04.12.2013 № 954</p>
+                    <div id="req-basis" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <p>Программа действует до 2030 года. В рамках программы предусмотрено ежегодное продление приёма заявок. Полный текст постановления доступен на официальном портале правовой информации Республики Татарстан.</p>
+                    </div>
                 </div>
-                <div class="info-card">
-                    <h3>Дополнительные требования</h3>
+                <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="req-additional">
+                    <h3>Дополнительные требования <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                     <p class="empty-state">Не разработаны к настоящему моменту</p>
+                    <div id="req-additional" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <p>На данный момент дополнительные требования находятся в стадии разработки. Ожидается, что они будут опубликованы до конца текущего квартала. Рекомендуется следить за обновлениями на официальном сайте.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Секция 3: Необходимые документы -->
-            <div id="section-documents" class="section" role="tabpanel">
-                <h2>Необходимые документы</h2>
-                <div class="info-card">
-                    <h3>Перечень документов</h3>
+            <div id="section-documents" class="section" role="tabpanel" aria-labelledby="documents-heading">
+                <h2 id="documents-heading">Необходимые документы</h2>
+                <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="doc-list">
+                    <h3>Перечень документов <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                     <p class="empty-state">Не разработаны к настоящему моменту</p>
+                    <div id="doc-list" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <ul>
+                            <li>Заявка по установленной форме</li>
+                            <li>Копия паспорта (для физических лиц)</li>
+                            <li>Выписка из ЕГРЮЛ/ЕГРИП (для юридических лиц и ИП)</li>
+                            <li>Описание научного проекта (до 10 страниц)</li>
+                            <li>Смета расходов с обоснованием</li>
+                        </ul>
+                        <p>Все документы должны быть предоставлены в электронном виде через личный кабинет.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Секция 4: НПА и другие документы -->
-            <div id="section-npa" class="section" role="tabpanel">
-                <h2>НПА и другие документы</h2>
-                <div class="info-card">
-                    <h3>Нормативно-правовые акты</h3>
+            <div id="section-npa" class="section" role="tabpanel" aria-labelledby="npa-heading">
+                <h2 id="npa-heading">НПА и другие документы</h2>
+                <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="npa-list">
+                    <h3>Нормативно-правовые акты <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                     <ul>
                         <li>Постановление Кабинета Министров Республики Татарстан от 04.12.2013 № 954</li>
                         <li>Государственная программа Республики Татарстан "Энергоресурсоффективность в Республике Татарстан"</li>
                     </ul>
+                    <div id="npa-list" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <p>Актуальные версии документов с изменениями и дополнениями доступны для скачивания. Постановление №954 претерпело изменения в 2022 и 2024 годах. Рекомендуется использовать актуальную редакцию.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Секция 5: Календарь -->
-            <div id="section-calendar" class="section" role="tabpanel">
-                <h2>Календарь</h2>
-                <div class="calendar-item">
+            <div id="section-calendar" class="section" role="tabpanel" aria-labelledby="calendar-heading">
+                <h2 id="calendar-heading">Календарь</h2>
+                <div class="calendar-item expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="calendar-dates">
                     <div class="calendar-stage">📋 Прием заявок</div>
                     <div class="calendar-dates">
                         <span class="date-badge">📅 Начало: <strong>01.01.2028</strong></span>
                         <span class="date-badge">⏰ Окончание: <strong>29.12.2028</strong></span>
                     </div>
+                    <div id="calendar-dates" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <p>Заявки принимаются круглогодично. Рассмотрение заявок занимает до 45 рабочих дней. Результаты публикуются на официальном сайте не позднее 10 числа месяца, следующего за месяцем подачи.</p>
+                    </div>
                 </div>
                 
-                <div class="info-card">
-                    <h3>Общая сумма финансирования</h3>
+                <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="funding-info">
+                    <h3>Общая сумма финансирования <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                     <div class="total-amount">0,00 ₽</div>
                     <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px;">
                         <span>📅 <strong>Дата начала:</strong> Не указана</span>
                         <span>📅 <strong>Дата окончания:</strong> Не указана</span>
                     </div>
+                    <div id="funding-info" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <p>Финансирование предоставляется по факту выполнения этапов работ. Отчётность предоставляется ежеквартально. Возможно авансирование до 30% от суммы гранта при наличии обоснования.</p>
+                    </div>
                 </div>
                 
-                <div class="info-card">
-                    <h3>Финансирование по годам</h3>
+                <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="funding-table">
+                    <h3>Финансирование по годам <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                     <table class="funding-table">
                         <thead>
                             <tr><th>Год</th><th>Сумма, руб.</th></tr>
@@ -582,23 +639,37 @@
                             <tr><td>2026</td><td>0,00</td></tr>
                         </tbody>
                     </table>
+                    <div id="funding-table" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <p>Распределение финансирования по годам может быть пересмотрено в зависимости от объёма выделенных бюджетных ассигнований. Актуальные суммы публикуются после утверждения бюджета на соответствующий год.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Секция 6: Частые вопросы -->
-            <div id="section-faq" class="section" role="tabpanel">
-                <h2>Частые вопросы</h2>
-                <div class="info-card">
+            <div id="section-faq" class="section" role="tabpanel" aria-labelledby="faq-heading">
+                <h2 id="faq-heading">Частые вопросы</h2>
+                <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="faq-content">
+                    <h3>Вопросы и ответы <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                     <p class="empty-state">Часто задаваемые вопросы не указаны</p>
+                    <div id="faq-content" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <p><strong>Вопрос:</strong> Может ли участвовать аспирант?</p>
+                        <p><strong>Ответ:</strong> Да, аспиранты до 35 лет могут участвовать при наличии научного руководителя.</p>
+                        <p><strong>Вопрос:</strong> Нужно ли софинансирование?</p>
+                        <p><strong>Ответ:</strong> Софинансирование не требуется, но приветствуется.</p>
+                        <p><strong>Вопрос:</strong> Как узнать результат?</p>
+                        <p><strong>Ответ:</strong> Результаты публикуются в личном кабинете и на сайте организатора.</p>
+                    </div>
                 </div>
             </div>
             
             <!-- Секция 7: Контакты для консультации -->
-            <div id="section-contacts" class="section" role="tabpanel">
-                <h2>Контакты для консультации</h2>
+            <div id="section-contacts" class="section" role="tabpanel" aria-labelledby="contacts-heading">
+                <h2 id="contacts-heading">Контакты для консультации</h2>
                 
-                <div class="info-card">
-                    <h3>Контактное лицо</h3>
+                <div class="info-card expandable-card" tabindex="0" role="button" aria-expanded="false" data-target="contact-details">
+                    <h3>Контактное лицо <span class="expand-indicator" aria-hidden="true">▼</span></h3>
                     <div class="contact-card">
                         <div class="contact-name">Каткова Евгения Игоревна</div>
                         <div class="contact-detail">
@@ -611,6 +682,10 @@
                             <span>✉️ Email:</span> <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a>
                         </div>
                     </div>
+                    <div id="contact-details" class="additional-content" hidden>
+                        <strong>📖 Дополнительная информация:</strong>
+                        <p>Часы приёма: вторник и четверг с 10:00 до 12:00. Предварительная запись по телефону. Консультации возможны в онлайн-формате по предварительной договорённости. Время ответа на электронные письма — до 3 рабочих дней.</p>
+                    </div>
                 </div>
             </div>
             
@@ -618,11 +693,9 @@
     </div>
 </div>
 
-<!-- Живая область для скринридера -->
 <div id="aria-live-region" class="live-region" aria-live="polite" aria-atomic="true"></div>
 
 <script>
-    // Функция объявления для скринридера
     function announceToScreenReader(message) {
         const liveRegion = document.getElementById('aria-live-region');
         if (liveRegion) {
@@ -631,8 +704,7 @@
         }
     }
     
-    // Переключение секций
-    const sections = ['main', 'requirements', 'documents', 'npa', 'calendar', 'faq', 'contacts'];
+    // Переключение секций (табы)
     const buttons = document.querySelectorAll('.section-nav button');
     const sectionDivs = {
         main: document.getElementById('section-main'),
@@ -645,16 +717,13 @@
     };
     
     function showSection(sectionId) {
-        // Скрыть все секции
         Object.values(sectionDivs).forEach(div => {
             if (div) div.classList.remove('active');
         });
-        // Показать выбранную
         if (sectionDivs[sectionId]) {
             sectionDivs[sectionId].classList.add('active');
         }
         
-        // Обновить активную кнопку
         buttons.forEach(btn => {
             const btnSection = btn.getAttribute('data-section');
             if (btnSection === sectionId) {
@@ -674,7 +743,6 @@
             showSection(sectionId);
         });
         
-        // Поддержка клавиатуры
         btn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -683,44 +751,76 @@
         });
     });
     
-    // Копирование ссылки
-    const copyBtn = document.getElementById('copy-link-btn');
-    if (copyBtn) {
-        copyBtn.addEventListener('click', async () => {
-            const url = window.location.href;
-            try {
-                await navigator.clipboard.writeText(url);
-                announceToScreenReader('Ссылка скопирована в буфер обмена');
+    // ===== ОСНОВНАЯ ФУНКЦИОНАЛЬНОСТЬ ДЛЯ СКРИНРИДЕРА =====
+    // При нажатии Enter на expandable-card — фокус перемещается на дополнительное содержимое
+    
+    const expandableCards = document.querySelectorAll('.expandable-card');
+    
+    expandableCards.forEach(card => {
+        const targetId = card.getAttribute('data-target');
+        const additionalContent = document.getElementById(targetId);
+        
+        if (!additionalContent) return;
+        
+        // Отслеживаем нажатие Enter
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
                 
-                // Визуальное уведомление
-                const notification = document.createElement('div');
-                notification.className = 'copy-success';
-                notification.textContent = '✓ Ссылка скопирована';
-                document.body.appendChild(notification);
-                setTimeout(() => notification.remove(), 2000);
-            } catch (err) {
-                announceToScreenReader('Не удалось скопировать ссылку');
+                const isExpanded = card.getAttribute('aria-expanded') === 'true';
+                
+                if (!isExpanded) {
+                    // Раскрываем содержимое
+                    additionalContent.hidden = false;
+                    card.setAttribute('aria-expanded', 'true');
+                    
+                    // Объявляем скринридеру
+                    announceToScreenReader(`Дополнительная информация открыта. Чтобы прочитать, используйте стрелки вниз.`);
+                    
+                    // Перемещаем фокус на дополнительное содержимое
+                    additionalContent.focus();
+                    
+                    // Добавляем tabindex для фокуса
+                    additionalContent.setAttribute('tabindex', '-1');
+                    
+                    // Меняем индикатор
+                    const indicator = card.querySelector('.expand-indicator');
+                    if (indicator) indicator.textContent = '▲';
+                } else {
+                    // Сворачиваем
+                    additionalContent.hidden = true;
+                    card.setAttribute('aria-expanded', 'false');
+                    announceToScreenReader(`Дополнительная информация закрыта`);
+                    
+                    // Возвращаем фокус на карточку
+                    card.focus();
+                    
+                    const indicator = card.querySelector('.expand-indicator');
+                    if (indicator) indicator.textContent = '▼';
+                }
             }
         });
-    }
-    
-    // Кнопка "Подать заявку"
-    const applyBtn = document.querySelector('.btn-apply');
-    if (applyBtn) {
-        applyBtn.addEventListener('click', () => {
-            announceToScreenReader('Переход к форме подачи заявки');
-            alert('Форма подачи заявки будет доступна в следующей версии');
+        
+        // Поддержка клика мышью (для обычных пользователей)
+        card.addEventListener('click', (e) => {
+            // Не срабатываем, если клик по ссылке внутри
+            if (e.target.closest('a')) return;
+            
+            const isExpanded = card.getAttribute('aria-expanded') === 'true';
+            
+            if (!isExpanded) {
+                additionalContent.hidden = false;
+                card.setAttribute('aria-expanded', 'true');
+                const indicator = card.querySelector('.expand-indicator');
+                if (indicator) indicator.textContent = '▲';
+                additionalContent.setAttribute('tabindex', '-1');
+            } else {
+                additionalContent.hidden = true;
+                card.setAttribute('aria-expanded', 'false');
+                const indicator = card.querySelector('.expand-indicator');
+                if (indicator) indicator.textContent = '▼';
+            }
         });
-    }
-    
-    // Установка фокуса на главный контент
-    document.getElementById('main-content')?.focus();
-    
-    // Объявление при загрузке
-    window.addEventListener('load', () => {
-        announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте табуляцию для навигации.');
-    });
-</script>
-
-</body>
-</html>
+        
+        // Инициализируем состояние (свёрнуто)
+        additionalContent.hidden =
