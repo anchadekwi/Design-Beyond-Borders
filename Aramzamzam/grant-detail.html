@@ -18,8 +18,6 @@
             --color-white: #ffffff;
             --color-focus: #ff8c00;
             --color-urgent: #c47a00;
-            --color-neutral: #4a5568;
-            --color-neutral-hover: #2d3748;
             
             --font-base: 20px;
             --font-small: 16px;
@@ -148,14 +146,15 @@
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            transition: background 0.2s;
-            border: none;
-            background: var(--color-neutral);
+            transition: background 0.2s, border-color 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: #052c5e;
             color: white;
         }
         
         .btn-apply:hover {
-            background: var(--color-neutral-hover);
+            background: #031f45;
+            border-color: rgba(255, 255, 255, 0.4);
         }
         
         .btn-copy {
@@ -188,13 +187,14 @@
         .admin-item {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--spacing-xs);
+            gap: 4px;
+            align-items: baseline;
         }
         
         .admin-label {
             font-weight: 700;
             color: var(--color-text);
-            min-width: 200px;
+            margin-right: 8px;
         }
         
         .admin-value {
@@ -205,7 +205,6 @@
             padding: var(--spacing-xl);
         }
         
-        /* ===== НАВИГАЦИОННЫЕ ВКЛАДКИ — УЛУЧШЕННЫЙ ДИЗАЙН ===== */
         .section-nav {
             display: flex;
             flex-wrap: wrap;
@@ -394,7 +393,7 @@
             .section-nav button { padding: 8px 16px; font-size: var(--font-small); }
             .info-grid { grid-template-columns: 1fr; }
             .detail-header h1 { font-size: 32px; }
-            .admin-label { min-width: 150px; }
+            .admin-label { margin-right: 4px; }
         }
     </style>
 </head>
@@ -414,7 +413,7 @@
         
         <div class="detail-header">
             <h1>Грант Президента РФ для молодых учёных</h1>
-            <p>Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
+            <p aria-hidden="true">Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
             
             <div class="detail-actions">
                 <button class="btn-apply" id="apply-btn">Подать заявку</button>
@@ -559,7 +558,6 @@
         }
     }
     
-    // Переключение вкладок
     const navButtons = document.querySelectorAll('.section-nav button');
     const sections = {
         main: document.getElementById('section-main'),
@@ -607,7 +605,6 @@
         });
     });
     
-    // Копирование ссылки
     const copyBtn = document.getElementById('copy-link-btn');
     if (copyBtn) {
         copyBtn.addEventListener('click', async () => {
@@ -625,7 +622,6 @@
         });
     }
     
-    // Кнопка подачи заявки
     const applyBtn = document.getElementById('apply-btn');
     if (applyBtn) {
         applyBtn.addEventListener('click', () => {
