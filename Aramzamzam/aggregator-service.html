@@ -3,23 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Навигатор мер поддержки — доступная версия для поиска грантов</title>
-    <meta name="description" content="Доступный поиск грантов, стипендий и мер государственной поддержки для учёных. Полная поддержка скринридеров, клавиатуры и высокого контраста.">
+    <title>Навигатор мер поддержки — поиск грантов</title>
+    <meta name="description" content="Поиск грантов, стипендий и мер государственной поддержки для учёных">
     
     <style>
-        /* ===== БАЗОВЫЕ СТИЛИ ДОСТУПНОСТИ ===== */
-        
-        /* 1. Увеличенный стандартный размер шрифта */
+        /* ===== БАЗОВЫЕ СТИЛИ ===== */
         :root {
             --font-base: 18px;
-            --font-large: 24px;
-            --font-small: 16px;
             --color-primary: #0067ad;
             --color-primary-dark: #004b7c;
             --color-focus: #ff8c00;
             --color-error: #dc2626;
             --color-success: #2e7d32;
-            --spacing-unit: 8px;
         }
         
         * {
@@ -27,7 +22,7 @@
         }
         
         body {
-            font-family: 'Nunito', 'Segoe UI', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Nunito', 'Segoe UI', 'Roboto', sans-serif;
             font-size: var(--font-base);
             line-height: 1.6;
             margin: 0;
@@ -36,31 +31,20 @@
             color: #1a1a1a;
         }
         
-        /* 2. Улучшенный видимый фокус для клавиатуры (WCAG 2.4.7) */
+        /* Видимый фокус для клавиатуры */
         :focus-visible {
             outline: 4px solid var(--color-focus);
             outline-offset: 4px;
             border-radius: 4px;
-            box-shadow: 0 0 0 2px white, 0 0 0 6px var(--color-focus);
         }
         
-        /* 3. Для мыши фокус более мягкий, но видимый */
-        :focus:not(:focus-visible) {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
-        
-        /* 4. Кнопки и интерактивные элементы — увеличенная область клика */
-        button,
-        a,
-        input,
-        select,
-        summary {
+        /* Кнопки и интерактивные элементы — увеличенная область клика */
+        button, a, input, select, summary {
             min-height: 48px;
             min-width: 48px;
         }
         
-        /* 5. Skip link — для клавиатурной навигации */
+        /* Skip link */
         .skip-link {
             position: absolute;
             top: -60px;
@@ -72,8 +56,6 @@
             border-radius: 8px;
             z-index: 1000;
             font-weight: bold;
-            font-size: 18px;
-            transition: top 0.2s;
         }
         
         .skip-link:focus {
@@ -81,7 +63,7 @@
             outline: 4px solid var(--color-focus);
         }
         
-        /* 6. Визуально скрытый класс для скринридеров */
+        /* Визуально скрытый класс для скринридеров */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -91,17 +73,14 @@
             overflow: hidden;
             clip: rect(0, 0, 0, 0);
             border: 0;
-            white-space: nowrap;
         }
         
-        /* 7. Контейнер с ограничением ширины для читаемости */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
         
-        /* 8. Шапка с высокой контрастностью */
         .header {
             background: white;
             border-radius: 20px;
@@ -115,16 +94,13 @@
             margin: 0 0 12px 0;
             font-size: 32px;
             color: var(--color-primary);
-            line-height: 1.3;
         }
         
         .header p {
             margin: 0;
             color: #2c3e50;
-            font-size: var(--font-base);
         }
         
-        /* 9. Хлебные крошки */
         .breadcrumbs {
             margin-bottom: 24px;
             font-size: 16px;
@@ -133,22 +109,14 @@
         .breadcrumbs a {
             color: var(--color-primary);
             text-decoration: none;
-            padding: 8px 4px;
         }
         
-        .breadcrumbs a:hover,
-        .breadcrumbs a:focus {
-            text-decoration: underline;
-        }
-        
-        /* 10. Основная сетка — адаптивная */
         .main-layout {
             display: flex;
             gap: 28px;
             flex-wrap: wrap;
         }
         
-        /* 11. Блок фильтров — улучшенная контрастность */
         .filters-section {
             flex: 0 0 360px;
             background: white;
@@ -163,10 +131,8 @@
             margin: 0 0 24px 0;
             padding-bottom: 16px;
             border-bottom: 3px solid var(--color-primary);
-            color: #1a1a1a;
         }
         
-        /* 12. Группы фильтров */
         .filter-group {
             margin-bottom: 28px;
         }
@@ -183,7 +149,6 @@
             padding: 0 16px;
             width: auto;
             font-size: 18px;
-            color: #1a1a1a;
             background: white;
         }
         
@@ -191,78 +156,50 @@
             display: block;
             font-weight: 600;
             margin-bottom: 10px;
-            font-size: 16px;
-            color: #1a1a1a;
         }
         
-        /* 13. Чекбоксы и радио — увеличенные */
-        .checkbox-group,
-        .radio-group {
+        .checkbox-group, .radio-group {
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
             margin-top: 12px;
         }
         
-        .checkbox-group label,
-        .radio-group label {
+        .checkbox-group label, .radio-group label {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-weight: normal;
-            margin-bottom: 0;
             cursor: pointer;
             padding: 8px 12px;
             background: #f8fafc;
             border-radius: 12px;
-            transition: background 0.2s;
         }
         
-        .checkbox-group label:hover,
-        .radio-group label:hover {
-            background: #e6f4ff;
-        }
-        
-        input[type="checkbox"],
-        input[type="radio"] {
+        input[type="checkbox"], input[type="radio"] {
             width: 24px;
             height: 24px;
             cursor: pointer;
             accent-color: var(--color-primary);
         }
         
-        /* 14. Поля ввода — увеличенные */
-        select,
-        input[type="text"],
-        input[type="number"],
-        input[type="date"],
-        input[type="search"] {
+        select, input[type="text"], input[type="number"], input[type="date"] {
             width: 100%;
             padding: 14px 16px;
             border: 2px solid #cbd5e1;
             border-radius: 12px;
             font-size: 16px;
             font-family: inherit;
-            transition: border-color 0.2s;
             background: white;
         }
         
-        select:hover,
-        input:hover {
-            border-color: var(--color-primary);
-        }
-        
-        /* 15. Диапазоны дат и сумм */
-        .date-inputs,
-        .range-inputs {
+        .date-inputs, .range-inputs {
             display: flex;
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
         }
         
-        .date-inputs input,
-        .range-inputs input {
+        .date-inputs input, .range-inputs input {
             flex: 1;
             min-width: 120px;
         }
@@ -271,11 +208,8 @@
             display: block;
             font-weight: 600;
             margin-bottom: 10px;
-            font-size: 16px;
-            color: #1a1a1a;
         }
         
-        /* 16. Дополнительные фильтры (сворачиваемые) */
         .additional-filters {
             margin: 20px 0;
             border: none;
@@ -284,13 +218,11 @@
         
         .additional-filters summary {
             cursor: pointer;
-            padding: 14px 0;
+            padding: 12px 16px;
             font-weight: 700;
-            font-size: 16px;
             color: var(--color-primary);
             list-style: none;
             background: #f0f4f8;
-            padding: 12px 16px;
             border-radius: 12px;
         }
         
@@ -300,7 +232,6 @@
         
         .additional-filters summary::before {
             content: '▶ ';
-            font-size: 14px;
             display: inline-block;
             transition: transform 0.2s;
             margin-right: 8px;
@@ -310,11 +241,6 @@
             content: '▼ ';
         }
         
-        .additional-filters summary:focus-visible {
-            outline: 4px solid var(--color-focus);
-            border-radius: 12px;
-        }
-        
         .additional-filters-content {
             margin-top: 20px;
             padding: 20px;
@@ -322,7 +248,6 @@
             border-radius: 16px;
         }
         
-        /* 17. Кнопки — крупные, контрастные */
         .filter-actions {
             display: flex;
             gap: 16px;
@@ -332,15 +257,13 @@
             flex-wrap: wrap;
         }
         
-        .btn-primary,
-        .btn-secondary {
+        .btn-primary, .btn-secondary {
             padding: 14px 28px;
             border: none;
             border-radius: 12px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s;
             flex: 1;
             min-width: 160px;
         }
@@ -350,10 +273,8 @@
             color: white;
         }
         
-        .btn-primary:hover,
-        .btn-primary:focus {
+        .btn-primary:hover {
             background: var(--color-primary-dark);
-            transform: scale(1.02);
         }
         
         .btn-secondary {
@@ -361,13 +282,10 @@
             color: #1a1a1a;
         }
         
-        .btn-secondary:hover,
-        .btn-secondary:focus {
+        .btn-secondary:hover {
             background: #cbd5e1;
-            transform: scale(1.02);
         }
         
-        /* 18. Результаты поиска */
         .results-section {
             flex: 1;
             min-width: 300px;
@@ -389,13 +307,11 @@
         .results-count {
             font-size: 18px;
             font-weight: 600;
-            color: #2c3e50;
         }
         
         .results-count strong {
             color: var(--color-primary);
             font-size: 28px;
-            margin: 0 4px;
         }
         
         .sort-select {
@@ -405,31 +321,17 @@
             flex-wrap: wrap;
         }
         
-        .sort-select label {
-            margin-bottom: 0;
-            font-weight: 600;
-        }
-        
         .sort-select select {
             width: auto;
-            padding: 12px 16px;
             min-width: 200px;
         }
         
-        /* 19. Карточка гранта — улучшенная доступность */
         .grant-card {
             background: white;
             border-radius: 20px;
             padding: 24px;
             margin-bottom: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: box-shadow 0.2s;
-            border: 1px solid transparent;
-        }
-        
-        .grant-card:focus-within {
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 4px rgba(0,103,173,0.2);
         }
         
         .grant-card h3 {
@@ -440,14 +342,6 @@
         .grant-card h3 a {
             color: var(--color-primary);
             text-decoration: none;
-            padding: 8px 0;
-            display: inline-block;
-        }
-        
-        .grant-card h3 a:hover,
-        .grant-card h3 a:focus {
-            text-decoration: underline;
-            color: var(--color-primary-dark);
         }
         
         .grant-meta {
@@ -460,9 +354,6 @@
         }
         
         .grant-meta span {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             background: #f0f4f8;
             padding: 6px 14px;
             border-radius: 30px;
@@ -471,7 +362,6 @@
         .grant-description {
             color: #2c3e50;
             margin-bottom: 20px;
-            line-height: 1.6;
         }
         
         .grant-deadline {
@@ -479,7 +369,6 @@
             background: #fff3e0;
             padding: 8px 16px;
             border-radius: 30px;
-            font-size: 15px;
             font-weight: 700;
             color: #c47a00;
         }
@@ -515,17 +404,13 @@
             font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s;
         }
         
-        .btn-details:hover,
-        .btn-details:focus {
+        .btn-details:hover {
             background: var(--color-primary);
             color: white;
-            transform: scale(1.02);
         }
         
-        /* 20. Живая область для скринридера */
         .live-region {
             position: absolute;
             width: 1px;
@@ -537,143 +422,28 @@
             border: 0;
         }
         
-        /* 21. Панель управления доступностью */
-        .accessibility-panel {
-            background: #2c3e50;
-            color: white;
-            padding: 16px 24px;
-            border-radius: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 24px;
-        }
-        
-        .accessibility-panel button {
-            background: #4a5568;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.2s;
-            min-height: 48px;
-        }
-        
-        .accessibility-panel button:hover,
-        .accessibility-panel button:focus {
-            background: var(--color-primary);
-            transform: scale(1.02);
-        }
-        
-        /* 22. Высококонтрастный режим (по классу) */
-        body.high-contrast {
-            background: black;
-            color: yellow;
-        }
-        
-        body.high-contrast .grant-card,
-        body.high-contrast .filters-section,
-        body.high-contrast .header,
-        body.high-contrast .results-header,
-        body.high-contrast .additional-filters-content,
-        body.high-contrast .checkbox-group label,
-        body.high-contrast .radio-group label {
-            background: black;
-            border: 2px solid yellow;
-            color: yellow;
-        }
-        
-        body.high-contrast a,
-        body.high-contrast .btn-secondary,
-        body.high-contrast .grant-meta span {
-            color: yellow;
-            background: black;
-        }
-        
-        body.high-contrast .btn-primary {
-            background: yellow;
-            color: black;
-        }
-        
-        /* 23. Режим увеличенного шрифта */
-        body.large-text {
-            --font-base: 24px;
-            --font-large: 30px;
-            --font-small: 20px;
-        }
-        
-        /* 24. Адаптивность для мобильных */
         @media (max-width: 768px) {
-            .container {
-                padding: 12px;
-            }
-            
-            .main-layout {
-                flex-direction: column;
-            }
-            
-            .filters-section {
-                flex: auto;
-            }
-            
-            .header h1 {
-                font-size: 26px;
-            }
-            
-            .grant-card h3 {
-                font-size: 20px;
-            }
-            
-            .btn-primary,
-            .btn-secondary {
-                padding: 12px 20px;
-                font-size: 16px;
-            }
-        }
-        
-        /* 25. Индикатор загрузки */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            font-size: 18px;
-            color: var(--color-primary);
-        }
-        
-        /* 26. Пустое состояние */
-        .empty-results {
-            background: white;
-            border-radius: 20px;
-            padding: 60px 24px;
-            text-align: center;
-            color: #4a5568;
-            font-size: 18px;
+            .container { padding: 12px; }
+            .main-layout { flex-direction: column; }
+            .filters-section { flex: auto; }
+            .header h1 { font-size: 26px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== SKIP LINK для клавиатуры ===== -->
+<!-- Skip link для клавиатуры -->
 <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
 
 <div class="container">
     
-    <!-- ===== ПАНЕЛЬ УПРАВЛЕНИЯ ДОСТУПНОСТЬЮ ===== -->
-    <div class="accessibility-panel" aria-label="Панель настройки доступности">
-        <button id="high-contrast-btn" aria-label="Включить высококонтрастный режим">🌑 Высокий контраст</button>
-        <button id="large-text-btn" aria-label="Увеличить размер шрифта">🔍 Крупный текст</button>
-        <button id="reset-accessibility-btn" aria-label="Сбросить настройки доступности">⟳ Сбросить</button>
-    </div>
-    
-    <!-- ===== ШАПКА ===== -->
+    <!-- Шапка -->
     <div class="header" role="banner">
         <h1>Навигатор мер поддержки</h1>
-        <p>Доступный поиск грантов, стипендий и мер государственной поддержки для научной деятельности</p>
+        <p>Поиск грантов, стипендий и мер государственной поддержки для научной деятельности</p>
     </div>
     
-    <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+    <!-- Хлебные крошки -->
     <div class="breadcrumbs" aria-label="Навигационная цепочка">
         <a href="./science.html">Главная</a> / 
         <span aria-current="page">Навигатор мер поддержки</span>
@@ -681,15 +451,15 @@
     
     <div class="main-layout">
         
-        <!-- ===== БЛОК ФИЛЬТРОВ (ПОЛНОСТЬЮ ДОСТУПНЫЙ) ===== -->
+        <!-- Блок фильтров -->
         <div class="filters-section" aria-labelledby="filters-heading">
             <h2 id="filters-heading">Фильтры поиска</h2>
             
-            <form id="grant-filters-form" aria-label="Форма фильтрации грантов" method="get" action="#">
+            <form id="grant-filters-form" aria-label="Форма фильтрации грантов">
                 
                 <!-- 1. Территориальный уровень -->
-                <fieldset class="filter-group" aria-labelledby="territory-level-legend">
-                    <legend id="territory-level-legend">Территориальный уровень</legend>
+                <fieldset class="filter-group">
+                    <legend>Территориальный уровень</legend>
                     <div class="checkbox-group">
                         <label><input type="checkbox" name="territory" value="federal"> Федеральный</label>
                         <label><input type="checkbox" name="territory" value="regional"> Региональный</label>
@@ -701,20 +471,18 @@
                 <!-- 2. Регионы -->
                 <div class="filter-group">
                     <label for="regions-select">Регионы</label>
-                    <select id="regions-select" name="region" aria-label="Выберите регион">
+                    <select id="regions-select" name="region">
                         <option value="">Все регионы</option>
                         <option value="moscow">Москва</option>
                         <option value="spb">Санкт-Петербург</option>
                         <option value="novosibirsk">Новосибирская область</option>
                         <option value="tatarstan">Республика Татарстан</option>
-                        <option value="tomsk">Томская область</option>
-                        <option value="ekaterinburg">Свердловская область</option>
                     </select>
                 </div>
 
                 <!-- 3. Виды деятельности -->
-                <fieldset class="filter-group" aria-labelledby="activity-type-legend">
-                    <legend id="activity-type-legend">Виды деятельности</legend>
+                <fieldset class="filter-group">
+                    <legend>Виды деятельности</legend>
                     <div class="checkbox-group">
                         <label><input type="checkbox" name="activity" value="research"> Научные исследования</label>
                         <label><input type="checkbox" name="activity" value="development"> Разработки и инновации</label>
@@ -724,8 +492,8 @@
                 </fieldset>
 
                 <!-- 4. Статус участника -->
-                <fieldset class="filter-group" aria-labelledby="participant-status-legend">
-                    <legend id="participant-status-legend">Статус участника</legend>
+                <fieldset class="filter-group">
+                    <legend>Статус участника</legend>
                     <div class="radio-group">
                         <label><input type="radio" name="participant_status" value="all" checked> Все</label>
                         <label><input type="radio" name="participant_status" value="individual"> Физическое лицо</label>
@@ -736,8 +504,8 @@
                 </fieldset>
 
                 <!-- 5. Форма поддержки -->
-                <fieldset class="filter-group" aria-labelledby="support-form-legend">
-                    <legend id="support-form-legend">Форма поддержки</legend>
+                <fieldset class="filter-group">
+                    <legend>Форма поддержки</legend>
                     <div class="checkbox-group">
                         <label><input type="checkbox" name="support_form" value="grant"> Грант</label>
                         <label><input type="checkbox" name="support_form" value="scholarship"> Стипендия</label>
@@ -750,7 +518,7 @@
                 <!-- 6. Тип меры поддержки -->
                 <div class="filter-group">
                     <label for="support-type-select">Тип меры поддержки</label>
-                    <select id="support-type-select" name="support_type" aria-label="Выберите тип меры поддержки">
+                    <select id="support-type-select" name="support_type">
                         <option value="">Любой</option>
                         <option value="federal">Федеральная программа</option>
                         <option value="regional">Региональная программа</option>
@@ -760,26 +528,26 @@
                 </div>
 
                 <!-- 7. Начало приема заявок -->
-                <div class="filter-group" aria-labelledby="start-date-group">
-                    <span id="start-date-group" class="range-label">Начало приема заявок</span>
+                <div class="filter-group">
+                    <span class="range-label">Начало приема заявок</span>
                     <div class="date-inputs">
-                        <label for="start-date-from" class="visually-hidden">Дата начала приема заявок от</label>
-                        <input type="date" id="start-date-from" name="start_date_from" placeholder="дд.мм.гггг">
+                        <label class="visually-hidden" for="start-date-from">Дата начала от</label>
+                        <input type="date" id="start-date-from" name="start_date_from">
                         <span aria-hidden="true">—</span>
-                        <label for="start-date-to" class="visually-hidden">Дата начала приема заявок до</label>
-                        <input type="date" id="start-date-to" name="start_date_to" placeholder="дд.мм.гггг">
+                        <label class="visually-hidden" for="start-date-to">Дата начала до</label>
+                        <input type="date" id="start-date-to" name="start_date_to">
                     </div>
                 </div>
 
                 <!-- 8. Окончание приема заявок -->
-                <div class="filter-group" aria-labelledby="end-date-group">
-                    <span id="end-date-group" class="range-label">Окончание приема заявок</span>
+                <div class="filter-group">
+                    <span class="range-label">Окончание приема заявок</span>
                     <div class="date-inputs">
-                        <label for="end-date-from" class="visually-hidden">Дата окончания приема заявок от</label>
-                        <input type="date" id="end-date-from" name="end_date_from" placeholder="дд.мм.гггг">
+                        <label class="visually-hidden" for="end-date-from">Дата окончания от</label>
+                        <input type="date" id="end-date-from" name="end_date_from">
                         <span aria-hidden="true">—</span>
-                        <label for="end-date-to" class="visually-hidden">Дата окончания приема заявок до</label>
-                        <input type="date" id="end-date-to" name="end_date_to" placeholder="дд.мм.гггг">
+                        <label class="visually-hidden" for="end-date-to">Дата окончания до</label>
+                        <input type="date" id="end-date-to" name="end_date_to">
                     </div>
                 </div>
 
@@ -796,13 +564,13 @@
                 </div>
 
                 <!-- 10. Общая сумма финансирования -->
-                <div class="filter-group" aria-labelledby="funding-range-group">
-                    <span id="funding-range-group" class="range-label">Общая сумма финансирования, руб.</span>
+                <div class="filter-group">
+                    <span class="range-label">Общая сумма финансирования, руб.</span>
                     <div class="range-inputs">
-                        <label for="funding-from" class="visually-hidden">Сумма финансирования от</label>
+                        <label class="visually-hidden" for="funding-from">Сумма от</label>
                         <input type="number" id="funding-from" name="funding_from" placeholder="От" step="1000" min="0">
                         <span aria-hidden="true">—</span>
-                        <label for="funding-to" class="visually-hidden">Сумма финансирования до</label>
+                        <label class="visually-hidden" for="funding-to">Сумма до</label>
                         <input type="number" id="funding-to" name="funding_to" placeholder="До" step="1000" min="0">
                     </div>
                 </div>
@@ -810,13 +578,12 @@
                 <!-- 11. Организатор -->
                 <div class="filter-group">
                     <label for="organizer-input">Организатор</label>
-                    <input type="text" id="organizer-input" name="organizer" placeholder="Введите название организации" aria-label="Поиск по организатору гранта">
+                    <input type="text" id="organizer-input" name="organizer" placeholder="Введите название организации">
                 </div>
 
-                <!-- 12. Дополнительные фильтры (сворачиваемые) -->
+                <!-- 12. Дополнительные фильтры -->
                 <details class="filter-group additional-filters">
-                    <summary aria-label="Показать дополнительные фильтры">Показать дополнительные фильтры</summary>
-                    
+                    <summary>Показать дополнительные фильтры</summary>
                     <div class="additional-filters-content">
                         <fieldset>
                             <legend>Отрасль науки</legend>
@@ -826,21 +593,8 @@
                                 <label><input type="checkbox" name="science_field" value="biology"> Биология</label>
                                 <label><input type="checkbox" name="science_field" value="math"> Математика</label>
                                 <label><input type="checkbox" name="science_field" value="it"> Информационные технологии</label>
-                                <label><input type="checkbox" name="science_field" value="engineering"> Инженерия</label>
-                                <label><input type="checkbox" name="science_field" value="medicine"> Медицина</label>
                             </div>
                         </fieldset>
-
-                        <fieldset>
-                            <legend>Уровень готовности технологии (УГТ)</legend>
-                            <div class="radio-group">
-                                <label><input type="radio" name="trl" value="any" checked> Любой</label>
-                                <label><input type="radio" name="trl" value="1-3"> TRL 1-3 (Фундаментальные исследования)</label>
-                                <label><input type="radio" name="trl" value="4-6"> TRL 4-6 (Прикладные исследования)</label>
-                                <label><input type="radio" name="trl" value="7-9"> TRL 7-9 (Внедрение)</label>
-                            </div>
-                        </fieldset>
-
                         <div class="filter-group">
                             <label for="age-limit">Возрастное ограничение</label>
                             <select id="age-limit" name="age_limit">
@@ -853,15 +607,14 @@
                     </div>
                 </details>
 
-                <!-- Кнопки управления -->
                 <div class="filter-actions">
-                    <button type="submit" class="btn-primary" aria-label="Применить фильтры и найти гранты">Сформировать</button>
-                    <button type="reset" class="btn-secondary" aria-label="Сбросить все выбранные фильтры">Сбросить</button>
+                    <button type="submit" class="btn-primary">Сформировать</button>
+                    <button type="reset" class="btn-secondary">Сбросить</button>
                 </div>
             </form>
         </div>
         
-        <!-- ===== РЕЗУЛЬТАТЫ ПОИСКА ===== -->
+        <!-- Результаты поиска -->
         <div class="results-section" id="main-content" tabindex="-1">
             <div class="results-header">
                 <div class="results-count" aria-live="polite">
@@ -869,7 +622,7 @@
                 </div>
                 <div class="sort-select">
                     <label for="sort-by">Сортировать по:</label>
-                    <select id="sort-by" aria-label="Сортировка результатов">
+                    <select id="sort-by">
                         <option value="deadline">Сроку подачи (ближайшие)</option>
                         <option value="amount">Сумме финансирования</option>
                         <option value="relevance">Релевантности</option>
@@ -878,10 +631,9 @@
             </div>
             
             <div id="results-container">
-                <!-- Карточка 1 -->
                 <article class="grant-card" aria-labelledby="grant-title-1">
                     <h3 id="grant-title-1">
-                        <a href="#" aria-label="Подробнее о гранте: Грант Президента РФ для молодых учёных">Грант Президента РФ для молодых учёных</a>
+                        <a href="#">Грант Президента РФ для молодых учёных</a>
                     </h3>
                     <div class="grant-meta">
                         <span>📍 Федеральный</span>
@@ -889,21 +641,18 @@
                         <span>🎓 Для молодых учёных до 35 лет</span>
                     </div>
                     <div class="grant-description">
-                        Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований.
+                        Государственная поддержка молодых российских учёных — кандидатов и докторов наук.
                     </div>
                     <div class="grant-footer">
-                        <div>
-                            <span class="grant-deadline urgent">⏰ Срок подачи: до 1 июня 2025</span>
-                        </div>
+                        <div><span class="grant-deadline urgent">⏰ Срок подачи: до 1 июня 2025</span></div>
                         <div class="grant-amount">💰 до 500 000 ₽</div>
-                        <button class="btn-details" aria-label="Открыть подробную информацию о гранте: Грант Президента РФ для молодых учёных">Подробнее</button>
+                        <button class="btn-details">Подробнее</button>
                     </div>
                 </article>
                 
-                <!-- Карточка 2 -->
                 <article class="grant-card" aria-labelledby="grant-title-2">
                     <h3 id="grant-title-2">
-                        <a href="#" aria-label="Подробнее о гранте: РНФ — Конкурс научных групп">РНФ — Конкурс научных групп</a>
+                        <a href="#">РНФ — Конкурс научных групп</a>
                     </h3>
                     <div class="grant-meta">
                         <span>📍 Федеральный</span>
@@ -911,21 +660,18 @@
                         <span>🔬 Для научных коллективов</span>
                     </div>
                     <div class="grant-description">
-                        Поддержка научных групп, выполняющих проекты по приоритетным направлениям фундаментальных и поисковых исследований.
+                        Поддержка научных групп по приоритетным направлениям фундаментальных исследований.
                     </div>
                     <div class="grant-footer">
-                        <div>
-                            <span class="grant-deadline">⏰ Срок подачи: до 15 августа 2025</span>
-                        </div>
+                        <div><span class="grant-deadline">⏰ Срок подачи: до 15 августа 2025</span></div>
                         <div class="grant-amount">💰 до 2 000 000 ₽</div>
-                        <button class="btn-details" aria-label="Открыть подробную информацию о гранте: РНФ — Конкурс научных групп">Подробнее</button>
+                        <button class="btn-details">Подробнее</button>
                     </div>
                 </article>
                 
-                <!-- Карточка 3 -->
                 <article class="grant-card" aria-labelledby="grant-title-3">
                     <h3 id="grant-title-3">
-                        <a href="#" aria-label="Подробнее о стипендии: Стипендия Правительства РФ">Стипендия Правительства РФ</a>
+                        <a href="#">Стипендия Правительства РФ</a>
                     </h3>
                     <div class="grant-meta">
                         <span>📍 Федеральный</span>
@@ -933,21 +679,18 @@
                         <span>📚 Для аспирантов и студентов</span>
                     </div>
                     <div class="grant-description">
-                        Государственная стипендия для аспирантов и студентов образовательных организаций высшего образования, проявивших выдающиеся способности в учёбе и научных исследованиях.
+                        Государственная стипендия для аспирантов и студентов, проявивших выдающиеся способности.
                     </div>
                     <div class="grant-footer">
-                        <div>
-                            <span class="grant-deadline urgent">⏰ Срок подачи: до 31 мая 2025</span>
-                        </div>
+                        <div><span class="grant-deadline urgent">⏰ Срок подачи: до 31 мая 2025</span></div>
                         <div class="grant-amount">💰 до 20 000 ₽/мес</div>
-                        <button class="btn-details" aria-label="Открыть подробную информацию о стипендии Правительства РФ">Подробнее</button>
+                        <button class="btn-details">Подробнее</button>
                     </div>
                 </article>
                 
-                <!-- Карточка 4 -->
                 <article class="grant-card" aria-labelledby="grant-title-4">
                     <h3 id="grant-title-4">
-                        <a href="#" aria-label="Подробнее о гранте: Грант Фонда содействия инновациям «Старт»">Грант Фонда содействия инновациям «Старт»</a>
+                        <a href="#">Грант Фонда содействия инновациям «Старт»</a>
                     </h3>
                     <div class="grant-meta">
                         <span>📍 Федеральный</span>
@@ -955,14 +698,12 @@
                         <span>🚀 Для стартапов</span>
                     </div>
                     <div class="grant-description">
-                        Поддержка инновационных проектов малых предприятий на ранних стадиях развития (создание и развитие производства инновационной продукции).
+                        Поддержка инновационных проектов малых предприятий на ранних стадиях развития.
                     </div>
                     <div class="grant-footer">
-                        <div>
-                            <span class="grant-deadline">⏰ Срок подачи: до 30 сентября 2025</span>
-                        </div>
+                        <div><span class="grant-deadline">⏰ Срок подачи: до 30 сентября 2025</span></div>
                         <div class="grant-amount">💰 до 2 000 000 ₽</div>
-                        <button class="btn-details" aria-label="Открыть подробную информацию о гранте Старт">Подробнее</button>
+                        <button class="btn-details">Подробнее</button>
                     </div>
                 </article>
             </div>
@@ -970,124 +711,39 @@
     </div>
 </div>
 
-<!-- ===== ЖИВАЯ ОБЛАСТЬ ДЛЯ СКРИНРИДЕРА ===== -->
 <div id="aria-live-region" class="live-region" aria-live="polite" aria-atomic="true"></div>
 
-<!-- ===== СКРИПТЫ ДЛЯ ДОСТУПНОСТИ ===== -->
 <script>
-    // ===== ПАНЕЛЬ ДОСТУПНОСТИ =====
-    const body = document.body;
-    const highContrastBtn = document.getElementById('high-contrast-btn');
-    const largeTextBtn = document.getElementById('large-text-btn');
-    const resetBtn = document.getElementById('reset-accessibility-btn');
+    const form = document.getElementById('grant-filters-form');
+    const resultsCountSpan = document.getElementById('results-count');
     
-    // Функция объявления для скринридера
     function announceToScreenReader(message) {
         const liveRegion = document.getElementById('aria-live-region');
         if (liveRegion) {
             liveRegion.textContent = message;
-            setTimeout(() => {
-                liveRegion.textContent = '';
-            }, 3000);
+            setTimeout(() => liveRegion.textContent = '', 3000);
         }
     }
-    
-    // Высокий контраст
-    highContrastBtn.addEventListener('click', () => {
-        body.classList.add('high-contrast');
-        localStorage.setItem('accessibility-mode', 'high-contrast');
-        announceToScreenReader('Включён высококонтрастный режим');
-    });
-    
-    // Крупный текст
-    largeTextBtn.addEventListener('click', () => {
-        body.classList.add('large-text');
-        localStorage.setItem('accessibility-mode', 'large-text');
-        announceToScreenReader('Увеличен размер шрифта');
-    });
-    
-    // Сброс
-    resetBtn.addEventListener('click', () => {
-        body.classList.remove('high-contrast', 'large-text');
-        localStorage.removeItem('accessibility-mode');
-        announceToScreenReader('Настройки доступности сброшены');
-    });
-    
-    // Восстановление сохранённых настроек
-    const savedMode = localStorage.getItem('accessibility-mode');
-    if (savedMode === 'high-contrast') {
-        body.classList.add('high-contrast');
-    } else if (savedMode === 'large-text') {
-        body.classList.add('large-text');
-    }
-    
-    // ===== ОБРАБОТЧИК ФИЛЬТРОВ =====
-    const form = document.getElementById('grant-filters-form');
-    const resultsCountSpan = document.getElementById('results-count');
     
     function updateResults() {
         const cards = document.querySelectorAll('.grant-card');
-        const count = cards.length;
-        resultsCountSpan.textContent = count;
-        announceToScreenReader(`Найдено ${count} мер поддержки. Результаты поиска обновлены.`);
+        resultsCountSpan.textContent = cards.length;
+        announceToScreenReader(`Найдено ${cards.length} мер поддержки`);
     }
     
-    // Обработчик отправки формы
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         updateResults();
-        
-        // Собираем активные фильтры для объявления
-        const activeFilters = [];
-        const territories = document.querySelectorAll('input[name="territory"]:checked');
-        if (territories.length > 0) {
-            activeFilters.push(`территориальный уровень: ${territories.length} выбрано`);
-        }
-        
-        const supportForms = document.querySelectorAll('input[name="support_form"]:checked');
-        if (supportForms.length > 0) {
-            activeFilters.push(`форма поддержки: ${supportForms.length} выбрано`);
-        }
-        
-        if (activeFilters.length > 0) {
-            announceToScreenReader(`Активные фильтры: ${activeFilters.join(', ')}.`);
-        }
     });
     
-    // Обработчик сброса формы
     form.addEventListener('reset', () => {
         setTimeout(() => {
             updateResults();
-            announceToScreenReader('Все фильтры сброшены. Показаны все меры поддержки.');
+            announceToScreenReader('Все фильтры сброшены');
         }, 50);
     });
     
-    // Сортировка
-    const sortSelect = document.getElementById('sort-by');
-    if (sortSelect) {
-        sortSelect.addEventListener('change', () => {
-            announceToScreenReader(`Сортировка изменена на: ${sortSelect.options[sortSelect.selectedIndex].text}`);
-        });
-    }
-    
-    // При загрузке страницы — фокус на главный контент
     document.getElementById('main-content')?.focus();
-    
-    // ===== ПОДДЕРЖКА КЛАВИАТУРЫ ДЛЯ SUMMARY =====
-    const summaries = document.querySelectorAll('summary');
-    summaries.forEach(summary => {
-        summary.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                summary.click();
-            }
-        });
-    });
-    
-    // ===== АВТОМАТИЧЕСКОЕ ОБЪЯВЛЕНИЕ ПРИ ЗАГРУЗКЕ =====
-    window.addEventListener('load', () => {
-        announceToScreenReader('Страница навигатора мер поддержки загружена. Доступны фильтры поиска грантов и мер поддержки.');
-    });
 </script>
 
 </body>
