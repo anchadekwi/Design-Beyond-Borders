@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#000000">
     <meta name="description" content="Домен наука и инновации">
     
-    <!-- Yandex.Metrika counter (оставлен без изменений) -->
+    <!-- Yandex.Metrika counter -->
     <script async="" src="https://mc.yandex.ru/metrika/tag.js"></script>
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -74,7 +74,48 @@
         outline-offset: 2px;
       }
       
-      /* 4. Остальные оригинальные стили (упрощённо для демо) */
+      /* 4. Стили для карточки гранта */
+      .grant-card {
+        border: 2px solid #ffd700;
+        border-radius: 16px;
+        padding: 24px;
+        margin: 24px 0;
+        background: linear-gradient(135deg, #fff8e7 0%, #ffffff 100%);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      }
+      .grant-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .grant-icon {
+        font-size: 40px;
+      }
+      .grant-badge {
+        display: inline-block;
+        background: #0067ad;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        margin-right: 8px;
+      }
+      .grant-deadline {
+        background: #ff4757;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 8px;
+        display: inline-block;
+        font-weight: bold;
+      }
+      .grant-amount {
+        font-size: 32px;
+        font-weight: bold;
+        color: #0067ad;
+      }
+      
+      /* Остальные оригинальные стили */
       body {
         margin: 0;
         font-family: Nunito, sans-serif;
@@ -122,7 +163,7 @@
 </head>
 <body>
 
-<!-- ===== FIXED: 1. Skip link для клавиатурной навигации ===== -->
+<!-- SKIP LINK -->
 <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
 
 <noscript>Вам нужно включить JavaScript, чтобы запустить это приложение.</noscript>
@@ -133,7 +174,7 @@
     <div class="ant-app">
       <div class="ant-layout" style="min-height: 100vh;">
         
-        <!-- ===== FIXED: Кнопка BackTop с aria-label ===== -->
+        <!-- Кнопка BackTop -->
         <button class="ant-float-btn ant-back-top-inner ant-float-btn-default ant-float-btn-circle"
                 type="button"
                 aria-label="Наверх страницы">
@@ -150,7 +191,7 @@
           </div>
         </button>
 
-        <!-- Верхняя панель (ЕСИА, МЧД) — роль banner -->
+        <!-- Верхняя панель -->
         <div class="affixTop" role="banner" aria-label="Верхняя панель инструментов">
           <div style="height: 80px; width: 100%; background: white; display: flex; justify-content: center;">
             <div style="width: 100%; justify-content: space-evenly; align-items: center; display: flex;">
@@ -172,7 +213,7 @@
           </div>
         </div>
 
-        <!-- Шапка с названием домена -->
+        <!-- Шапка -->
         <div class="affixBottom">
           <div style="background: #f0f2f5; padding: 18px 25px;">
             <p style="font-size: 20px; font-weight: bold; margin: 0;">Домен «Наука и инновации»</p>
@@ -180,7 +221,7 @@
           </div>
         </div>
 
-        <!-- ===== FIXED: Меню навигации с улучшенной семантикой ===== -->
+        <!-- Меню навигации -->
         <nav class="menuBar" aria-label="Основное меню сайта">
           <div class="menuCon">
             <div class="mainMenu">
@@ -195,7 +236,6 @@
                 <a class="menuLink" href="/kntr" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                   <img alt="Иконка Комиссии НТР" src="/static/media/kntr.415307b0f9ffc0c4.png" style="height: 24px;"> Комиссия НТР
                 </a>
-                <!-- FIXED: кнопка с aria-haspopup -->
                 <button type="button" class="ant-btn" style="background: none; border: none; color: white; display: inline-flex; align-items: center; gap: 6px;"
                         aria-haspopup="true" aria-expanded="false">
                   <img alt="" src="/static/media/confirm_new.076ba6fb7886f89c.png" style="height: 24px;" aria-hidden="true">
@@ -206,8 +246,8 @@
                 </a>
                 <a class="menuLink" title="Навигатор мер поддержки" aria-label="Навигатор мер поддержки: поиск грантов, стипендий и научных конкурсов по вашей научной области" href="./aggregator-service.html">
                   <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" class="menuImg" style="vertical-align: middle;">
-                  <path d="M336.76,161,150.23,243.35c-10.47,4.8-6.95,20.67,4.57,20.67H244a4,4,0,0,1,4,4V357.2c0,11.52,16,15,20.78,4.56L351,175.24A10.73,10.73,0,0,0,336.76,161Z" style="fill: rgb(255, 255, 255); fill-opacity: 0.8;"></path>
-                  <path d="M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z" style="fill: none; stroke: rgb(255, 255, 255); stroke-miterlimit: 10; stroke-width: 32px; stroke-opacity: 0.8;"></path>
+                    <path d="M336.76,161,150.23,243.35c-10.47,4.8-6.95,20.67,4.57,20.67H244a4,4,0,0,1,4,4V357.2c0,11.52,16,15,20.78,4.56L351,175.24A10.73,10.73,0,0,0,336.76,161Z" style="fill: rgb(255, 255, 255); fill-opacity: 0.8;"></path>
+                    <path d="M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z" style="fill: none; stroke: rgb(255, 255, 255); stroke-miterlimit: 10; stroke-width: 32px; stroke-opacity: 0.8;"></path>
                   </svg>
                   <span class="menuName">Навигатор</span>
                 </a>
@@ -216,11 +256,11 @@
           </div>
         </nav>
 
-        <!-- ===== FIXED: Основной контент с id для skip-link ===== -->
+        <!-- ОСНОВНОЙ КОНТЕНТ -->
         <main id="main-content" class="ant-layout-content">
           <div class="mainContent">
             
-            <!-- ===== FIXED: Глобальный поиск с явным label ===== -->
+            <!-- Глобальный поиск -->
             <div class="globalSearchHeader">
               <label for="global-search-input" class="visually-hidden">Глобальный поиск по сайту</label>
               <input id="global-search-input"
@@ -231,15 +271,69 @@
               <button type="button" aria-label="Найти">🔍</button>
             </div>
 
-            <!-- Алёрты (без изменений, но оставлены) -->
+            <!-- Алёрт -->
             <div class="ant-alert ant-alert-warning" role="alert">
               <strong>Уважаемые пользователи!</strong> До 12 апреля 2026 года необходимо сдать отчёты за 2025 год.
             </div>
 
+            <!-- ========================================== -->
+            <!-- === КАРТОЧКА ГРАНТА (ДОСТУПНАЯ ВЕРСИЯ) === -->
+            <!-- ========================================== -->
+            
+            <section class="grant-card" aria-labelledby="grant-heading" aria-describedby="grant-description">
+              
+              <!-- Заголовок видимый только для скринридера? Нет, он визуально остаётся, но для скринридера это основной заголовок -->
+              <div class="grant-header">
+                <span class="grant-icon" aria-hidden="true">🏆</span>
+                <h1 id="grant-heading" style="margin: 0; font-size: 28px; color: #1a2a3a;">Грант Президента РФ для молодых учёных</h1>
+              </div>
+              
+              <!-- Бейджи с категориями (доступны для скринридера) -->
+              <div style="margin-bottom: 16px;">
+                <span class="grant-badge" aria-label="Федеральный уровень">Федеральный</span>
+                <span class="grant-badge" aria-label="Министерство науки и высшего образования России">Минобрнауки России</span>
+                <span class="grant-badge" aria-label="Для молодых учёных до 35 лет">👨‍🔬 Для молодых учёных до 35 лет</span>
+              </div>
+              
+              <!-- Описание гранта (видимое и читаемое) -->
+              <p id="grant-description" style="font-size: 16px; line-height: 1.5; margin-bottom: 20px;">
+                Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения 
+                фундаментальных и прикладных научных исследований.
+              </p>
+              
+              <!-- Блок со сроком и суммой (оформлен доступно) -->
+              <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <div>
+                  <div class="grant-deadline" aria-label="Срок подачи заявок: до 1 июня 2025 года">
+                    📅 Срок подачи: <strong>до 1 июня 2025</strong>
+                  </div>
+                </div>
+                <div>
+                  <div class="grant-amount" aria-label="Размер гранта: до 500 тысяч рублей">
+                    💰 <strong>до 500 000 ₽</strong>
+                  </div>
+                </div>
+                <div>
+                  <a href="/grants/president-detail" 
+                     style="background: #0067ad; color: white; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block;"
+                     aria-label="Подробнее о гранте Президента РФ для молодых учёных">
+                    Подробнее →
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Визуально скрытый блок для скринридера (дублирует важную информацию) -->
+              <div class="visually-hidden" aria-hidden="false">
+                Краткая информация о гранте: Федеральный грант. Министерство науки и высшего образования России. 
+                Для молодых учёных до 35 лет. Срок подачи заявок — до 1 июня 2025 года. 
+                Размер гранта — до 500 тысяч рублей.
+              </div>
+            </section>
+
             <!-- Раздел "Сервисы Домена" -->
             <div class="ant-divider" role="separator">Сервисы Домена</div>
 
-            <!-- ===== FIXED: Карточки сервисов с семантикой <article> ===== -->
+            <!-- Карточки сервисов -->
             <div style="display: flex; flex-wrap: wrap; gap: 20px;">
               
               <article class="servicesMain" aria-labelledby="service-title-1">
@@ -270,7 +364,6 @@
                 </div>
               </article>
 
-              <!-- Аналогично остальные карточки... -->
               <article class="servicesMain" aria-labelledby="service-title-3">
                 <div class="services servicesimageMain">
                   <div class="ant-row ant-row-middle">
@@ -285,7 +378,6 @@
                 </div>
               </article>
 
-              <!-- Кнопка "Попробовать" с улучшенным aria-label -->
               <div class="tryServicesDiv">
                 <p>Для ознакомления и работы с сервисами авторизуйтесь с помощью ЕСИА</p>
                 <button type="button" class="ant-btn" aria-label="Попробовать сервисы через ЕСИА">
@@ -294,18 +386,19 @@
                 </button>
               </div>
 
-            </div> <!-- конец карточек -->
+            </div>
 
-            <!-- ===== FIXED: Графики с альтернативной таблицей ===== -->
+            <!-- Графики -->
             <div class="chartDiv">
               <p class="chartLabel">Зарегистрировано НИОКТР, шт.</p>
               <canvas role="img" aria-label="График зарегистрированных НИОКТР по месяцам 2025 года">
                 Ваш браузер не поддерживает графики. Ниже представлены данные в таблице.
               </canvas>
-              <!-- Скрытая таблица для скринридеров -->
               <table class="visually-hidden">
                 <caption>Данные графика: зарегистрировано НИОКТР по месяцам 2025 года</caption>
-                <thead><tr><th>Месяц</th><th>Фундаментальных</th><th>Прикладных</th><th>ОКР</th></tr></thead>
+                <thead>
+                  <tr><th>Месяц</th><th>Фундаментальных</th><th>Прикладных</th><th>ОКР</th></tr>
+                </thead>
                 <tbody>
                   <tr><td>Январь</td><td>383</td><td>380</td><td>200</td></tr>
                   <tr><td>Февраль</td><td>400</td><td>390</td><td>210</td></tr>
@@ -313,10 +406,10 @@
               </table>
             </div>
 
-          </div> <!-- конец mainContent -->
+          </div>
         </main>
 
-        <!-- ===== FIXED: Футер с role="contentinfo" и доступными ссылками ===== -->
+        <!-- Футер -->
         <footer class="ant-layout-footer" role="contentinfo" aria-label="Подвал сайта">
           <div class="footer" style="text-align: center;">
             <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
@@ -342,8 +435,8 @@
           </div>
         </footer>
 
-      </div> <!-- конец ant-layout -->
-    </div> <!-- конец ant-app -->
+      </div>
+    </div>
   </div>
 </div>
 
