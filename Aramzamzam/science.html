@@ -1,332 +1,803 @@
 <!DOCTYPE html>
-<html lang="ru" style="--header-height: 140px;">
+<html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000000">
-    <meta name="description" content="Домен наука и инновации">
-    
-    <!-- Yandex.Metrika counter -->
-    <script async="" src="https://mc.yandex.ru/metrika/tag.js"></script>
-    <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-      ym(101477100, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-      });
-    </script>
-    <!-- /Yandex.Metrika counter -->
-
-    <title>Домен наука и инновации — доступная версия</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Домен «Наука и инновации» — главная</title>
+    <meta name="description" content="Единая государственная информационная система учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения">
     
     <style>
-      /* ===== Глобальные стили для доступности ===== */
-      .skip-link {
-        position: absolute;
-        top: -40px;
-        left: 0;
-        background: #0067ad;
-        color: white;
-        padding: 8px 16px;
-        z-index: 1000;
-        text-decoration: none;
-        border-radius: 0 0 4px 0;
-        font-family: Nunito, sans-serif;
-        font-weight: bold;
-      }
-      .skip-link:focus {
-        top: 0;
-        outline: 3px solid #ffcc00;
-      }
-      
-      .visually-hidden {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-        white-space: nowrap;
-      }
-      
-      :focus {
-        outline: 3px solid #0067ad;
-        outline-offset: 2px;
-      }
-      
-      button:focus-visible,
-      a:focus-visible,
-      input:focus-visible {
-        outline: 3px solid #ff8c00;
-        outline-offset: 2px;
-      }
-      
-      body {
-        margin: 0;
-        font-family: Nunito, sans-serif;
-      }
-      .ant-layout {
-        min-height: 100vh;
-      }
-      .mainContent {
-        padding: 20px;
-      }
-      .servicesMain {
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        padding: 16px;
-        margin-bottom: 16px;
-        background: #fff;
-        transition: box-shadow 0.2s;
-      }
-      .servicesMain:focus-within {
-        box-shadow: 0 0 0 3px rgba(0,103,173,0.3);
-      }
-      .menuLink, .ant-btn {
-        cursor: pointer;
-      }
-      .footer {
-        background: #001529;
-        color: white;
-        padding: 20px;
-      }
-      .footer a {
-        color: #91caff;
-      }
-      .ant-divider {
-        margin: 24px 0;
-      }
-      .chartDiv {
-        background: #f9f9f9;
-        padding: 16px;
-        border-radius: 8px;
-      }
-      [aria-hidden="true"] {
-        user-select: none;
-      }
+        /* ===== БАЗОВЫЕ СТИЛИ ДОСТУПНОСТИ ===== */
+        :root {
+            --font-base: 18px;
+            --color-primary: #0067ad;
+            --color-primary-dark: #004b7c;
+            --color-focus: #ff8c00;
+            --color-error: #dc2626;
+            --color-success: #2e7d32;
+            --color-gray-light: #f8fafc;
+            --color-gray-border: #e0e4e8;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito', 'Segoe UI', 'Roboto', sans-serif;
+            font-size: var(--font-base);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+            color: #1a1a1a;
+        }
+        
+        /* Видимый фокус для клавиатуры */
+        :focus-visible {
+            outline: 4px solid var(--color-focus);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+        
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -60px;
+            left: 20px;
+            background: var(--color-primary);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            z-index: 1000;
+            font-weight: bold;
+        }
+        
+        .skip-link:focus {
+            top: 20px;
+            outline: 4px solid var(--color-focus);
+        }
+        
+        /* Визуально скрытый класс */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* ===== ШАПКА ===== */
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--color-primary);
+        }
+        
+        .header h1 {
+            margin: 0 0 8px 0;
+            font-size: 28px;
+            color: var(--color-primary);
+        }
+        
+        .header .subtitle {
+            margin: 0;
+            color: #4a5568;
+            font-size: 16px;
+        }
+        
+        /* ===== МЕНЮ ===== */
+        .main-menu {
+            background: var(--color-primary);
+            border-radius: 16px;
+            padding: 12px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .main-menu a, .main-menu button {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        
+        .main-menu a:hover, .main-menu button:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .main-menu a:focus-visible, .main-menu button:focus-visible {
+            outline: 3px solid var(--color-focus);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* ===== ГЛОБАЛЬНЫЙ ПОИСК ===== */
+        .global-search {
+            background: white;
+            border-radius: 60px;
+            padding: 8px 8px 8px 24px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .global-search input {
+            flex: 1;
+            padding: 14px 0;
+            border: none;
+            font-size: 16px;
+            font-family: inherit;
+            background: transparent;
+        }
+        
+        .global-search input:focus {
+            outline: none;
+        }
+        
+        .global-search button {
+            background: var(--color-primary);
+            border: none;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .global-search button:hover {
+            background: var(--color-primary-dark);
+        }
+        
+        /* ===== АЛЕРТЫ ===== */
+        .alert {
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            border-radius: 16px;
+        }
+        
+        .alert strong {
+            color: #e67e22;
+        }
+        
+        .alert a {
+            color: var(--color-primary);
+        }
+        
+        /* ===== СЕРВИСЫ ДОМЕНА ===== */
+        .section-title {
+            font-size: 24px;
+            margin: 32px 0 20px 0;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--color-primary);
+            color: var(--color-primary);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: #1a1a1a;
+            display: block;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:focus-visible {
+            outline: 4px solid var(--color-focus);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        
+        .service-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 18px;
+            color: var(--color-primary);
+        }
+        
+        .service-card p {
+            margin: 0;
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+        
+        /* Блок авторизации */
+        .auth-block {
+            background: linear-gradient(135deg, #e6f4ff 0%, #d0e8ff 100%);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .auth-block p {
+            margin: 0 0 16px 0;
+            font-size: 16px;
+        }
+        
+        .auth-button {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* ===== АНАЛИТИКА ===== */
+        .analytics-header {
+            background: white;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 32px 0 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .analytics-header h2 {
+            margin: 0;
+            font-size: 22px;
+            color: var(--color-primary);
+        }
+        
+        .period-toggle {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .period-btn {
+            background: #e2e8f0;
+            border: none;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .period-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        /* Карточки графиков */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .chart-card h3 {
+            margin: 0 0 16px 0;
+            font-size: 18px;
+            color: var(--color-primary);
+            text-align: center;
+        }
+        
+        .chart-placeholder {
+            background: var(--color-gray-light);
+            height: 250px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a5568;
+            font-size: 14px;
+        }
+        
+        .stats-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--color-gray-border);
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--color-primary);
+        }
+        
+        .stat-change.up {
+            color: var(--color-success);
+        }
+        
+        .stat-change.down {
+            color: var(--color-error);
+        }
+        
+        /* Динамика */
+        .dynamics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .dynamic-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .dynamic-value {
+            font-size: 32px;
+            font-weight: 800;
+        }
+        
+        .dynamic-value.up {
+            color: var(--color-success);
+        }
+        
+        .dynamic-value.down {
+            color: var(--color-error);
+        }
+        
+        /* Информационные платформы */
+        .platforms-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin: 32px 0;
+            padding: 24px;
+            background: white;
+            border-radius: 20px;
+        }
+        
+        /* Футер */
+        .footer {
+            background: #1a2a3a;
+            color: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 40px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+        
+        .footer a {
+            color: #91caff;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container { padding: 12px; }
+            .charts-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .main-menu { justify-content: flex-start; overflow-x: auto; }
+        }
+        
+        /* Живая область */
+        .live-region {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
     </style>
 </head>
 <body>
 
+<!-- Skip link -->
 <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
 
-<noscript>Вам нужно включить JavaScript, чтобы запустить это приложение.</noscript>
-<noscript><div><img src="https://mc.yandex.ru/watch/101477100" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-
-<div id="root">
-  <div style="display: contents;">
-    <div class="ant-app">
-      <div class="ant-layout" style="min-height: 100vh;">
-        
-        <button class="ant-float-btn ant-back-top-inner ant-float-btn-default ant-float-btn-circle"
-                type="button"
-                aria-label="Наверх страницы">
-          <div class="ant-float-btn-body">
-            <div class="ant-float-btn-content">
-              <div class="ant-float-btn-icon">
-                <span role="img" aria-label="стрелка вверх" class="anticon anticon-up">
-                  <svg viewBox="64 64 896 896" focusable="false" width="1em" height="1em" fill="currentColor" aria-hidden="true">
-                    <path d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 00140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"></path>
-                  </svg>
-                </span>
-              </div>
-            </div>
-          </div>
-        </button>
-
-        <div class="affixTop" role="banner" aria-label="Верхняя панель инструментов">
-          <div style="height: 80px; width: 100%; background: white; display: flex; justify-content: center;">
-            <div style="width: 100%; justify-content: space-evenly; align-items: center; display: flex;">
-              <div>
-                <a href="/attorney/public/issue" aria-label="Перейти в раздел МЧД">
-                  <div style="display: flex; flex-direction: column; align-items: center;">
-                    <img alt="Иконка МЧД" src="/static/media/diploma_new.0e3e8dd4c6ed1a5a.png" style="height: 40px;">
-                    <span>МЧД</span>
-                  </div>
-                </a>
-              </div>
-              <div>
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                  <img alt="Иконка ЕСИА" src="/static/media/esia.3353cc225ce39f19.png" style="height: 40px;">
-                  <span>Вход ЕСИА</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="affixBottom">
-          <div style="background: #f0f2f5; padding: 18px 25px;">
-            <p style="font-size: 20px; font-weight: bold; margin: 0;">Домен «Наука и инновации»</p>
-            <p style="font-size: 14px;">на базе информационного ресурса Единой государственной информационной системы учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения</p>
-          </div>
-        </div>
-
-        <nav class="menuBar" aria-label="Основное меню сайта">
-          <div class="menuCon">
-            <div class="mainMenu">
-              <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 20px; background: #0067ad;">
-                <a class="menuLink" href="./index.html">
-                  <img alt="Иконка главной" src="/static/media/main.933f150ba8e90863.png" class="menuImg">
-                  <span class="menuName">Главная</span>
-                </a>
-                <a class="menuLink" href="/science-portal" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                  <img alt="Иконка популяризации науки" src="/static/media/sciencePortal.37a31cb7e408a97c.png" style="height: 24px;"> Популяризация науки
-                </a>
-                <a class="menuLink" href="/kntr" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                  <img alt="Иконка Комиссии НТР" src="/static/media/kntr.415307b0f9ffc0c4.png" style="height: 24px;"> Комиссия НТР
-                </a>
-                <button type="button" class="ant-btn" style="background: none; border: none; color: white; display: inline-flex; align-items: center; gap: 6px;"
-                        aria-haspopup="true" aria-expanded="false">
-                  <img alt="" src="/static/media/confirm_new.076ba6fb7886f89c.png" style="height: 24px;" aria-hidden="true">
-                  Отраслевые и специальные сегменты
-                </button>
-                <a class="menuLink" href="/information" style="color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                  <img alt="Иконка базы знаний" src="/static/media/reference_new.b61278d9e1511332.png" style="height: 24px;"> База знаний
-                </a>
-                <a class="menuLink" title="Навигатор мер поддержки" aria-label="Поиск мер поддержки: грантов, стипендий и научных конкурсов по вашей научной области" href="./aggregator-service.html">
-                  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" class="menuImg" style="vertical-align: middle;">
-                  <path d="M336.76,161,150.23,243.35c-10.47,4.8-6.95,20.67,4.57,20.67H244a4,4,0,0,1,4,4V357.2c0,11.52,16,15,20.78,4.56L351,175.24A10.73,10.73,0,0,0,336.76,161Z" style="fill: rgb(255, 255, 255); fill-opacity: 0.8;"></path>
-                  <path d="M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z" style="fill: none; stroke: rgb(255, 255, 255); stroke-miterlimit: 10; stroke-width: 32px; stroke-opacity: 0.8;"></path>
-                  </svg>
-                  <span class="menuName">Поиск мер поддержки</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-
-        <main id="main-content" class="ant-layout-content">
-          <div class="mainContent">
-            
-            <div class="globalSearchHeader">
-              <label for="global-search-input" class="visually-hidden">Глобальный поиск по сайту</label>
-              <input id="global-search-input"
-                     type="search"
-                     placeholder="глобальный поиск ..."
-                     aria-label="Введите поисковый запрос"
-                     style="width: 80%; padding: 10px; font-size: 16px;">
-              <button type="button" aria-label="Найти">🔍</button>
-            </div>
-
-            <div class="ant-alert ant-alert-warning" role="status" aria-live="polite">
-              <strong>Уважаемые пользователи!</strong> До 12 апреля 2026 года необходимо сдать отчёты за 2025 год.
-            </div>
-
-            <div class="ant-divider" role="separator">Сервисы Домена</div>
-
-            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-              
-              <article class="servicesMain" aria-labelledby="service-title-1">
-                <div class="services servicesimageMain">
-                  <div class="ant-row ant-row-middle">
-                    <div class="serviceVerticalName">
-                      <p id="service-title-1"><strong>Сквозная прослеживаемость</strong></p>
-                    </div>
-                    <img class="serviceImg" alt="" src="/static/media/service4.42d63cb7cc663c87.png" style="height: 55px;" aria-hidden="true">
-                  </div>
-                </div>
-                <div class="servicesMainText">
-                  <p>Сервис позволяет органам государственной власти повысить эффективность принятия управленческих решений...</p>
-                </div>
-              </article>
-
-              <article class="servicesMain" aria-labelledby="service-title-2">
-                <div class="services servicesimageMain">
-                  <div class="ant-row ant-row-middle">
-                    <div class="serviceVerticalName">
-                      <p id="service-title-2"><strong>Контроль государственных заданий</strong></p>
-                    </div>
-                    <img class="serviceImg" alt="" src="/static/media/service3.fb2f6ddd43e340db.png" style="height: 55px;" aria-hidden="true">
-                  </div>
-                </div>
-                <div class="servicesMainText">
-                  <p>Сервис позволяет автоматизировать процессы сбора информации и предоставления отчетной документации...</p>
-                </div>
-              </article>
-
-              <article class="servicesMain" aria-labelledby="service-title-3">
-                <div class="services servicesimageMain">
-                  <div class="ant-row ant-row-middle">
-                    <div class="serviceVerticalName">
-                      <p id="service-title-3"><strong>Статистическая отчетность</strong></p>
-                    </div>
-                    <img class="serviceImg" alt="" src="/static/media/service5.ab0e88590cf190e6.png" style="height: 55px;" aria-hidden="true">
-                  </div>
-                </div>
-                <div class="servicesMainText">
-                  <p>Сервис позволяет систематизировать информацию от участников научного сообщества...</p>
-                </div>
-              </article>
-
-              <div class="tryServicesDiv">
-                <p>Для ознакомления и работы с сервисами авторизуйтесь с помощью ЕСИА</p>
-                <button type="button" class="ant-btn" aria-label="Попробовать сервисы через ЕСИА">
-                  <span>Попробовать</span>
-                  <img alt="" src="/static/media/esia.3353cc225ce39f19.png" style="height: 30px;" aria-hidden="true">
-                </button>
-              </div>
-
-            </div>
-
-            <div class="chartDiv" aria-label="График зарегистрированных НИОКТР по месяцам 2025 года">
-              <p class="chartLabel">Зарегистрировано НИОКТР, шт.</p>
-              <canvas role="img" aria-label="График зарегистрированных НИОКТР по месяцам 2025 года">
-                Ваш браузер не поддерживает графики. Ниже представлены данные в таблице.
-              </canvas>
-              <table class="visually-hidden">
-                <caption>Данные графика: зарегистрировано НИОКТР по месяцам 2025 года</caption>
-                <thead>
-                  <tr><th>Месяц</th><th>Фундаментальных</th><th>Прикладных</th><th>ОКР</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>Январь</td><td>383</td><td>380</td><td>200</td></tr>
-                  <tr><td>Февраль</td><td>400</td><td>390</td><td>210</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-          </div>
-        </main>
-
-        <footer class="ant-layout-footer" role="contentinfo" aria-label="Подвал сайта">
-          <div class="footer" style="text-align: center;">
-            <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-              <div>
-                <p>E-mail: <a href="mailto:support@gisnauka.ru">support@gisnauka.ru</a></p>
-                <p>Горячая линия: <a href="tel:+78001005737">+7 800 100-57-37</a></p>
-              </div>
-              <div>
-                <p>Часы работы: 9:00 - 18:00</p>
-              </div>
-              <div>
-                <button type="button" class="ant-btn-link" style="background: none; border: none; color: white; text-decoration: underline;">
-                  Сформировать выгрузку
-                </button>
-              </div>
-              <div>
-                <p><a href="https://citis.ru/" target="_blank" rel="noopener noreferrer">ФГАНУ ЦИТиС</a></p>
-              </div>
-              <div>
-                <p>Обработка персональных данных осуществляется в соответствии с требованиями <a href="https://legalacts.ru/doc/152_FZ-o-personalnyh-dannyh/" target="_blank" rel="noreferrer">ФЗ о защите персональных данных</a></p>
-              </div>
-            </div>
-          </div>
-        </footer>
-
-      </div>
+<div class="container">
+    
+    <!-- Шапка -->
+    <div class="header" role="banner">
+        <h1>Домен «Наука и инновации»</h1>
+        <p class="subtitle">на базе информационного ресурса Единой государственной информационной системы учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения</p>
     </div>
-  </div>
+    
+    <!-- Главное меню -->
+    <nav class="main-menu" aria-label="Основное меню">
+        <a href="./science.html" aria-current="page">Главная</a>
+        <a href="#">Популяризация науки</a>
+        <a href="#">Комиссия НТР</a>
+        <button type="button" aria-haspopup="true">Отраслевые и специальные сегменты</button>
+        <a href="#">База знаний</a>
+        <a href="#">Аналитика</a>
+        <a href="./aggregator-service.html">Навигатор</a>
+    </nav>
+    
+    <!-- Глобальный поиск -->
+    <div class="global-search">
+        <label for="global-search-input" class="visually-hidden">Глобальный поиск</label>
+        <input type="search" id="global-search-input" placeholder="глобальный поиск ..." aria-label="Введите поисковый запрос">
+        <button type="button" aria-label="Найти">🔍 Найти</button>
+    </div>
+    
+    <!-- Алёрты -->
+    <div class="alert" role="alert">
+        <strong>📢 Уважаемые пользователи Домена «Наука и инновации»!</strong><br>
+        В целях проведения ежегодного мониторинга доступности и результативности деятельности центров коллективного пользования научным оборудованием и уникальных научных установок (ЦКП и УНУ) необходимо <strong>до 12 апреля 2026 года</strong> в Сервисе «Составление отчетности по ЦКП / УНУ» заполнить и сдать отчеты <strong>за 2025 год</strong>.
+    </div>
+    
+    <div class="alert" role="alert">
+        <strong>📢 Уважаемые пользователи Домена «Наука и инновации»!</strong><br>
+        Открыт сбор сведений о публикациях и монографиях книжного формата. <strong>До 30 апреля 2026 года</strong> необходимо заполнить и направить на проверку отчёты комплексного балла публикационной результативности (КБПР), содержащие соответствующие данные. Отчётность обязательна только для подведомственных организаций Минобрнауки России.
+    </div>
+    
+    <!-- Сервисы Домена -->
+    <h2 class="section-title">Сервисы Домена</h2>
+    
+    <!-- Блок авторизации -->
+    <div class="auth-block">
+        <p>Для ознакомления и работы с сервисами Домен «Наука и инновации» авторизуйтесь с помощью ЕСИА</p>
+        <button class="auth-button" aria-label="Авторизоваться через ЕСИА">
+            🔐 Попробовать
+        </button>
+    </div>
+    
+    <!-- Сетка сервисов (первые 12) -->
+    <div class="services-grid">
+        <a href="#" class="service-card">
+            <div class="service-icon">🏪</div>
+            <h3>Маркетплейс ЦКП/УНУ/Расходных материалов</h3>
+            <p>Размещение и поиск услуг, материалов и оборудования</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Агрегатор инструментов развития</h3>
+            <p>Меры поддержки научной деятельности</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📋</div>
+            <h3>Контроль государственных заданий</h3>
+            <p>Автоматизация сбора отчетности</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📈</div>
+            <h3>Статистическая отчетность</h3>
+            <p>Систематизация информации от участников</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">🧮</div>
+            <h3>Калькулятор экономики проекта</h3>
+            <p>Оценка необходимого финансирования</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">💻</div>
+            <h3>Биржа виртуальных вычислений</h3>
+            <p>Поиск и заказ вычислительных ресурсов</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📚</div>
+            <h3>Доступ к данным научного цитирования</h3>
+            <p>Агрегация публикационной активности</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Дашборд статусов выполнения работ</h3>
+            <p>Мониторинг хода выполнения проектов</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">🔧</div>
+            <h3>Технологические запросы</h3>
+            <p>Публикация и поиск решений</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📐</div>
+            <h3>Конструктор плана проекта</h3>
+            <p>Совместная работа над календарным планом</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📝</div>
+            <h3>Составление отчетности по исследованию</h3>
+            <p>Формирование научно-технической документации</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">🔒</div>
+            <h3>Безопасное хранение</h3>
+            <p>Защищенный просмотр и редактирование</p>
+        </a>
+    </div>
+    
+    <!-- Вторая строка сервисов -->
+    <div class="services-grid">
+        <a href="#" class="service-card">
+            <div class="service-icon">🏛️</div>
+            <h3>Составление отчётности по деятельности ФОИВ</h3>
+            <p>Планирование научных исследований</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">💰</div>
+            <h3>Мониторинг финансирования УГТ</h3>
+            <p>Прослеживаемость расходования средств</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📑</div>
+            <h3>Налоговые преференции</h3>
+            <p>Льготы для научных организаций</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📖</div>
+            <h3>Навигатор научных журналов</h3>
+            <p>Подбор журналов для публикаций</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">🎤</div>
+            <h3>Навигатор научных конференций</h3>
+            <p>Подбор конференций для презентаций</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">📊</div>
+            <h3>Составление отчетности по ЦКП/УНУ</h3>
+            <p>Формирование отчетов по деятельности</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">🏠</div>
+            <h3>Предоставление ГЖС</h3>
+            <p>Государственный жилищный сертификат</p>
+        </a>
+        <a href="#" class="service-card">
+            <div class="service-icon">🔬</div>
+            <h3>Портал популяризации науки</h3>
+            <p>Новости и мероприятия</p>
+        </a>
+    </div>
+    
+    <!-- Аналитические и статистические данные -->
+    <div class="analytics-header">
+        <h2>Аналитические и статистические открытые данные</h2>
+        <div class="period-toggle" role="group" aria-label="Выбор периода">
+            <button class="period-btn">Год</button>
+            <button class="period-btn active">Месяц</button>
+        </div>
+    </div>
+    
+    <div class="charts-grid">
+        <!-- График 1 -->
+        <div class="chart-card">
+            <h3>Зарегистрировано НИОКТР, шт.</h3>
+            <div class="chart-placeholder" aria-label="График зарегистрированных НИОКТР">
+                📊 [График: динамика НИОКТР за 2016–2025]
+            </div>
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-value">96 000</span><br>Фундаментальных</div>
+                <div class="stat-item"><span class="stat-value">45 000</span><br>Прикладных</div>
+                <div class="stat-item"><span class="stat-value">28 000</span><br>ОКР</div>
+            </div>
+        </div>
+        
+        <!-- График 2 -->
+        <div class="chart-card">
+            <h3>Выявлено РИД, шт.</h3>
+            <div class="chart-placeholder" aria-label="График выявленных РИД">
+                📊 [График: выявленные РИД за 2016–2025]
+            </div>
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-value">18 000</span><br>Изобретений</div>
+                <div class="stat-item"><span class="stat-value">32 000</span><br>Программ и БД</div>
+                <div class="stat-item"><span class="stat-value">4 500</span><br>Ноу-хау</div>
+            </div>
+        </div>
+        
+        <!-- График 3 -->
+        <div class="chart-card">
+            <h3>Полнотекстовые материалы, шт.</h3>
+            <div class="chart-placeholder" aria-label="График полнотекстовых материалов">
+                📊 [График: публикационная активность]
+            </div>
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-value">125 000</span><br>Научных отчетов</div>
+                <div class="stat-item"><span class="stat-value">12 000</span><br>Диссертаций</div>
+            </div>
+        </div>
+        
+        <!-- График 4 -->
+        <div class="chart-card">
+            <h3>Финансирование НИОКТР, тыс. руб.</h3>
+            <div class="chart-placeholder" aria-label="График финансирования">
+                📊 [График: объемы финансирования]
+            </div>
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-value">850 млрд</span><br>Федеральный бюджет</div>
+                <div class="stat-item"><span class="stat-value">120 млрд</span><br>Внебюджетные</div>
+            </div>
+        </div>
+        
+        <!-- График 5 -->
+        <div class="chart-card">
+            <h3>Состояние правовой охраны РИД, шт.</h3>
+            <div class="chart-placeholder" aria-label="График правовой охраны">
+                📊 [График: патенты и свидетельства]
+            </div>
+            <div class="stats-row">
+                <div class="stat-item"><span class="stat-value">28 000</span><br>Охраняется</div>
+                <div class="stat-item"><span class="stat-value">6 500</span><br>Подано заявок</div>
+            </div>
+        </div>
+        
+        <!-- График 6 — динамика -->
+        <div class="chart-card">
+            <h3>Динамика изменений 2025/2024, %</h3>
+            <div class="dynamics-grid" style="grid-template-columns: 1fr; gap: 16px;">
+                <div class="dynamic-card">
+                    <div>Средняя стоимость НИОКТР</div>
+                    <div class="dynamic-value up">↑ +18,22%</div>
+                </div>
+                <div class="dynamic-card">
+                    <div>Прирост выявленных РИД</div>
+                    <div class="dynamic-value down">↓ -4,38%</div>
+                </div>
+            </div>
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-gray-border);">
+                <strong>Способы использования:</strong><br>
+                Лицензирование: <span class="down">↓ -80,72%</span><br>
+                Отчуждение и залог: <span class="down">↓ -66,67%</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Информационные платформы -->
+    <h2 class="section-title">Информационные платформы</h2>
+    <div class="platforms-grid">
+        <img src="/static/media/colab_logo.png" alt="Colab" style="height: 40px;" onerror="this.style.display='none'">
+        <span style="font-weight: bold; color: var(--color-primary);">ScienceID</span>
+        <span style="font-weight: bold;">Лаборатория ScienceID</span>
+    </div>
+    
+    <!-- Футер -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-grid">
+            <div>
+                <p>📧 E-mail: <a href="mailto:support@gisnauka.ru">support@gisnauka.ru</a></p>
+                <p>📞 Горячая линия: <a href="tel:+78001005737">+7 800 100-57-37</a></p>
+            </div>
+            <div>
+                <p>🕐 Часы работы: 9:00 - 18:00</p>
+            </div>
+            <div>
+                <p>🏛️ <a href="https://citis.ru/" target="_blank" rel="noopener noreferrer">ФГАНУ ЦИТиС</a></p>
+            </div>
+            <div>
+                <p>Обработка персональных данных осуществляется в соответствии с требованиями <a href="https://legalacts.ru/doc/152_FZ-o-personalnyh-dannyh/" target="_blank" rel="noreferrer">ФЗ о защите персональных данных</a></p>
+            </div>
+        </div>
+    </footer>
+    
 </div>
+
+<!-- Живая область для скринридера -->
+<div id="aria-live-region" class="live-region" aria-live="polite" aria-atomic="true"></div>
+
+<script>
+    function announceToScreenReader(message) {
+        const liveRegion = document.getElementById('aria-live-region');
+        if (liveRegion) {
+            liveRegion.textContent = message;
+            setTimeout(() => liveRegion.textContent = '', 3000);
+        }
+    }
+    
+    // Глобальный поиск
+    const searchInput = document.getElementById('global-search-input');
+    const searchBtn = document.querySelector('.global-search button');
+    
+    searchBtn.addEventListener('click', () => {
+        const query = searchInput.value.trim();
+        if (query) {
+            announceToScreenReader(`Поиск по запросу: ${query}`);
+        } else {
+            announceToScreenReader('Пожалуйста, введите поисковый запрос');
+        }
+    });
+    
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            searchBtn.click();
+        }
+    });
+    
+    // Кнопки периода
+    const periodBtns = document.querySelectorAll('.period-btn');
+    periodBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            periodBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            announceToScreenReader(`Выбран период: ${btn.textContent}`);
+        });
+    });
+    
+    // Авторизация
+    const authBtn = document.querySelector('.auth-button');
+    if (authBtn) {
+        authBtn.addEventListener('click', () => {
+            announceToScreenReader('Перенаправление на вход через ЕСИА');
+        });
+    }
+    
+    // Объявление при загрузке
+    window.addEventListener('load', () => {
+        announceToScreenReader('Домен Наука и инновации загружен. Доступны сервисы и аналитические данные.');
+    });
+</script>
 
 </body>
 </html>
