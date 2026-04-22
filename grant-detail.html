@@ -267,8 +267,15 @@
         
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--spacing-lg);
+        }
+        
+        .total-amount {
+            font-size: var(--font-xxl);
+            font-weight: 800;
+            color: var(--color-text);
+            margin: var(--spacing-md) 0;
         }
         
         .calendar-item {
@@ -357,13 +364,6 @@
             border-radius: var(--radius-md);
         }
         
-        .total-amount {
-            font-size: var(--font-xxl);
-            font-weight: 800;
-            color: var(--color-text);
-            margin: var(--spacing-md) 0;
-        }
-        
         .copy-success {
             position: fixed;
             bottom: var(--spacing-md);
@@ -450,14 +450,15 @@
             <a data-section="main" class="active" role="tab" aria-selected="true">Основная информация</a>
             <a data-section="requirements" role="tab" aria-selected="false">Требования</a>
             <a data-section="documents" role="tab" aria-selected="false">Необходимые документы</a>
-            <a data-section="npa" role="tab" aria-selected="false">НПА и другие документы</a>
+            <a data-section="npa" role="tab" aria-selected="false">Нормативные акты (НПА)</a>
             <a data-section="calendar" role="tab" aria-selected="false">Календарь</a>
             <a data-section="faq" role="tab" aria-selected="false">Частые вопросы</a>
-            <a data-section="contacts" role="tab" aria-selected="false">Контакты для консультации</a>
+            <a data-section="contacts" role="tab" aria-selected="false">Контакты</a>
         </div>
         
         <div class="detail-content">
             
+            <!-- Секция 1: Основная информация (2 карточки в ряду) -->
             <div id="section-main" class="section active" role="tabpanel">
                 <h2>Основная информация</h2>
                 <div class="info-grid">
@@ -478,6 +479,10 @@
                     <div class="info-card">
                         <h3>Направление меры</h3>
                         <p aria-label="Научно-исследовательские и опытно-конструкторские работы">НИОКР</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Общая сумма финансирования</h3>
+                        <div class="total-amount">0,00 ₽</div>
                     </div>
                 </div>
             </div>
@@ -503,7 +508,7 @@
             </div>
             
             <div id="section-npa" class="section" role="tabpanel">
-                <h2>НПА и другие документы</h2>
+                <h2>Нормативные акты (НПА)</h2>
                 <div class="info-card">
                     <h3>Нормативно-правовые акты</h3>
                     <ul style="margin-left: var(--spacing-lg);">
@@ -522,17 +527,13 @@
                         <span class="date-badge">Окончание: <strong>29.12.2028</strong></span>
                     </div>
                 </div>
-                <div class="info-card">
-                    <h3>Общая сумма финансирования</h3>
-                    <div class="total-amount">0,00 ₽</div>
-                </div>
             </div>
             
             <div id="section-faq" class="section" role="tabpanel">
                 <h2>Частые вопросы</h2>
                 <div class="info-card">
                     <h3>Вопросы и ответы</h3>
-                    <p class="empty-state">Часто задаваемые вопросы не указаны</p>
+                    <p class="empty-state">Пока нет вопросов</p>
                 </div>
             </div>
             
