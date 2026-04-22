@@ -189,14 +189,8 @@
             outline: none;
         }
         
-        .global-search input:focus + .search-icon svg,
         .global-search:hover .search-icon svg {
             stroke: var(--color-primary);
-        }
-        
-        /* Переопределяем для правильного порядка: лупа слева, потом input, потом кнопка */
-        .global-search {
-            direction: ltr;
         }
         
         .global-search button {
@@ -380,13 +374,15 @@
         
         .chart-placeholder {
             background: var(--color-primary-light);
-            height: 250px;
             border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-secondary);
-            font-size: var(--font-small);
+            overflow: hidden;
+        }
+        
+        .chart-placeholder img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--radius-md);
         }
         
         .stats-row {
@@ -492,6 +488,7 @@
             
             .navbar {
                 flex-wrap: wrap;
+                min-height: auto;
             }
             
             .navbar a {
@@ -533,7 +530,7 @@
         <p class="subtitle">на базе информационного ресурса Единой государственной информационной системы учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения</p>
     </header>
     
-    <!-- ===== НАВБАР - РАСТЯНУТАЯ, БЕЗ ПУСТЫХ МЕСТ ===== -->
+    <!-- ===== НАВБАР ===== -->
     <nav class="navbar" role="navigation" aria-label="Основное меню">
         <a href="#">Популяризация науки</a>
         <a href="#">Комиссия техподдержки</a>
@@ -543,7 +540,7 @@
         <a href="./aggregator-service.html">Гранты и поддержка</a>
     </nav>
     
-    <!-- ===== ГЛОБАЛЬНЫЙ ПОИСК С ЛУПОЙ СЛЕВА ===== -->
+    <!-- ===== ГЛОБАЛЬНЫЙ ПОИСК ===== -->
     <div class="global-search" role="search">
         <span class="search-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
@@ -571,7 +568,7 @@
         <h2 class="section-title">Сервисы Портала</h2>
         
         <div class="auth-block">
-            <p>Для ознакомления и работы с сервисами Портала «Наука и инновации» авторизуйтесь с помощью ЕСИА</p>
+            <p>Войдите через Госуслуги (ЕСИА), чтобы работать с сервисами портала</p>
             <button class="auth-button" aria-label="Авторизоваться через ЕСИА">Попробовать</button>
         </div>
         
@@ -588,7 +585,7 @@
             </a>
             <a href="#" class="service-card">
                 <div class="service-icon"></div>
-                <h3>Контроль государственных заданий</h3>
+                <h3>Проверка госзаданий</h3>
                 <p>Автоматизация сбора отчетности</p>
             </a>
             <a href="#" class="service-card">
@@ -671,7 +668,7 @@
             </a>
             <a href="#" class="service-card">
                 <div class="service-icon"></div>
-                <h3>Предоставление ГЖС</h3>
+                <h3>Жилищный сертификат (ГЖС)</h3>
                 <p>Государственный жилищный сертификат</p>
             </a>
             <a href="#" class="service-card">
@@ -690,10 +687,13 @@
         </div>
         
         <div class="charts-grid">
+            <!-- График 1: Зарегистрировано НИОКТР -->
             <div class="chart-card">
                 <h3>Зарегистрировано НИОКТР, шт.</h3>
-                <div class="chart-placeholder" aria-label="График зарегистрированных НИОКТР">
-                    [График: динамика НИОКТР за 2016–2025]
+                <div class="chart-placeholder">
+                    <img src="images/graph-nioktr.png" 
+                         alt="График зарегистрированных НИОКТР за 2016-2025 годы. Динамика роста с 50 тысяч до 169 тысяч штук."
+                         onerror="this.parentElement.innerHTML='[График: динамика НИОКТР за 2016–2025]'">
                 </div>
                 <div class="stats-row">
                     <div class="stat-item"><span class="stat-value">96 000</span><br>Фундаментальных</div>
@@ -702,10 +702,13 @@
                 </div>
             </div>
             
+            <!-- График 2: Выявлено РИД -->
             <div class="chart-card">
                 <h3>Выявлено РИД, шт.</h3>
-                <div class="chart-placeholder" aria-label="График выявленных РИД">
-                    [График: выявленные РИД за 2016–2025]
+                <div class="chart-placeholder">
+                    <img src="images/graph-rid.png" 
+                         alt="График выявленных РИД за 2016-2025 годы. Изобретения, программы и БД, ноу-хау."
+                         onerror="this.parentElement.innerHTML='[График: выявленные РИД за 2016–2025]'">
                 </div>
                 <div class="stats-row">
                     <div class="stat-item"><span class="stat-value">18 000</span><br>Изобретений</div>
@@ -714,10 +717,13 @@
                 </div>
             </div>
             
+            <!-- График 3: Полнотекстовые материалы -->
             <div class="chart-card">
                 <h3>Полнотекстовые материалы, шт.</h3>
-                <div class="chart-placeholder" aria-label="График полнотекстовых материалов">
-                    [График: публикационная активность]
+                <div class="chart-placeholder">
+                    <img src="images/graph-publications.png" 
+                         alt="График публикационной активности. Научные отчеты и диссертации."
+                         onerror="this.parentElement.innerHTML='[График: публикационная активность]'">
                 </div>
                 <div class="stats-row">
                     <div class="stat-item"><span class="stat-value">125 000</span><br>Научных отчетов</div>
@@ -725,10 +731,13 @@
                 </div>
             </div>
             
+            <!-- График 4: Финансирование НИОКТР -->
             <div class="chart-card">
                 <h3>Финансирование НИОКТР, тыс. руб.</h3>
-                <div class="chart-placeholder" aria-label="График финансирования">
-                    [График: объемы финансирования]
+                <div class="chart-placeholder">
+                    <img src="images/graph-funding.png" 
+                         alt="График объемов финансирования НИОКТР. Федеральный бюджет и внебюджетные источники."
+                         onerror="this.parentElement.innerHTML='[График: объемы финансирования]'">
                 </div>
                 <div class="stats-row">
                     <div class="stat-item"><span class="stat-value">850 млрд</span><br>Федеральный бюджет</div>
@@ -736,10 +745,13 @@
                 </div>
             </div>
             
+            <!-- График 5: Состояние правовой охраны РИД -->
             <div class="chart-card">
                 <h3>Состояние правовой охраны РИД, шт.</h3>
-                <div class="chart-placeholder" aria-label="График правовой охраны">
-                    [График: патенты и свидетельства]
+                <div class="chart-placeholder">
+                    <img src="images/graph-patents.png" 
+                         alt="График правовой охраны РИД. Охраняется и подано заявок."
+                         onerror="this.parentElement.innerHTML='[График: патенты и свидетельства]'">
                 </div>
                 <div class="stats-row">
                     <div class="stat-item"><span class="stat-value">28 000</span><br>Охраняется</div>
@@ -747,6 +759,7 @@
                 </div>
             </div>
             
+            <!-- График 6: Динамика изменений (без изображения, оставлен как есть) -->
             <div class="chart-card">
                 <h3>Динамика изменений 2025/2024, %</h3>
                 <div class="dynamics-grid">
