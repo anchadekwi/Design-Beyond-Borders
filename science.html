@@ -102,17 +102,15 @@
             color: var(--color-text-secondary);
         }
         
-        /* ===== НАВБАР ===== */
+        /* ===== НАВБАР - РАСТЯНУТАЯ ===== */
         .navbar {
             background: #174c73;
             border-radius: 14px;
-            padding: 12px 20px;
             margin-bottom: var(--spacing-lg);
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: stretch;
+            overflow: hidden;
         }
         
         /* ссылки */
@@ -121,10 +119,20 @@
             text-decoration: none;
             font-size: 16px;
             font-weight: 500;
-            padding: 8px 14px;
-            border-radius: 8px;
+            padding: 14px 0;
             transition: all 0.2s ease;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             white-space: nowrap;
+            border-right: 1px solid rgba(255,255,255,0.15);
+        }
+        
+        /* последняя ссылка без правой границы */
+        .navbar a:last-child {
+            border-right: none;
         }
         
         /* hover */
@@ -139,24 +147,32 @@
             font-weight: 500;
         }
         
-        /* разделитель */
-        .navbar .separator {
-            color: rgba(255,255,255,0.3);
-            font-size: 16px;
-            user-select: none;
-        }
-        
-        /* ===== ГЛОБАЛЬНЫЙ ПОИСК ===== */
+        /* ===== ГЛОБАЛЬНЫЙ ПОИСК С ЛУПОЙ СЛЕВА ===== */
         .global-search {
             background: var(--color-white);
             border-radius: 60px;
-            padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) var(--spacing-lg);
+            padding: 4px 4px 4px 20px;
             margin-bottom: var(--spacing-lg);
             display: flex;
             align-items: center;
-            gap: var(--spacing-sm);
-            flex-wrap: wrap;
+            gap: 12px;
             border: 1px solid var(--color-border);
+        }
+        
+        .search-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .search-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: var(--color-text-secondary);
+            stroke-width: 2;
+            transition: stroke 0.2s;
         }
         
         .global-search input {
@@ -172,6 +188,16 @@
             outline: none;
         }
         
+        .global-search input:focus + .search-icon svg,
+        .global-search:hover .search-icon svg {
+            stroke: var(--color-primary);
+        }
+        
+        /* Переопределяем для правильного порядка: лупа слева, потом input, потом кнопка */
+        .global-search {
+            direction: ltr;
+        }
+        
         .global-search button {
             background: var(--color-primary);
             border: none;
@@ -181,6 +207,8 @@
             font-size: var(--font-base);
             font-weight: 600;
             cursor: pointer;
+            transition: background 0.2s;
+            flex-shrink: 0;
         }
         
         .global-search button:hover {
@@ -462,24 +490,35 @@
             .header h1 { font-size: 32px; }
             
             .navbar {
-                gap: 4px;
-                padding: 10px 12px;
+                flex-wrap: wrap;
             }
             
             .navbar a {
                 font-size: 13px;
-                padding: 6px 8px;
+                padding: 10px 0;
+                flex: 1 1 auto;
+                min-width: 100px;
+            }
+            
+            .global-search {
+                padding: 4px 4px 4px 16px;
+            }
+            
+            .global-search button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .search-icon svg {
+                width: 20px;
+                height: 20px;
             }
         }
         
         @media (max-width: 1000px) and (min-width: 769px) {
             .navbar a {
                 font-size: 14px;
-                padding: 8px 10px;
-            }
-            .navbar {
-                gap: 4px;
-                padding: 12px 16px;
+                padding: 12px 0;
             }
         }
     </style>
@@ -493,22 +532,24 @@
         <p class="subtitle">на базе информационного ресурса Единой государственной информационной системы учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения</p>
     </header>
     
-    <!-- ===== НАВБАР - ВСЕ ПУНКТЫ ОДИНАКОВЫЕ ===== -->
+    <!-- ===== НАВБАР - РАСТЯНУТАЯ, БЕЗ ПУСТЫХ МЕСТ ===== -->
     <nav class="navbar" role="navigation" aria-label="Основное меню">
         <a href="#">Популяризация науки</a>
-        <span class="separator" aria-hidden="true">|</span>
         <a href="#">Комиссия техподдержки</a>
-        <span class="separator" aria-hidden="true">|</span>
         <a href="#">База знаний</a>
-        <span class="separator" aria-hidden="true">|</span>
         <a href="#">Аналитика</a>
-        <span class="separator" aria-hidden="true">|</span>
         <a href="#">Отраслевые разделы</a>
-        <span class="separator" aria-hidden="true">|</span>
-        <a href="./aggregator-service.html">Гранты и меры поддержки</a>
+        <a href="./aggregator-service.html">Гранты и поддержка</a>
     </nav>
     
+    <!-- ===== ГЛОБАЛЬНЫЙ ПОИСК С ЛУПОЙ СЛЕВА ===== -->
     <div class="global-search" role="search">
+        <span class="search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="10.5" cy="10.5" r="7.5"/>
+                <line x1="21" y1="21" x2="15.8" y2="15.8"/>
+            </svg>
+        </span>
         <label for="global-search-input" class="visually-hidden">Глобальный поиск</label>
         <input type="search" id="global-search-input" placeholder="глобальный поиск ..." aria-label="Введите поисковый запрос">
         <button type="button" aria-label="Найти">Найти</button>
