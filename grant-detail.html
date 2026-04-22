@@ -51,7 +51,8 @@
         }
         
         a:focus-visible,
-        button:focus-visible {
+        button:focus-visible,
+        .tab-button:focus-visible {
             outline: 3px solid var(--color-focus);
             outline-offset: 3px;
             border-radius: var(--radius-sm);
@@ -169,6 +170,7 @@
             padding: var(--spacing-xl);
         }
         
+        /* Кнопки вкладок - теперь реальные кнопки, но стили сохранены */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -179,29 +181,30 @@
             margin-bottom: var(--spacing-xl);
         }
         
-        .tabs a {
+        .tab-button {
             position: relative;
-            text-decoration: none;
+            background: transparent;
+            border: none;
             color: #4a5a6a;
             font-size: 18px;
             font-weight: 500;
             padding: 10px 6px 14px;
             transition: all 0.2s ease;
             cursor: pointer;
-            background: transparent;
+            font-family: inherit;
             border-radius: 0;
         }
         
-        .tabs a:hover {
+        .tab-button:hover {
             color: #1f6fb2;
         }
         
-        .tabs a.active {
+        .tab-button.active {
             color: #1f6fb2;
             font-weight: 600;
         }
         
-        .tabs a.active::after {
+        .tab-button.active::after {
             content: '';
             position: absolute;
             left: 0;
@@ -212,7 +215,7 @@
             border-radius: 2px;
         }
         
-        .tabs a::after {
+        .tab-button::after {
             content: '';
             position: absolute;
             left: 0;
@@ -223,7 +226,7 @@
             transition: width 0.25s ease;
         }
         
-        .tabs a:hover::after {
+        .tab-button:hover::after {
             width: 100%;
         }
         
@@ -399,7 +402,7 @@
             .detail-content { padding: var(--spacing-lg); }
             .administrator { padding: var(--spacing-md); }
             .tabs { gap: 16px; }
-            .tabs a { font-size: 14px; padding: 8px 4px 12px; }
+            .tab-button { font-size: 14px; padding: 8px 4px 12px; }
             .info-grid { grid-template-columns: 1fr; }
             .detail-header h1 { font-size: 32px; }
             .admin-label { margin-right: 4px; }
@@ -446,19 +449,19 @@
             </div>
         </div>
         
+        <!-- КНОПКИ ВКЛАДОК - ТЕПЕРЬ ЭТО НАСТОЯЩИЕ КНОПКИ -->
         <div class="tabs" role="tablist" aria-label="Разделы информации о гранте">
-            <a data-section="main" class="active" role="tab" aria-selected="true">Основная информация</a>
-            <a data-section="requirements" role="tab" aria-selected="false">Требования</a>
-            <a data-section="documents" role="tab" aria-selected="false">Необходимые документы</a>
-            <a data-section="npa" role="tab" aria-selected="false">Нормативные акты (НПА)</a>
-            <a data-section="calendar" role="tab" aria-selected="false">Календарь</a>
-            <a data-section="faq" role="tab" aria-selected="false">Частые вопросы</a>
-            <a data-section="contacts" role="tab" aria-selected="false">Контакты</a>
+            <button class="tab-button active" data-section="main" role="tab" aria-selected="true">Основная информация</button>
+            <button class="tab-button" data-section="requirements" role="tab" aria-selected="false">Требования</button>
+            <button class="tab-button" data-section="documents" role="tab" aria-selected="false">Необходимые документы</button>
+            <button class="tab-button" data-section="npa" role="tab" aria-selected="false">Нормативные акты (НПА)</button>
+            <button class="tab-button" data-section="calendar" role="tab" aria-selected="false">Календарь</button>
+            <button class="tab-button" data-section="faq" role="tab" aria-selected="false">Частые вопросы</button>
+            <button class="tab-button" data-section="contacts" role="tab" aria-selected="false">Контакты</button>
         </div>
         
         <div class="detail-content">
             
-            <!-- Секция 1: Основная информация (2 карточки в ряду) -->
             <div id="section-main" class="section active" role="tabpanel">
                 <h2>Основная информация</h2>
                 <div class="info-grid">
@@ -573,7 +576,8 @@
         }
     });
     
-    const tabLinks = document.querySelectorAll('.tabs a');
+    // Получаем кнопки вкладок (теперь это <button>)
+    const tabButtons = document.querySelectorAll('.tab-button');
     const sections = {
         main: document.getElementById('section-main'),
         requirements: document.getElementById('section-requirements'),
@@ -584,7 +588,7 @@
         contacts: document.getElementById('section-contacts')
     };
     
-    function showSection(sectionId, linkElement) {
+    function showSection(sectionId, buttonElement) {
         Object.values(sections).forEach(section => {
             if (section) section.classList.remove('active');
         });
@@ -592,34 +596,33 @@
         const targetSection = sections[sectionId];
         if (targetSection) {
             targetSection.classList.add('active');
-            const sectionName = linkElement ? linkElement.textContent.trim() : sectionId;
+            const sectionName = buttonElement ? buttonElement.textContent.trim() : sectionId;
             announceToScreenReader(`Раздел "${sectionName}" открыт`);
         }
         
-        tabLinks.forEach(link => {
-            const linkSection = link.getAttribute('data-section');
-            if (linkSection === sectionId) {
-                link.classList.add('active');
-                link.setAttribute('aria-selected', 'true');
+        tabButtons.forEach(btn => {
+            const btnSection = btn.getAttribute('data-section');
+            if (btnSection === sectionId) {
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
             } else {
-                link.classList.remove('active');
-                link.setAttribute('aria-selected', 'false');
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
             }
         });
     }
     
-    tabLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const sectionId = link.getAttribute('data-section');
-            showSection(sectionId, link);
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const sectionId = btn.getAttribute('data-section');
+            showSection(sectionId, btn);
         });
         
-        link.addEventListener('keydown', (e) => {
+        btn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                const sectionId = link.getAttribute('data-section');
-                showSection(sectionId, link);
+                const sectionId = btn.getAttribute('data-section');
+                showSection(sectionId, btn);
             }
         });
     });
