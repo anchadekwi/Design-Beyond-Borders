@@ -428,19 +428,18 @@
             padding: 10px 16px;
         }
         
-        /* Карточка гранта — вся ссылка, но с возможностью читать элементы стрелками */
+        /* Карточка гранта — только заголовок фокусируемый */
         .grant-card {
-            display: block;
             background: var(--color-white);
             border-radius: var(--radius-lg);
+            padding: var(--spacing-lg);
             margin-bottom: var(--spacing-md);
             border: 1px solid var(--color-border);
-            transition: background 0.2s, transform 0.1s;
+            transition: background 0.2s;
         }
         
         .grant-card:hover {
             background: var(--color-primary-light);
-            transform: translateY(-2px);
         }
         
         .grant-card:focus-within {
@@ -449,28 +448,24 @@
         }
         
         .grant-link {
-            display: block;
             text-decoration: none;
-            color: inherit;
-            padding: var(--spacing-lg);
+            color: var(--color-primary);
+            font-size: var(--font-large);
+            font-weight: 700;
+            display: inline-block;
         }
         
         .grant-link:focus-visible {
-            outline: none;
-        }
-        
-        .grant-card h3 {
-            font-size: var(--font-large);
-            font-weight: 700;
-            margin: 0 0 var(--spacing-sm) 0;
-            color: var(--color-primary);
+            outline: 3px solid var(--color-focus);
+            outline-offset: 2px;
+            border-radius: var(--radius-sm);
         }
         
         .grant-meta {
             display: flex;
             flex-wrap: wrap;
             gap: var(--spacing-md);
-            margin-bottom: var(--spacing-md);
+            margin: var(--spacing-md) 0;
             font-size: var(--font-small);
         }
         
@@ -588,78 +583,78 @@
             <div id="results-container">
                 <!-- Карточка 1 -->
                 <article class="grant-card">
-                    <a href="./grant-detail.html" class="grant-link" aria-labelledby="grant-title-1" aria-describedby="grant-meta-1 grant-desc-1 grant-footer-1">
-                        <h3 id="grant-title-1">Грант Президента РФ для молодых учёных</h3>
-                        <div id="grant-meta-1" class="grant-meta">
-                            <span>Федеральный</span>
-                            <span>Минобрнауки России</span>
-                            <span>Для молодых учёных до 35 лет</span>
-                        </div>
-                        <div id="grant-desc-1" class="grant-description">
-                            Государственная поддержка молодых российских учёных — кандидатов и докторов наук.
-                        </div>
-                        <div id="grant-footer-1" class="grant-footer">
-                            <div><span class="grant-deadline urgent">Срок подачи: до 1 июня 2025</span></div>
-                            <div class="grant-amount">до 500 000 ₽</div>
-                        </div>
-                    </a>
+                    <h3>
+                        <a href="./grant-detail.html" class="grant-link" id="grant-link-1">Грант Президента РФ для молодых учёных</a>
+                    </h3>
+                    <div class="grant-meta">
+                        <span>Федеральный</span>
+                        <span>Минобрнауки России</span>
+                        <span>Для молодых учёных до 35 лет</span>
+                    </div>
+                    <div class="grant-description">
+                        Государственная поддержка молодых российских учёных — кандидатов и докторов наук.
+                    </div>
+                    <div class="grant-footer">
+                        <div><span class="grant-deadline urgent">Срок подачи: до 1 июня 2025</span></div>
+                        <div class="grant-amount">до 500 000 ₽</div>
+                    </div>
                 </article>
                 
                 <!-- Карточка 2 -->
                 <article class="grant-card">
-                    <a href="./grant-detail.html" class="grant-link" aria-labelledby="grant-title-2" aria-describedby="grant-meta-2 grant-desc-2 grant-footer-2">
-                        <h3 id="grant-title-2">РНФ — Конкурс научных групп</h3>
-                        <div id="grant-meta-2" class="grant-meta">
-                            <span>Федеральный</span>
-                            <span>Российский научный фонд</span>
-                            <span>Для научных коллективов</span>
-                        </div>
-                        <div id="grant-desc-2" class="grant-description">
-                            Поддержка научных групп по приоритетным направлениям фундаментальных исследований.
-                        </div>
-                        <div id="grant-footer-2" class="grant-footer">
-                            <div><span class="grant-deadline">Срок подачи: до 15 августа 2025</span></div>
-                            <div class="grant-amount">до 2 000 000 ₽</div>
-                        </div>
-                    </a>
+                    <h3>
+                        <a href="./grant-detail.html" class="grant-link" id="grant-link-2">РНФ — Конкурс научных групп</a>
+                    </h3>
+                    <div class="grant-meta">
+                        <span>Федеральный</span>
+                        <span>Российский научный фонд</span>
+                        <span>Для научных коллективов</span>
+                    </div>
+                    <div class="grant-description">
+                        Поддержка научных групп по приоритетным направлениям фундаментальных исследований.
+                    </div>
+                    <div class="grant-footer">
+                        <div><span class="grant-deadline">Срок подачи: до 15 августа 2025</span></div>
+                        <div class="grant-amount">до 2 000 000 ₽</div>
+                    </div>
                 </article>
                 
                 <!-- Карточка 3 -->
                 <article class="grant-card">
-                    <a href="./grant-detail.html" class="grant-link" aria-labelledby="grant-title-3" aria-describedby="grant-meta-3 grant-desc-3 grant-footer-3">
-                        <h3 id="grant-title-3">Стипендия Правительства РФ</h3>
-                        <div id="grant-meta-3" class="grant-meta">
-                            <span>Федеральный</span>
-                            <span>Правительство РФ</span>
-                            <span>Для аспирантов и студентов</span>
-                        </div>
-                        <div id="grant-desc-3" class="grant-description">
-                            Государственная стипендия для аспирантов и студентов, проявивших выдающиеся способности.
-                        </div>
-                        <div id="grant-footer-3" class="grant-footer">
-                            <div><span class="grant-deadline urgent">Срок подачи: до 31 мая 2025</span></div>
-                            <div class="grant-amount">до 20 000 ₽/мес</div>
-                        </div>
-                    </a>
+                    <h3>
+                        <a href="./grant-detail.html" class="grant-link" id="grant-link-3">Стипендия Правительства РФ</a>
+                    </h3>
+                    <div class="grant-meta">
+                        <span>Федеральный</span>
+                        <span>Правительство РФ</span>
+                        <span>Для аспирантов и студентов</span>
+                    </div>
+                    <div class="grant-description">
+                        Государственная стипендия для аспирантов и студентов, проявивших выдающиеся способности.
+                    </div>
+                    <div class="grant-footer">
+                        <div><span class="grant-deadline urgent">Срок подачи: до 31 мая 2025</span></div>
+                        <div class="grant-amount">до 20 000 ₽/мес</div>
+                    </div>
                 </article>
                 
                 <!-- Карточка 4 -->
                 <article class="grant-card">
-                    <a href="./grant-detail.html" class="grant-link" aria-labelledby="grant-title-4" aria-describedby="grant-meta-4 grant-desc-4 grant-footer-4">
-                        <h3 id="grant-title-4">Грант Фонда содействия инновациям «Старт»</h3>
-                        <div id="grant-meta-4" class="grant-meta">
-                            <span>Федеральный</span>
-                            <span>Фонд содействия инновациям</span>
-                            <span>Для стартапов</span>
-                        </div>
-                        <div id="grant-desc-4" class="grant-description">
-                            Поддержка инновационных проектов малых предприятий на ранних стадиях развития.
-                        </div>
-                        <div id="grant-footer-4" class="grant-footer">
-                            <div><span class="grant-deadline">Срок подачи: до 30 сентября 2025</span></div>
-                            <div class="grant-amount">до 2 000 000 ₽</div>
-                        </div>
-                    </a>
+                    <h3>
+                        <a href="./grant-detail.html" class="grant-link" id="grant-link-4">Грант Фонда содействия инновациям «Старт»</a>
+                    </h3>
+                    <div class="grant-meta">
+                        <span>Федеральный</span>
+                        <span>Фонд содействия инновациям</span>
+                        <span>Для стартапов</span>
+                    </div>
+                    <div class="grant-description">
+                        Поддержка инновационных проектов малых предприятий на ранних стадиях развития.
+                    </div>
+                    <div class="grant-footer">
+                        <div><span class="grant-deadline">Срок подачи: до 30 сентября 2025</span></div>
+                        <div class="grant-amount">до 2 000 000 ₽</div>
+                    </div>
                 </article>
             </div>
         </main>
@@ -874,7 +869,7 @@
             announceToScreenReader(`Поиск по названию: показаны все ${cards.length} грантов`);
         } else {
             cards.forEach(card => {
-                const title = card.querySelector('h3')?.innerText.toLowerCase() || '';
+                const title = card.querySelector('h3 a')?.innerText.toLowerCase() || '';
                 if (title.includes(searchTerm)) {
                     card.style.display = '';
                     visibleCount++;
