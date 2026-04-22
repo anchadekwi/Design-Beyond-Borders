@@ -57,6 +57,24 @@
             border-radius: var(--radius-sm);
         }
         
+        .skip-link {
+            position: absolute;
+            top: -60px;
+            left: var(--spacing-md);
+            background: var(--color-primary);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            z-index: 1000;
+            font-weight: 600;
+        }
+        
+        .skip-link:focus {
+            top: var(--spacing-md);
+            outline: 3px solid var(--color-focus);
+        }
+        
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -118,6 +136,7 @@
             margin-top: var(--spacing-lg);
         }
         
+        /* БЕЛАЯ КНОПКА С СИНИМ ТЕКСТОМ */
         .btn-apply {
             display: inline-flex;
             align-items: center;
@@ -128,33 +147,15 @@
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            transition: background 0.2s, border-color 0.2s;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            background: #052c5e;
-            color: white;
+            transition: all 0.2s;
+            border: 2px solid var(--color-primary);
+            background: var(--color-white);
+            color: var(--color-primary);
         }
         
         .btn-apply:hover {
-            background: #031f45;
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-        
-        .btn-copy {
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 14px 28px;
-            border-radius: var(--radius-md);
-            font-size: var(--font-base);
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            transition: background 0.2s;
-        }
-        
-        .btn-copy:hover {
-            background: rgba(255,255,255,0.25);
+            background: var(--color-primary-light);
+            transform: scale(1.02);
         }
         
         .administrator {
@@ -187,7 +188,7 @@
             padding: var(--spacing-xl);
         }
         
-        /* ===== КОНТЕЙНЕР ТАБОВ - ПО ЦЕНТРУ ===== */
+        /* НАВИГАЦИОННЫЕ ВКЛАДКИ */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -198,7 +199,6 @@
             margin-bottom: var(--spacing-xl);
         }
         
-        /* ССЫЛКИ */
         .tabs a {
             position: relative;
             text-decoration: none;
@@ -208,23 +208,19 @@
             padding: 10px 6px 14px;
             transition: all 0.2s ease;
             cursor: pointer;
-            background: transparent !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
+            background: transparent;
+            border-radius: 0;
         }
         
-        /* HOVER */
         .tabs a:hover {
             color: #1f6fb2;
         }
         
-        /* АКТИВНАЯ ВКЛАДКА */
         .tabs a.active {
             color: #1f6fb2;
             font-weight: 600;
         }
         
-        /* нижняя линия (акцент) */
         .tabs a.active::after {
             content: '';
             position: absolute;
@@ -236,7 +232,6 @@
             border-radius: 2px;
         }
         
-        /* мягкий hover underline */
         .tabs a::after {
             content: '';
             position: absolute;
@@ -353,6 +348,27 @@
             font-weight: 500;
         }
         
+        /* МАЛЕНЬКАЯ КНОПКА КОПИРОВАНИЯ В КОНТАКТАХ */
+        .copy-link-small {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            margin-top: var(--spacing-md);
+            color: var(--color-text-secondary);
+        }
+        
+        .copy-link-small:hover {
+            background: var(--color-primary-light);
+            border-color: var(--color-primary);
+        }
+        
         .empty-state {
             color: var(--color-text-secondary);
             font-style: italic;
@@ -398,7 +414,6 @@
             border: 0;
         }
         
-        /* АДАПТИВ */
         @media (max-width: 768px) {
             .container { padding: var(--spacing-sm); }
             .detail-header { padding: var(--spacing-lg); }
@@ -414,15 +429,17 @@
 </head>
 <body>
 
+<a href="#breadcrumbs-nav" class="skip-link">Перейти к навигации</a>
+
 <div class="container">
     
-    <div class="breadcrumbs" aria-label="Навигационная цепочка">
+    <div class="breadcrumbs" id="breadcrumbs-nav" aria-label="Навигационная цепочка" tabindex="-1">
         <a href="./science.html">Главная</a> / 
         <a href="./aggregator-service.html">Навигатор мер поддержки</a> / 
         <span aria-current="page">Паспорт меры поддержки</span>
     </div>
     
-    <main id="main-content" class="grant-detail" role="main" tabindex="-1">
+    <main class="grant-detail">
         
         <div class="detail-header">
             <h1>Грант Президента РФ для молодых учёных</h1>
@@ -430,7 +447,6 @@
             
             <div class="detail-actions">
                 <button class="btn-apply" id="apply-btn">Подать заявку</button>
-                <button class="btn-copy" id="copy-link-btn">Скопировать ссылку</button>
             </div>
         </div>
         
@@ -453,7 +469,6 @@
             </div>
         </div>
         
-        <!-- ===== НАВИГАЦИОННАЯ ПАНЕЛЬ .tabs ПО ЦЕНТРУ ===== -->
         <div class="tabs" role="tablist" aria-label="Разделы информации о гранте">
             <a data-section="main" class="active" role="tab" aria-selected="true">Основная информация</a>
             <a data-section="requirements" role="tab" aria-selected="false">Требования</a>
@@ -466,7 +481,7 @@
         
         <div class="detail-content">
             
-            <div id="section-main" class="section active" role="tabpanel" tabindex="-1">
+            <div id="section-main" class="section active" role="tabpanel">
                 <h2>Основная информация</h2>
                 <div class="info-grid">
                     <div class="info-card">
@@ -490,7 +505,7 @@
                 </div>
             </div>
             
-            <div id="section-requirements" class="section" role="tabpanel" tabindex="-1">
+            <div id="section-requirements" class="section" role="tabpanel">
                 <h2>Требования</h2>
                 <div class="info-card">
                     <h3>Основание</h3>
@@ -502,7 +517,7 @@
                 </div>
             </div>
             
-            <div id="section-documents" class="section" role="tabpanel" tabindex="-1">
+            <div id="section-documents" class="section" role="tabpanel">
                 <h2>Необходимые документы</h2>
                 <div class="info-card">
                     <h3>Перечень документов</h3>
@@ -510,7 +525,7 @@
                 </div>
             </div>
             
-            <div id="section-npa" class="section" role="tabpanel" tabindex="-1">
+            <div id="section-npa" class="section" role="tabpanel">
                 <h2>НПА и другие документы</h2>
                 <div class="info-card">
                     <h3>Нормативно-правовые акты</h3>
@@ -521,7 +536,7 @@
                 </div>
             </div>
             
-            <div id="section-calendar" class="section" role="tabpanel" tabindex="-1">
+            <div id="section-calendar" class="section" role="tabpanel">
                 <h2>Календарь</h2>
                 <div class="calendar-item">
                     <div class="calendar-stage">Прием заявок</div>
@@ -536,7 +551,7 @@
                 </div>
             </div>
             
-            <div id="section-faq" class="section" role="tabpanel" tabindex="-1">
+            <div id="section-faq" class="section" role="tabpanel">
                 <h2>Частые вопросы</h2>
                 <div class="info-card">
                     <h3>Вопросы и ответы</h3>
@@ -544,7 +559,7 @@
                 </div>
             </div>
             
-            <div id="section-contacts" class="section" role="tabpanel" tabindex="-1">
+            <div id="section-contacts" class="section" role="tabpanel">
                 <h2>Контакты для консультации</h2>
                 <div class="info-card">
                     <h3>Контактное лицо</h3>
@@ -553,6 +568,8 @@
                         <div class="contact-detail">Должность: Начальник отдела развития энергетики и энергоэффективности</div>
                         <div class="contact-detail">Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
                         <div class="contact-detail">Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
+                        <!-- МАЛЕНЬКАЯ КНОПКА КОПИРОВАНИЯ В КОНТАКТАХ -->
+                        <button class="copy-link-small" id="copy-link-btn">Скопировать ссылку</button>
                     </div>
                 </div>
             </div>
@@ -571,6 +588,14 @@
             setTimeout(() => liveRegion.textContent = '', 3000);
         }
     }
+    
+    // Фокус на хлебные крошки после загрузки (без tabindex)
+    window.addEventListener('load', () => {
+        const breadcrumbs = document.getElementById('breadcrumbs-nav');
+        if (breadcrumbs) {
+            breadcrumbs.focus();
+        }
+    });
     
     const tabLinks = document.querySelectorAll('.tabs a');
     const sections = {
@@ -648,7 +673,6 @@
         });
     }
     
-    document.getElementById('main-content')?.focus();
     announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации.');
 </script>
 
