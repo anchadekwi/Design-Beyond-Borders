@@ -149,9 +149,13 @@ science.html
               └──→ grant-detail.html
 
 images/  ←──→  science.html
+
 images/  ←──→  aggregator-service.html
+
 images/  ←──→  grant-detail.html
+
 Анализ текста сайта ФИНАЛ.pdf
+
 Сравнительный анализ изменений (финал).pdf
 
 ✅ Соответствие требованиям
