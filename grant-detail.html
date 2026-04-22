@@ -68,6 +68,27 @@
             border: 0;
         }
         
+        /* Skip Link — появляется при фокусе */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-primary);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 0 0 var(--radius-md) var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 1000;
+            transition: top 0.2s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+            outline: 3px solid var(--color-focus);
+            outline-offset: 2px;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -87,9 +108,9 @@
         
         .grant-detail {
             background: var(--color-white);
+            border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
         }
         
         .detail-header {
@@ -123,20 +144,38 @@
             align-items: center;
             gap: var(--spacing-xs);
             padding: 14px 32px;
+            border-radius: var(--radius-md);
             font-size: var(--font-base);
             font-weight: 600;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.2s;
-            border: 2px solid var(--color-primary);
-            background: var(--color-white);
-            color: var(--color-primary);
-            border-radius: var(--radius-md);
+            transition: background 0.2s, border-color 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: #052c5e;
+            color: white;
         }
         
         .btn-apply:hover {
-            background: var(--color-primary-light);
-            transform: scale(1.02);
+            background: #031f45;
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .btn-copy {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 14px 28px;
+            border-radius: var(--radius-md);
+            font-size: var(--font-base);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            transition: background 0.2s;
+        }
+        
+        .btn-copy:hover {
+            background: rgba(255,255,255,0.25);
         }
         
         .administrator {
@@ -169,6 +208,7 @@
             padding: var(--spacing-xl);
         }
         
+        /* Табы */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -188,8 +228,9 @@
             padding: 10px 6px 14px;
             transition: all 0.2s ease;
             cursor: pointer;
-            background: transparent;
-            border-radius: 0;
+            background: transparent !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
         }
         
         .tabs a:hover {
@@ -252,10 +293,10 @@
         
         .info-card {
             background: var(--color-white);
+            border-radius: var(--radius-md);
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-lg);
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
         }
         
         .info-card h3 {
@@ -267,23 +308,16 @@
         
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: var(--spacing-lg);
-        }
-        
-        .total-amount {
-            font-size: var(--font-xxl);
-            font-weight: 800;
-            color: var(--color-text);
-            margin: var(--spacing-md) 0;
         }
         
         .calendar-item {
             background: var(--color-white);
+            border-radius: var(--radius-md);
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-lg);
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
         }
         
         .calendar-stage {
@@ -302,16 +336,16 @@
         .date-badge {
             background: var(--color-primary-light);
             padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: 40px;
             font-size: var(--font-small);
             font-weight: 600;
-            border-radius: 40px;
         }
         
         .contact-card {
             background: var(--color-white);
+            border-radius: var(--radius-md);
             padding: var(--spacing-lg);
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
         }
         
         .contact-name {
@@ -335,26 +369,6 @@
             font-weight: 500;
         }
         
-        .copy-link-small {
-            background: transparent;
-            border: 1px solid var(--color-border);
-            padding: 8px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-            margin-top: var(--spacing-md);
-            color: var(--color-text-secondary);
-            border-radius: var(--radius-sm);
-        }
-        
-        .copy-link-small:hover {
-            background: var(--color-primary-light);
-            border-color: var(--color-primary);
-        }
-        
         .empty-state {
             color: var(--color-text-secondary);
             font-style: italic;
@@ -362,6 +376,13 @@
             text-align: center;
             background: var(--color-primary-light);
             border-radius: var(--radius-md);
+        }
+        
+        .total-amount {
+            font-size: var(--font-xxl);
+            font-weight: 800;
+            color: var(--color-text);
+            margin: var(--spacing-md) 0;
         }
         
         .copy-success {
@@ -393,6 +414,7 @@
             border: 0;
         }
         
+        /* АДАПТИВ */
         @media (max-width: 768px) {
             .container { padding: var(--spacing-sm); }
             .detail-header { padding: var(--spacing-lg); }
@@ -408,26 +430,32 @@
 </head>
 <body>
 
+<!-- Skip Link для пропуска информации об организаторе -->
+<a href="#main-tabs" class="skip-link">Пропустить информацию об организаторе и перейти к разделам</a>
+
 <div class="container">
     
-    <div class="breadcrumbs" id="breadcrumbs-nav" aria-label="Навигационная цепочка">
+    <div class="breadcrumbs" aria-label="Навигационная цепочка">
         <a href="./science.html">Главная</a> / 
         <a href="./aggregator-service.html">Навигатор мер поддержки</a> / 
         <span aria-current="page">Паспорт меры поддержки</span>
     </div>
     
-    <main class="grant-detail" id="main-content">
+    <main id="main-content" class="grant-detail" role="main" tabindex="-1">
         
         <div class="detail-header">
             <h1>Грант Президента РФ для молодых учёных</h1>
-            <p aria-hidden="true">Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
+            <p>Государственная поддержка молодых российских учёных — кандидатов и докторов наук для проведения фундаментальных и прикладных научных исследований</p>
             
+            <!-- Кнопки действий -->
             <div class="detail-actions">
                 <button class="btn-apply" id="apply-btn">Подать заявку</button>
+                <button class="btn-copy" id="copy-link-btn">Скопировать ссылку</button>
             </div>
         </div>
         
-        <div class="administrator">
+        <!-- Информация об администраторе -->
+        <div class="administrator" id="administrator-info">
             <div class="admin-item">
                 <span class="admin-label">Администратор меры:</span>
                 <span class="admin-value">Министерство промышленности и торговли Республики Татарстан</span>
@@ -446,20 +474,20 @@
             </div>
         </div>
         
-        <div class="tabs" role="tablist" aria-label="Разделы информации о гранте">
-            <a data-section="main" class="active" role="tab" aria-selected="true">Основная информация</a>
-            <a data-section="requirements" role="tab" aria-selected="false">Требования</a>
-            <a data-section="documents" role="tab" aria-selected="false">Необходимые документы</a>
-            <a data-section="npa" role="tab" aria-selected="false">Нормативные акты (НПА)</a>
-            <a data-section="calendar" role="tab" aria-selected="false">Календарь</a>
-            <a data-section="faq" role="tab" aria-selected="false">Частые вопросы</a>
-            <a data-section="contacts" role="tab" aria-selected="false">Контакты</a>
+        <!-- ТАБЫ — теперь они идут сразу после администратора, что логично для фокуса -->
+        <div class="tabs" role="tablist" aria-label="Разделы информации о гранте" id="main-tabs">
+            <a data-section="main" class="active" role="tab" aria-selected="true" tabindex="0">Основная информация</a>
+            <a data-section="requirements" role="tab" aria-selected="false" tabindex="-1">Требования</a>
+            <a data-section="documents" role="tab" aria-selected="false" tabindex="-1">Необходимые документы</a>
+            <a data-section="npa" role="tab" aria-selected="false" tabindex="-1">НПА и другие документы</a>
+            <a data-section="calendar" role="tab" aria-selected="false" tabindex="-1">Календарь</a>
+            <a data-section="faq" role="tab" aria-selected="false" tabindex="-1">Частые вопросы</a>
+            <a data-section="contacts" role="tab" aria-selected="false" tabindex="-1">Контакты для консультации</a>
         </div>
         
         <div class="detail-content">
             
-            <!-- Секция 1: Основная информация (2 карточки в ряду) -->
-            <div id="section-main" class="section active" role="tabpanel">
+            <div id="section-main" class="section active" role="tabpanel" tabindex="0">
                 <h2>Основная информация</h2>
                 <div class="info-grid">
                     <div class="info-card">
@@ -480,14 +508,10 @@
                         <h3>Направление меры</h3>
                         <p aria-label="Научно-исследовательские и опытно-конструкторские работы">НИОКР</p>
                     </div>
-                    <div class="info-card">
-                        <h3>Общая сумма финансирования</h3>
-                        <div class="total-amount">0,00 ₽</div>
-                    </div>
                 </div>
             </div>
             
-            <div id="section-requirements" class="section" role="tabpanel">
+            <div id="section-requirements" class="section" role="tabpanel" tabindex="0">
                 <h2>Требования</h2>
                 <div class="info-card">
                     <h3>Основание</h3>
@@ -499,7 +523,7 @@
                 </div>
             </div>
             
-            <div id="section-documents" class="section" role="tabpanel">
+            <div id="section-documents" class="section" role="tabpanel" tabindex="0">
                 <h2>Необходимые документы</h2>
                 <div class="info-card">
                     <h3>Перечень документов</h3>
@@ -507,8 +531,8 @@
                 </div>
             </div>
             
-            <div id="section-npa" class="section" role="tabpanel">
-                <h2>Нормативные акты (НПА)</h2>
+            <div id="section-npa" class="section" role="tabpanel" tabindex="0">
+                <h2>НПА и другие документы</h2>
                 <div class="info-card">
                     <h3>Нормативно-правовые акты</h3>
                     <ul style="margin-left: var(--spacing-lg);">
@@ -518,7 +542,7 @@
                 </div>
             </div>
             
-            <div id="section-calendar" class="section" role="tabpanel">
+            <div id="section-calendar" class="section" role="tabpanel" tabindex="0">
                 <h2>Календарь</h2>
                 <div class="calendar-item">
                     <div class="calendar-stage">Прием заявок</div>
@@ -527,17 +551,21 @@
                         <span class="date-badge">Окончание: <strong>29.12.2028</strong></span>
                     </div>
                 </div>
-            </div>
-            
-            <div id="section-faq" class="section" role="tabpanel">
-                <h2>Частые вопросы</h2>
                 <div class="info-card">
-                    <h3>Вопросы и ответы</h3>
-                    <p class="empty-state">Пока нет вопросов</p>
+                    <h3>Общая сумма финансирования</h3>
+                    <div class="total-amount">0,00 ₽</div>
                 </div>
             </div>
             
-            <div id="section-contacts" class="section" role="tabpanel">
+            <div id="section-faq" class="section" role="tabpanel" tabindex="0">
+                <h2>Частые вопросы</h2>
+                <div class="info-card">
+                    <h3>Вопросы и ответы</h3>
+                    <p class="empty-state">Часто задаваемые вопросы не указаны</p>
+                </div>
+            </div>
+            
+            <div id="section-contacts" class="section" role="tabpanel" tabindex="0">
                 <h2>Контакты для консультации</h2>
                 <div class="info-card">
                     <h3>Контактное лицо</h3>
@@ -546,7 +574,6 @@
                         <div class="contact-detail">Должность: Начальник отдела развития энергетики и энергоэффективности</div>
                         <div class="contact-detail">Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
                         <div class="contact-detail">Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
-                        <button class="copy-link-small" id="copy-link-btn">Скопировать ссылку</button>
                     </div>
                 </div>
             </div>
@@ -566,13 +593,6 @@
         }
     }
     
-    window.addEventListener('load', () => {
-        const breadcrumbs = document.getElementById('breadcrumbs-nav');
-        if (breadcrumbs) {
-            breadcrumbs.focus();
-        }
-    });
-    
     const tabLinks = document.querySelectorAll('.tabs a');
     const sections = {
         main: document.getElementById('section-main'),
@@ -585,29 +605,38 @@
     };
     
     function showSection(sectionId, linkElement) {
+        // Скрываем все секции
         Object.values(sections).forEach(section => {
             if (section) section.classList.remove('active');
         });
         
+        // Показываем нужную секцию
         const targetSection = sections[sectionId];
         if (targetSection) {
             targetSection.classList.add('active');
             const sectionName = linkElement ? linkElement.textContent.trim() : sectionId;
             announceToScreenReader(`Раздел "${sectionName}" открыт`);
+            
+            // Переводим фокус на содержимое вкладки для удобства
+            targetSection.focus();
         }
         
+        // Обновляем состояния табов
         tabLinks.forEach(link => {
             const linkSection = link.getAttribute('data-section');
             if (linkSection === sectionId) {
                 link.classList.add('active');
                 link.setAttribute('aria-selected', 'true');
+                link.setAttribute('tabindex', '0');
             } else {
                 link.classList.remove('active');
                 link.setAttribute('aria-selected', 'false');
+                link.setAttribute('tabindex', '-1');
             }
         });
     }
     
+    // Обработчики для табов
     tabLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -621,9 +650,26 @@
                 const sectionId = link.getAttribute('data-section');
                 showSection(sectionId, link);
             }
+            
+            // Навигация стрелками между табами
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                const currentIndex = Array.from(tabLinks).indexOf(link);
+                let nextIndex;
+                
+                if (e.key === 'ArrowRight') {
+                    nextIndex = (currentIndex + 1) % tabLinks.length;
+                } else {
+                    nextIndex = (currentIndex - 1 + tabLinks.length) % tabLinks.length;
+                }
+                
+                const nextLink = tabLinks[nextIndex];
+                nextLink.focus();
+            }
         });
     });
     
+    // Кнопка копирования ссылки
     const copyBtn = document.getElementById('copy-link-btn');
     if (copyBtn) {
         copyBtn.addEventListener('click', async () => {
@@ -641,21 +687,18 @@
         });
     }
     
+    // Кнопка подачи заявки
     const applyBtn = document.getElementById('apply-btn');
     if (applyBtn) {
         applyBtn.addEventListener('click', () => {
             announceToScreenReader('Переход к форме подачи заявки');
-            applyBtn.disabled = true;
             alert('Форма подачи заявки будет доступна в следующей версии');
-            setTimeout(() => {
-                applyBtn.disabled = false;
-                applyBtn.focus();
-                announceToScreenReader('Вернулись к паспорту меры поддержки');
-            }, 100);
         });
     }
     
-    announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации.');
+    // Фокус на основном контенте при загрузке
+    document.getElementById('main-content')?.focus();
+    announceToScreenReader('Страница паспорта меры поддержки загружена. Используйте Tab для навигации. Доступно 7 разделов с информацией о гранте.');
 </script>
 
 </body>
