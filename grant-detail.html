@@ -57,24 +57,6 @@
             border-radius: var(--radius-sm);
         }
         
-        .skip-link {
-            position: absolute;
-            top: -60px;
-            left: var(--spacing-md);
-            background: var(--color-primary);
-            color: white;
-            padding: var(--spacing-sm) var(--spacing-md);
-            text-decoration: none;
-            border-radius: var(--radius-sm);
-            z-index: 1000;
-            font-weight: 600;
-        }
-        
-        .skip-link:focus {
-            top: var(--spacing-md);
-            outline: 3px solid var(--color-focus);
-        }
-        
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -105,9 +87,9 @@
         
         .grant-detail {
             background: var(--color-white);
-            border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
         }
         
         .detail-header {
@@ -136,13 +118,11 @@
             margin-top: var(--spacing-lg);
         }
         
-        /* БЕЛАЯ КНОПКА С СИНИМ ТЕКСТОМ */
         .btn-apply {
             display: inline-flex;
             align-items: center;
             gap: var(--spacing-xs);
             padding: 14px 32px;
-            border-radius: var(--radius-md);
             font-size: var(--font-base);
             font-weight: 600;
             text-decoration: none;
@@ -151,6 +131,7 @@
             border: 2px solid var(--color-primary);
             background: var(--color-white);
             color: var(--color-primary);
+            border-radius: var(--radius-md);
         }
         
         .btn-apply:hover {
@@ -188,7 +169,6 @@
             padding: var(--spacing-xl);
         }
         
-        /* НАВИГАЦИОННЫЕ ВКЛАДКИ */
         .tabs {
             display: flex;
             flex-wrap: wrap;
@@ -272,10 +252,10 @@
         
         .info-card {
             background: var(--color-white);
-            border-radius: var(--radius-md);
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-lg);
             border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
         }
         
         .info-card h3 {
@@ -293,10 +273,10 @@
         
         .calendar-item {
             background: var(--color-white);
-            border-radius: var(--radius-md);
             padding: var(--spacing-lg);
             margin-bottom: var(--spacing-lg);
             border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
         }
         
         .calendar-stage {
@@ -315,16 +295,16 @@
         .date-badge {
             background: var(--color-primary-light);
             padding: var(--spacing-sm) var(--spacing-lg);
-            border-radius: 40px;
             font-size: var(--font-small);
             font-weight: 600;
+            border-radius: 40px;
         }
         
         .contact-card {
             background: var(--color-white);
-            border-radius: var(--radius-md);
             padding: var(--spacing-lg);
             border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
         }
         
         .contact-name {
@@ -348,12 +328,10 @@
             font-weight: 500;
         }
         
-        /* МАЛЕНЬКАЯ КНОПКА КОПИРОВАНИЯ В КОНТАКТАХ */
         .copy-link-small {
             background: transparent;
             border: 1px solid var(--color-border);
             padding: 8px 16px;
-            border-radius: var(--radius-md);
             font-size: 14px;
             cursor: pointer;
             display: inline-flex;
@@ -362,6 +340,7 @@
             transition: all 0.2s;
             margin-top: var(--spacing-md);
             color: var(--color-text-secondary);
+            border-radius: var(--radius-sm);
         }
         
         .copy-link-small:hover {
@@ -429,17 +408,15 @@
 </head>
 <body>
 
-<a href="#breadcrumbs-nav" class="skip-link">Перейти к навигации</a>
-
 <div class="container">
     
-    <div class="breadcrumbs" id="breadcrumbs-nav" aria-label="Навигационная цепочка" tabindex="-1">
+    <div class="breadcrumbs" id="breadcrumbs-nav" aria-label="Навигационная цепочка">
         <a href="./science.html">Главная</a> / 
         <a href="./aggregator-service.html">Навигатор мер поддержки</a> / 
         <span aria-current="page">Паспорт меры поддержки</span>
     </div>
     
-    <main class="grant-detail">
+    <main class="grant-detail" id="main-content">
         
         <div class="detail-header">
             <h1>Грант Президента РФ для молодых учёных</h1>
@@ -568,7 +545,6 @@
                         <div class="contact-detail">Должность: Начальник отдела развития энергетики и энергоэффективности</div>
                         <div class="contact-detail">Телефон: <a href="tel:8432100533" class="contact-link">843 210 05 33</a></div>
                         <div class="contact-detail">Email: <a href="mailto:Evgeniya.Katkova@tatar.ru" class="contact-link">Evgeniya.Katkova@tatar.ru</a></div>
-                        <!-- МАЛЕНЬКАЯ КНОПКА КОПИРОВАНИЯ В КОНТАКТАХ -->
                         <button class="copy-link-small" id="copy-link-btn">Скопировать ссылку</button>
                     </div>
                 </div>
@@ -589,7 +565,6 @@
         }
     }
     
-    // Фокус на хлебные крошки после загрузки (без tabindex)
     window.addEventListener('load', () => {
         const breadcrumbs = document.getElementById('breadcrumbs-nav');
         if (breadcrumbs) {
@@ -669,7 +644,13 @@
     if (applyBtn) {
         applyBtn.addEventListener('click', () => {
             announceToScreenReader('Переход к форме подачи заявки');
+            applyBtn.disabled = true;
             alert('Форма подачи заявки будет доступна в следующей версии');
+            setTimeout(() => {
+                applyBtn.disabled = false;
+                applyBtn.focus();
+                announceToScreenReader('Вернулись к паспорту меры поддержки');
+            }, 100);
         });
     }
     
