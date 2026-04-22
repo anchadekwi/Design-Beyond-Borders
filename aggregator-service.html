@@ -49,10 +49,12 @@
             color: var(--color-text);
         }
         
-        a:focus-visible,
-        button:focus-visible,
-        input:focus-visible,
-        select:focus-visible {
+        /* Убираем outline при клике мышью, оставляем для клавиатуры */
+        :focus:not(:focus-visible) {
+            outline: none;
+        }
+        
+        :focus-visible {
             outline: 3px solid var(--color-focus);
             outline-offset: 3px;
             border-radius: var(--radius-sm);
@@ -180,6 +182,7 @@
         
         .btn:active {
             transform: scale(0.98);
+            outline: none;
         }
         
         .btn-primary {
@@ -465,7 +468,6 @@
             font-size: var(--font-small);
         }
         
-        /* ИСПРАВЛЕНО: более тёмные теги для контрастности */
         .grant-meta span {
             background: #d4e0ec;
             padding: 6px 14px;
@@ -480,7 +482,6 @@
             line-height: 1.5;
         }
         
-        /* ИСПРАВЛЕНО: бейдж срока подачи — читаемый при дальтонизме */
         .grant-deadline {
             display: inline-block;
             background: #fff3e0;
@@ -563,7 +564,7 @@
     
     <div class="main-layout">
         
-        <main class="results-section" id="main-content" role="main" tabindex="-1">
+        <main class="results-section" id="main-content" role="main">
             <div class="results-header">
                 <div class="results-count" aria-live="polite">
                     Найдено <strong id="results-count">12</strong> мер поддержки
@@ -704,7 +705,7 @@
                 </fieldset>
 
                 <div class="filter-group">
-                    <label for="support-type-select">Тип меры поддержки</label>
+                    <label for="support-type-select">Источник финансирования</label>
                     <select id="support-type-select" name="support_type">
                         <option value="">Любой</option>
                         <option value="federal">Федеральная программа</option>
@@ -748,7 +749,7 @@
                 </div>
 
                 <div class="filter-group">
-                    <span class="range-label">Общая сумма финансирования, руб.</span>
+                    <span class="range-label">Сумма гранта, руб.</span>
                     <div class="range-inputs">
                         <label class="visually-hidden" for="funding-from">Сумма от</label>
                         <input type="number" id="funding-from" name="funding_from" placeholder="От" step="1000" min="0">
@@ -789,7 +790,7 @@
                 </details>
 
                 <div class="filter-actions">
-                    <button type="submit" class="btn btn-primary">Сформировать</button>
+                    <button type="submit" class="btn btn-primary">Показать результаты</button>
                     <button type="reset" class="btn btn-secondary">Сбросить</button>
                 </div>
             </form>
