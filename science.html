@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Домен «Наука и инновации» — главная</title>
+    <title>Портал «Наука и инновации» — главная</title>
     <meta name="description" content="Единая государственная информационная система учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения">
     
     <style>
@@ -106,38 +106,25 @@
         .navbar {
             background: #174c73;
             border-radius: 14px;
-            padding: 18px 28px;
+            padding: 12px 20px;
             margin-bottom: var(--spacing-lg);
             display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        
-        /* верхняя строка */
-        .navbar-top {
-            display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
-            gap: 42px;
+            gap: 8px;
             flex-wrap: wrap;
-        }
-        
-        /* нижняя строка */
-        .navbar-bottom {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
         }
         
         /* ссылки */
         .navbar a {
             color: #e6edf3;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
-            padding: 10px 16px;
+            padding: 8px 14px;
             border-radius: 8px;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
         
         /* hover */
@@ -146,10 +133,17 @@
             color: #ffffff;
         }
         
-        /* активный пункт */
+        /* ВСЕ ССЫЛКИ ОДИНАКОВЫЕ - НИКАКОГО ВЫДЕЛЕНИЯ */
         .navbar a.active {
-            background: rgba(255,255,255,0.12);
-            font-weight: 600;
+            background: transparent;
+            font-weight: 500;
+        }
+        
+        /* разделитель */
+        .navbar .separator {
+            color: rgba(255,255,255,0.3);
+            font-size: 16px;
+            user-select: none;
         }
         
         /* ===== ГЛОБАЛЬНЫЙ ПОИСК ===== */
@@ -468,18 +462,24 @@
             .header h1 { font-size: 32px; }
             
             .navbar {
-                gap: 10px;
-                padding: 14px;
-            }
-            
-            .navbar-top,
-            .navbar-bottom {
-                gap: 16px;
+                gap: 4px;
+                padding: 10px 12px;
             }
             
             .navbar a {
-                font-size: 16px;
-                padding: 8px 12px;
+                font-size: 13px;
+                padding: 6px 8px;
+            }
+        }
+        
+        @media (max-width: 1000px) and (min-width: 769px) {
+            .navbar a {
+                font-size: 14px;
+                padding: 8px 10px;
+            }
+            .navbar {
+                gap: 4px;
+                padding: 12px 16px;
             }
         }
     </style>
@@ -489,23 +489,23 @@
 <div class="container">
     
     <header class="header" role="banner">
-        <h1>Домен «Наука и инновации»</h1>
+        <h1>Портал «Наука и инновации»</h1>
         <p class="subtitle">на базе информационного ресурса Единой государственной информационной системы учета научно-исследовательских, опытно-конструкторских и технологических работ гражданского назначения</p>
     </header>
     
-    <!-- ===== НАВБАР ===== -->
+    <!-- ===== НАВБАР - ВСЕ ПУНКТЫ ОДИНАКОВЫЕ ===== -->
     <nav class="navbar" role="navigation" aria-label="Основное меню">
-        <div class="navbar-top">
-            <a href="./science.html" class="active" aria-current="page">Главная</a>
-            <a href="#">Популяризация науки</a>
-            <a href="#">Комиссия НТР</a>
-            <a href="#">База знаний</a>
-            <a href="#">Аналитика</a>
-        </div>
-        <div class="navbar-bottom">
-            <a href="#">Отраслевые и специальные сегменты</a>
-            <a href="./aggregator-service.html">Поиск мер поддержки</a>
-        </div>
+        <a href="#">Популяризация науки</a>
+        <span class="separator" aria-hidden="true">|</span>
+        <a href="#">Комиссия техподдержки</a>
+        <span class="separator" aria-hidden="true">|</span>
+        <a href="#">База знаний</a>
+        <span class="separator" aria-hidden="true">|</span>
+        <a href="#">Аналитика</a>
+        <span class="separator" aria-hidden="true">|</span>
+        <a href="#">Отраслевые разделы</a>
+        <span class="separator" aria-hidden="true">|</span>
+        <a href="./aggregator-service.html">Гранты и меры поддержки</a>
     </nav>
     
     <div class="global-search" role="search">
@@ -515,82 +515,82 @@
     </div>
     
     <div class="alert" role="alert">
-        <strong>Уважаемые пользователи Домена «Наука и инновации»!</strong><br>
+        <strong>Уважаемые пользователи Портала «Наука и инновации»!</strong><br>
         В целях проведения ежегодного мониторинга доступности и результативности деятельности центров коллективного пользования научным оборудованием и уникальных научных установок (ЦКП и УНУ) необходимо <strong>до 12 апреля 2026 года</strong> в Сервисе «Составление отчетности по ЦКП / УНУ» заполнить и сдать отчеты <strong>за 2025 год</strong>.
     </div>
     
     <div class="alert" role="alert">
-        <strong>Уважаемые пользователи Домена «Наука и инновации»!</strong><br>
+        <strong>Уважаемые пользователи Портал «Наука и инновации»!</strong><br>
         Открыт сбор сведений о публикациях и монографиях книжного формата. <strong>До 30 апреля 2026 года</strong> необходимо заполнить и направить на проверку отчёты комплексного балла публикационной результативности (КБПР), содержащие соответствующие данные. Отчётность обязательна только для подведомственных организаций Минобрнауки России.
     </div>
     
     <main id="main-content" role="main">
         
-        <h2 class="section-title">Сервисы Домена</h2>
+        <h2 class="section-title">Сервисы Портала</h2>
         
         <div class="auth-block">
-            <p>Для ознакомления и работы с сервисами Домен «Наука и инновации» авторизуйтесь с помощью ЕСИА</p>
+            <p>Для ознакомления и работы с сервисами Портала «Наука и инновации» авторизуйтесь с помощью ЕСИА</p>
             <button class="auth-button" aria-label="Авторизоваться через ЕСИА">Попробовать</button>
         </div>
         
         <div class="services-grid">
             <a href="#" class="service-card">
-                <div class="service-icon">🏪</div>
+                <div class="service-icon"></div>
                 <h3>Маркетплейс ЦКП/УНУ/Расходных материалов</h3>
                 <p>Размещение и поиск услуг, материалов и оборудования</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📊</div>
+                <div class="service-icon"></div>
                 <h3>Агрегатор инструментов развития</h3>
                 <p>Меры поддержки научной деятельности</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📋</div>
+                <div class="service-icon"></div>
                 <h3>Контроль государственных заданий</h3>
                 <p>Автоматизация сбора отчетности</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📈</div>
+                <div class="service-icon"></div>
                 <h3>Статистическая отчетность</h3>
                 <p>Систематизация информации от участников</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">🧮</div>
+                <div class="service-icon"></div>
                 <h3>Калькулятор экономики проекта</h3>
                 <p>Оценка необходимого финансирования</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">💻</div>
+                <div class="service-icon"></div>
                 <h3>Биржа виртуальных вычислений</h3>
                 <p>Поиск и заказ вычислительных ресурсов</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📚</div>
+                <div class="service-icon"></div>
                 <h3>Доступ к данным научного цитирования</h3>
                 <p>Агрегация публикационной активности</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📊</div>
+                <div class="service-icon"></div>
                 <h3>Дашборд статусов выполнения работ</h3>
                 <p>Мониторинг хода выполнения проектов</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">🔧</div>
+                <div class="service-icon"></div>
                 <h3>Технологические запросы</h3>
                 <p>Публикация и поиск решений</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📐</div>
+                <div class="service-icon"></div>
                 <h3>Конструктор плана проекта</h3>
                 <p>Совместная работа над календарным планом</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📝</div>
+                <div class="service-icon"></div>
                 <h3>Составление отчетности по исследованию</h3>
                 <p>Формирование научно-технической документации</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">🔒</div>
+                <div class="service-icon"></div>
                 <h3>Безопасное хранение</h3>
                 <p>Защищенный просмотр и редактирование</p>
             </a>
@@ -598,42 +598,42 @@
         
         <div class="services-grid">
             <a href="#" class="service-card">
-                <div class="service-icon">🏛️</div>
+                <div class="service-icon"></div>
                 <h3>Составление отчётности по деятельности ФОИВ</h3>
                 <p>Планирование научных исследований</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">💰</div>
+                <div class="service-icon"></div>
                 <h3>Мониторинг финансирования УГТ</h3>
                 <p>Прослеживаемость расходования средств</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📑</div>
+                <div class="service-icon"></div>
                 <h3>Налоговые преференции</h3>
                 <p>Льготы для научных организаций</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📖</div>
+                <div class="service-icon"></div>
                 <h3>Навигатор научных журналов</h3>
                 <p>Подбор журналов для публикаций</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">🎤</div>
+                <div class="service-icon"></div>
                 <h3>Навигатор научных конференций</h3>
                 <p>Подбор конференций для презентаций</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">📊</div>
+                <div class="service-icon"></div>
                 <h3>Составление отчетности по ЦКП/УНУ</h3>
                 <p>Формирование отчетов по деятельности</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">🏠</div>
+                <div class="service-icon"></div>
                 <h3>Предоставление ГЖС</h3>
                 <p>Государственный жилищный сертификат</p>
             </a>
             <a href="#" class="service-card">
-                <div class="service-icon">🔬</div>
+                <div class="service-icon"></div>
                 <h3>Портал популяризации науки</h3>
                 <p>Новости и мероприятия</p>
             </a>
@@ -800,7 +800,7 @@
     }
     
     window.addEventListener('load', () => {
-        announceToScreenReader('Домен Наука и инновации загружен. Доступны сервисы и аналитические данные.');
+        announceToScreenReader('Портал Наука и инновации загружен. Доступны сервисы и аналитические данные.');
     });
 </script>
 
